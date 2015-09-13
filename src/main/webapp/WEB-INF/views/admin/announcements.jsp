@@ -1,0 +1,56 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<div class="col-md-2">
+	<c:import url="/WEB-INF/views/admin/menu.jsp"/>  
+</div>
+
+<div class="col-md-10">
+	<fieldset>
+	<legend>List of announcement</legend>
+		
+		<c:import url="/WEB-INF/views/tags/status.jsp" />
+		
+		<% int counter = 1; %>
+		<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Id</th>
+					<th>Date</th>
+					<th>Title</th>
+					<th>Type</th>
+					<th>Room Number</th>
+					<th>Floor</th>
+					<th>Lift</th>
+					<th>Price</th>					
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${announcementList}" var="announcement">
+					<tr>
+					<td class="col-md-1"><%=counter%></td>  
+					<td class="col-md-1">${announcement.id}</td>
+					<td class="col-md-1"><fmt:formatDate value="${announcement.date}" type="both" pattern="yyyy-MM-dd" /></td>
+					<td class="col-md-1">${announcement.title}</td>
+					<td class="col-md-1">${announcement.homeType}</td>
+					<td class="col-md-1">${announcement.roomNumber}</td>
+					<td class="col-md-1">${announcement.floor}</td>
+					<td class="col-md-1">${announcement.lift}</td>
+					<td class="col-md-1">${announcement.price} ${announcement.currency.code}</td>
+					<td class="col-md-1">
+						<a class='btn btn-info btn-sm' href="<c:url value="/admin/announcement?id=${announcement.id}"/>"><i class="icon-edit icon-white"></i> Edit</a>
+						<a class="btn btn-danger btn-sm" href="<c:url value="/admin/announcement/update?id=${announcement.id}&action=delete"/>"><span class="icon-remove icon-white"></span> Del</a>
+					</td>
+					<% counter++; %>
+					</tr>
+				</c:forEach>
+			</tbody>	
+		</table>
+		</div>
+	</fieldset>
+</div>
+

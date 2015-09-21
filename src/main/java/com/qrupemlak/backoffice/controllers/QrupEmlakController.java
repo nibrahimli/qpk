@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.nibrahimli.database.generic.dao.CountryDao;
 import com.nibrahimli.database.generic.dao.ImageDao;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
@@ -32,6 +34,9 @@ public class QrupEmlakController {
 	@Autowired
 	private ImageDao imageDao;
 	
+	@Autowired
+	private CountryDao countryDao;
+	
 	@ModelAttribute("currenyList")
 	public List<Currency> populateCurrencyList(){
 		return Arrays.asList(Currency.values());
@@ -46,7 +51,7 @@ public class QrupEmlakController {
 	public List<Boolean> populateLiftList(){
 		return Arrays.asList(true, false);
 	}
-	
+		
 	@RequestMapping(value="/admin/announcements", method=RequestMethod.GET)
 	public ModelAndView announcements(ModelAndView mav) throws IOException{
 		
@@ -63,11 +68,35 @@ public class QrupEmlakController {
 		
 		if(id != null){
 			Announcement announcement = announcementDao.getById(id);
-			if(announcement != null)
+			if(announcement != null){
 				announcementInfo = announcementInfo.create(announcement);
+			}
 		}
 		mav.addObject(announcementInfo);
 		
 		return mav;
 	}
+	@RequestMapping(value="/admin/announcement/update", method=RequestMethod.GET)
+	public String updateArticle(@RequestParam("id") Long id,
+			@RequestParam(value = "action", required = false) String action, RedirectAttributes redirectAttrs) throws Exception {
+		try
+		{
+			logger.info( "Action " + action);
+			redirectAttrs.addAttribute("id", id) ;
+			Announcement announcement = announcementDao.getById(id);
+			if(action.equals("delete")){
+				announcementDao.delete(announcement);
+				logger.info( "Announcement[id=" + announcement.getId() + "] deleted !");
+				redirectAttrs.addFlashAttribute("infoMessage", "Announcement[id=" + announcement.getId() + "] deleted !") ;				
+			}
+			return "redirect:/admin/announcements";
+		}
+		catch(Exception e)
+		{
+			logger.error("Error : ", e);
+			redirectAttrs.addFlashAttribute("errorMessage","An unexpected error occured !!!") ;
+			return "redirect:/admin/announcements";
+		}
+	}
+	
 }

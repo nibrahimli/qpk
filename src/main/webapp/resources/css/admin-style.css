@@ -1,0 +1,21 @@
+#main{
+	color : black;
+}
+
+#top{
+	background-color: #161F5F;
+}
+
+#top .navbar-brand {
+	color : white;
+}
+
+#top .navbar-nav>li>a {
+	color : white;
+}
+
+
+/* .footer{
+	position : absolute;
+	bottom:0;		
+}  */

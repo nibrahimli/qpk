@@ -69,7 +69,7 @@
 				  <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="description">Description</form:label>
 				    <div class="col-sm-10">
-				      <form:textarea class="form-control" path="description" rows="20"></form:textarea>
+				      <form:textarea class="form-control" path="description" rows="10"></form:textarea>
 				    </div>
 				  </div>
 				 

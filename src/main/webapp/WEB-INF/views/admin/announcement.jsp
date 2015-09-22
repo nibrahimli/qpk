@@ -12,7 +12,7 @@
 			<legend>Edit Announcement</legend>
 			<div class="col-md-10">
 				
-				<c:import url="/WEB-INF/views/tags/status.jsp" />
+				<c:import url="/WEB-INF/views/admin/tags/status.jsp" />
 				
 				<c:url var="url" value="/admin/announcement" />
 				<form:form action="${url}" class="form-horizontal" commandName="announcementInfo" method="POST">

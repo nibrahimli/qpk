@@ -10,7 +10,7 @@
 	<fieldset>
 	<legend>List of announcement</legend>
 		
-		<c:import url="/WEB-INF/views/tags/status.jsp" />
+		<c:import url="/WEB-INF/views/admin/tags/status.jsp" />
 		
 		<div class="table-responsive">
 		<table class="table">

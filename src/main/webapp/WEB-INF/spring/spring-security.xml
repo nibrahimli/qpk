@@ -8,14 +8,14 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		   
  
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/loginfailed" access="permitAll" />
+		<intercept-url pattern="/admin/login" access="permitAll" />
+		<intercept-url pattern="/admin/loginfailed" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" />
 		<intercept-url pattern="/**" access="permitAll" />
-		<!-- <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN, ROLE_DEV, ROLE_EXT')" /> -->
-		<form-login login-page="/login" default-target-url="/" always-use-default-target="true"
-			authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/login" />
+		<!-- <intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN, ROLE_DEV, ROLE_EXT')" /> -->
+		<form-login login-page="/admin/login" default-target-url="/admin/" always-use-default-target="true"
+			authentication-failure-url="/admin/loginfailed" />
+		<logout logout-success-url="/" />
 	</http>
 	
 	<!-- <http auto-config="true" use-expressions="true">

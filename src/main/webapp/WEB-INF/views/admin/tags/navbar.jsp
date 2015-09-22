@@ -18,14 +18,13 @@
     <div class="collapse navbar-collapse"
       id="bs-example-navbar-collapse-1">
       <%-- <sec:authorize access="isAuthenticated()"> --%>
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
+      <ul class="nav navbar-nav">      
         <li><a href="<c:url value="/admin/announcements" />">Announcements</a></li>
       </ul>     
-      <ul class="nav navbar-nav navbar-right">
+      <%-- <ul class="nav navbar-nav navbar-right">
         <li><a href="<c:url value='/j_spring_security_logout'/>"><i class="icon-off"></i> Logout</a></li>       
-      </ul>
-      <%-- </sec:authorize> --%>
+      </ul> 
+      </sec:authorize> --%>
     </div>    
   </div>
 </nav>

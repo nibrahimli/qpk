@@ -8,20 +8,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LonginController {
 
-	@RequestMapping(value="/")
+	@RequestMapping(value="/admin/")
 	public String home(ModelAndView mav) {
-		return "home";
+		return "/admin/home";
 	}
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/admin/login")
 	public String login(ModelAndView mav) {
-		return "login";
+		return "/admin/login";
 	}
 	
-	@RequestMapping(value="/loginfailed")
+	@RequestMapping(value="/admin/loginfailed")
 	public String loginerror(ModelMap model) {
 
 		model.addAttribute("error", "true");
-		return "login";
+		return "/admin/login";
 	}
 }

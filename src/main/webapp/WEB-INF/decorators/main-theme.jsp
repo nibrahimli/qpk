@@ -42,7 +42,7 @@
 		
 		<div id="main">
 			
-			<c:import url="/WEB-INF/views/tags/navbar.jsp"/>
+			<c:import url="/WEB-INF/views/navbar.jsp"/>
 			
 			<div class="container-fluid">
 				<div class="row">					
@@ -50,7 +50,8 @@
 				</div>
 			</div>
 			
-			<c:import url="/WEB-INF/views/tags/footer.jsp"/>
+			<c:import url="/WEB-INF/views/footer.jsp"/>
+			
 		</div>
 	</body>
 </html>

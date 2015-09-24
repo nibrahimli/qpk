@@ -17,16 +17,7 @@
 				<c:url var="url" value="/admin/announcement" />
 				<form:form action="${url}" class="form-horizontal" commandName="announcementInfo" method="POST">
 				   <form:hidden path="id"/>
-				   <%-- <div class="form-group">
-				    <form:label class="col-sm-2 control-label" path="authorList">Authors</form:label>
-				    <div class="col-sm-2">
-				      <form:select class="form-control" path="authorList" multiple="true">
-				      	 <form:options items="${authorList}" itemValue="id" itemLabel="firstName"/>
-				      </form:select>
-				    </div>
-				  </div> --%>
-				  
-				  <div class="form-group">
+				   <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="date">Date</form:label>
 				    <div class="col-sm-2">
 				      <form:input class="form-control" path="date" placeholder="Date"/>
@@ -60,6 +51,14 @@
 				      <form:select class="form-control" path="currency" items="${currenyList}"/>
 				    </div>
 				  </div>
+				 <%--  <div class="form-group">
+				    <form:label class="col-sm-2 control-label" path="country">Currency</form:label>
+				    <div class="col-sm-2">
+				      <form:select class="form-control" path="country">
+				      	<form:options items="${countryJson}" itemValue="id" itemLabel="originalName" />				      
+				      </form:select>
+				    </div>
+				  </div> --%>
 				  <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="title">Title</form:label>
 				    <div class="col-sm-10">

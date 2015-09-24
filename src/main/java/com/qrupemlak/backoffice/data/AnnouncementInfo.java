@@ -181,7 +181,7 @@ public class AnnouncementInfo {
 		this.setPrice(announcement.getPrice());
 		this.setCurrency(announcement.getCurrency());
 		this.setImages(announcement.getImages());
-		this.setAddress(announcement.getAddress());
+		//this.setAddressInfo(addressInfo);
 		return this;
 	}
 }

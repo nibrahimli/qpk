@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+import com.nibrahimli.database.generic.dao.CityDao;
 import com.nibrahimli.database.generic.dao.CountryDao;
+import com.nibrahimli.database.generic.dao.DistrictDao;
 import com.nibrahimli.database.generic.dao.ImageDao;
+import com.nibrahimli.database.generic.entity.City;
+import com.nibrahimli.database.generic.entity.Country;
+import com.nibrahimli.database.generic.entity.District;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
@@ -37,6 +45,12 @@ public class QrupEmlakBackofficeController {
 	@Autowired
 	private CountryDao countryDao;
 	
+	@Autowired
+	private CityDao cityDao;
+	
+	@Autowired
+	private DistrictDao districtDao;
+	
 	@ModelAttribute("currenyList")
 	public List<Currency> populateCurrencyList(){
 		return Arrays.asList(Currency.values());
@@ -50,6 +64,21 @@ public class QrupEmlakBackofficeController {
 	@ModelAttribute("liftValues")
 	public List<Boolean> populateLiftList(){
 		return Arrays.asList(true, false);
+	}
+	
+	@PostConstruct
+	public List<Country> populateCountry(){
+		return countryDao.getAll();
+	}
+	
+	@PostConstruct
+	public List<City> populateCity(){
+		return cityDao.getAll();
+	}
+	
+	@PostConstruct
+	public List<District> populateDistrict(){
+		return districtDao.getAll();
 	}
 		
 	@RequestMapping(value="/admin/announcements", method=RequestMethod.GET)
@@ -65,14 +94,17 @@ public class QrupEmlakBackofficeController {
 	public ModelAndView editAnnouncement(@RequestParam(value="id", required=false) Long id, ModelAndView mav){
 		
 		AnnouncementInfo announcementInfo = new AnnouncementInfo();
-		
+		Gson gson = new Gson();
+		String countryJson = gson.toJson(populateCountry());
 		if(id != null){
 			Announcement announcement = announcementDao.getById(id);
 			if(announcement != null){
 				announcementInfo = announcementInfo.create(announcement);
 			}
 		}
+		
 		mav.addObject(announcementInfo);
+		mav.addObject(countryJson);
 		
 		return mav;
 	}

@@ -1,10 +1,13 @@
 package com.qrupemlak.backoffice.data;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Set;
 
-import com.nibrahimli.database.generic.entity.Address;
-import com.nibrahimli.database.generic.entity.Image;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.nibrahimli.database.image.entity.Image;
+import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
@@ -24,7 +27,8 @@ public class AnnouncementInfo {
 	private Integer price;
 	private Currency currency ;
 	private Set<Image> images ;
-	private Address address ;
+	private AddressInfo addressInfo ;
+	private List<MultipartFile> files ;
 	/**
 	 * @return the id
 	 */
@@ -158,17 +162,31 @@ public class AnnouncementInfo {
 		this.images = images;
 	}
 	/**
-	 * @return the address
+	 * @return the addressInfo
 	 */
-	public Address getAddress() {
-		return address;
+	public AddressInfo getAddressInfo() {
+		return addressInfo;
 	}
 	/**
-	 * @param address the address to set
+	 * @param address the addressInfo to set
 	 */
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddressInfo(AddressInfo addressInfo) {
+		this.addressInfo = addressInfo;
 	}
+	/**
+	 * @return the files
+	 */
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	/**
+	 * @param files the files to set
+	 */
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
+	
+	
 	public AnnouncementInfo create(Announcement announcement) {
 		this.setId(announcement.getId());
 		this.setTitle(announcement.getTitle());
@@ -181,7 +199,35 @@ public class AnnouncementInfo {
 		this.setPrice(announcement.getPrice());
 		this.setCurrency(announcement.getCurrency());
 		this.setImages(announcement.getImages());
-		//this.setAddressInfo(addressInfo);
+		this.setAddressInfo(createAddressInfo(announcement.getAddress()));
+		
 		return this;
+	}
+	private AddressInfo createAddressInfo(Address address) {
+		AddressInfo addressInfo = new AddressInfo();
+		addressInfo.setId(address.getId());
+		addressInfo.setNumber(address.getNumber());
+		addressInfo.setStreet(address.getStreet());
+		addressInfo.setCountry(address.getCountry().getId());
+		addressInfo.setCity(address.getCity().getId());
+		addressInfo.setDistrict(address.getDistrict().getId());
+		return addressInfo;
+	}
+	public Announcement update(Announcement announcement, Address address, Set<Image> images) throws Exception {
+		if(this.getId() != null)
+			announcement.setId(this.getId());
+		announcement.setDate(sdf.parse(this.getDate()));		
+		announcement.setTitle(this.getTitle());
+		announcement.setDescription(this.getDescription());
+		announcement.setRoomNumber(this.getRoomNumber());
+		announcement.setFloor(this.getFloor());
+		announcement.setLift(this.getLift());
+		announcement.setHomeType(this.getHomeType());
+		announcement.setPrice(this.getPrice());
+		announcement.setCurrency(this.getCurrency());
+		announcement.setImages(images);
+		announcement.setAddress(address);
+
+		return announcement;
 	}
 }

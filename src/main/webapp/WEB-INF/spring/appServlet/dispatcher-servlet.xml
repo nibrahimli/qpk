@@ -15,8 +15,8 @@
     <import resource="controllers.xml" />
     
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <!-- <mvc:resources mapping="/avatars/**" location="file:/home/ec2-user/avatars/" />
-    <mvc:resources mapping="/avatars/**" location="file:/home/nibrahim/avatars/" /> -->
+    <!-- <mvc:resources mapping="/avatars/**" location="file:/home/ec2-user/avatars/" /> -->
+    <mvc:resources mapping="/qEmlakImages/**" location="file:/home/nibrahim/qrupEmlakImages/" />
     
     
    	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -62,7 +62,7 @@
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
     <!-- one of the properties available; the maximum file size in bytes -->
-    <property name="maxUploadSize" value="100000"/>
+    <property name="maxUploadSize" value="10000000"/>
 
 </bean>
 </beans>

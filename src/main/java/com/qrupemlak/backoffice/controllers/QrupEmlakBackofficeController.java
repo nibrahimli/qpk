@@ -49,8 +49,8 @@ public class QrupEmlakBackofficeController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(QrupEmlakBackofficeController.class);
 
-	private static final String IMAGE_PATH = "/home/nibrahim/qrupEmlakImages/";
-//	private static final String IMAGE_PATH = "/home/ec2-user/qrupEmlakImages/";
+//	private static final String IMAGE_PATH = "/home/nibrahim/qrupEmlakImages/";
+	private static final String IMAGE_PATH = "/home/ec2-user/qrupEmlakImages/";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;

@@ -6,17 +6,14 @@
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.1.ico" />">
+	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    
+	    <link rel="stylesheet" href="<c:url value="/resources/css/admin-style.css" />"/>
 	    <!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		
-		<link rel="stylesheet" href="<c:url value="/resources/css/admin-style.css" />"/>		
-		
-	     
 		<!-- Bootstrap -->
 	
 		<!-- Latest compiled and minified CSS -->

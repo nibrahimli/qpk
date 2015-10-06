@@ -8,8 +8,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="qrup emlak turkiyeden ev elanlari">
     	<meta name="author" content="nihat ibrahimli && sinan beymemmedli">
-	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">
-	    <link rel="stylesheet" href="<c:url value="/resources/css/main-style.css" />"/>		
+	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">	    	
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    
 	    <!-- JQuery -->
@@ -20,13 +19,13 @@
 		<!-- Bootstrap -->
 	
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 		
 		<!-- Optional theme -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/> -->
 		
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
 		<!-- icons libraries -->
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -38,24 +37,37 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	    
+	    <link rel="stylesheet" href="<c:url value="/resources/css/main-style.css" />"/>
+	    
 	    
 	   	<sitemesh:write property='head'/>
 	    	
 	</head>
 	<body>
+	
+		<input type="checkbox" id="sidebartoggler">
 		
-		<div id="main">
+		<div class="page">
+			<label for="sidebartoggler" class="toggle">&#9776;</label>
 			
-			<c:import url="/WEB-INF/views/navbar.jsp"/>
+			<div class="content">
+				<c:import url="/WEB-INF/views/navbar.jsp"/>
+				
+				<c:import url="/WEB-INF/views/home.jsp"/>
+				
+				<c:import url="/WEB-INF/views/footer.jsp"/>
 			
-			<div class="container-fluid">
-				<div class="row">					
-					 <sitemesh:write property='body'/>
-				</div>
 			</div>
 			
-			<c:import url="/WEB-INF/views/footer.jsp"/>
+			<div class="sidebar">
 			
+			<nav><ul>
+				<li><a class="hover1" href="index.html">Ana Sehife</a></li>
+				<li><a class="hover2" href="#">Etrafli Axtaris</a></li>
+				<li><a class="hover3" href="#">Haqqimizda</a></li>
+				<li><a class="hover4" href="contact.html">Bizimle Elaqe</a></li>
+			</ul></nav></div>
+		
 		</div>
 	</body>
 </html>

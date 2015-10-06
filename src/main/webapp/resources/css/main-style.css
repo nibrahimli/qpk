@@ -1,9 +1,11 @@
 body, html {
   margin: 0px;
   padding: 0px;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
+
 .navBar {
-  height: 100px;
+  height: 110px;
   background-color: #29333d;
   padding: 0 160px;
   margin: 0px !important;
@@ -11,12 +13,13 @@ body, html {
   border-radius: none !important; }
   @media (max-width: 1120px) {
     .navBar {
-      padding: 0px; } }
+      padding: 0 20px; } }
   .navBar .logo {
-    height: 100px;
+    height: 90px;
     width: auto;
     display: inline-block;
-    float: left; }
+    float: left;
+    margin: 10px 0 0 0; }
   .navBar nav {
     display: inline-block;
     padding: 45px 0 15px 0;
@@ -28,15 +31,16 @@ body, html {
     .navBar nav ul {
       padding: 0px; }
       .navBar nav ul li {
-        display: inline-block;
-        padding: 0 10px; }
+        display: inline-block; }
         .navBar nav ul li a {
           color: #a9b0b7;
           text-decoration: none;
-          font-size: 18px; }
+          font-size: 18px;
+          padding: 14px 10px; }
           .navBar nav ul li a:hover {
             color: #ecedee;
-            transition: 0.5s; }
+            transition: 0.3s;
+            background-color: #27ae60; }
             .navBar nav ul li a:hover .line {
               width: 100px; }
     .navBar nav .line {
@@ -50,11 +54,63 @@ body, html {
     height: 100%; }
 
   .navBar {
-    padding: 0 0;
+    padding: 0 20px;
     margin: 0 auto; }
 
-  nav {
+  .navBar nav {
     display: none !important; } }
+#sidebartoggler {
+  display: none; }
+
+.page .toggle {
+  position: absolute;
+  color: white;
+  z-index: 1;
+  font-size: 40px;
+  margin: 30px 0 0 30px;
+  display: none; }
+.page .content {
+  position: relative;
+  z-index: 0; }
+.page .sidebar {
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  left: -140px;
+  width: 140px;
+  padding: 110px 0 0 0;
+  height: 100%;
+  background-color: #29333d; }
+  .page .sidebar nav {
+    width: 140px; }
+    .page .sidebar nav ul {
+      padding: 0px; }
+      .page .sidebar nav ul li {
+        list-style-type: none;
+        margin-bottom: 10px;
+        width: 140px; }
+        .page .sidebar nav ul li a {
+          color: white;
+          font-size: 16px;
+          display: block;
+          padding: 10px 0 10px 20px; }
+          .page .sidebar nav ul li a:hover {
+            background-color: #27ae60;
+            text-decoration: none; }
+
+@media (max-width: 800px) {
+  .page .toggle {
+    display: inline-block;
+    cursor: pointer; }
+  .page .content .logo {
+    float: right; }
+
+  #sidebartoggler:checked + .page .content {
+    left: 140px; }
+  #sidebartoggler:checked + .page .toggle {
+    left: 140px; }
+  #sidebartoggler:checked + .page .sidebar {
+    left: 0px; } }
 .first {
   position: relative; }
   .first .slider img {
@@ -297,4 +353,5 @@ footer .copyright {
         footer .copyright .end p {
           width: 160px;
           margin: 30px 50px; } }
+
 /*# sourceMappingURL=all.css.map */

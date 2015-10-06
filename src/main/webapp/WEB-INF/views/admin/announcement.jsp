@@ -3,11 +3,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-<head>
-<script type="text/javascript" src="<c:url value="/resources/js/AnnouncementApp.js" />"></script>
-</head>
-
 <div class="col-md-2">
 	<c:import url="/WEB-INF/views/admin/menu.jsp"/>  
 </div>
@@ -94,7 +89,7 @@
 				  			<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">	
 				  				  <div class="col-sm-4 col-md-2">								    						    		  
 								    <a href="#" class="thumbnail">
-								    	<img src="<c:url value="/qEmlakImages/${image.path}"/>">
+								    	<img src="<c:url value="https://s3.eu-central-1.amazonaws.com/qrup-emlak-images/${image.path}"/>">
 								    </a>
 								  </div>								  								  										  					  	
 				  			</c:forEach>

@@ -89,7 +89,7 @@
 				  			<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">	
 				  				  <div class="col-sm-4 col-md-2">								    						    		  
 								    <a href="#" class="thumbnail">
-								    	<img src="<c:url value="https://s3.eu-central-1.amazonaws.com/qrup-emlak-images/${image.path}"/>">
+								    	<img src="<c:url value="/qrupEmlakImages/${image.path}"/>">
 								    </a>
 								  </div>								  								  										  					  	
 				  			</c:forEach>

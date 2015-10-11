@@ -84,20 +84,21 @@
 				  </div>				  
 				  <c:choose>
 				  	<c:when test="${not empty announcementInfo.images}"> 
-				  		<div class="row">
-				  			<label class="col-sm-2 control-label" for="files[${status.index}]">Image</label>
+				  		<div class="row" id="image-row">
+				  			<label class="col-sm-2 control-label">Image</label>
 				  			<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">	
-				  				  <div class="col-sm-4 col-md-2">								    						    		  
-								    <a href="#" class="thumbnail">
+				  				  <div class="col-sm-5 col-md-3 saved-image" id="image-${image.id}">								    						    		  
+								    <a class="thumbnail show-remove-icon">								    	
 								    	<img src="<c:url value="/qrupEmlakImages/${image.path}"/>">
-								    </a>
+								    </a>								  	
+								  	<i class="glyphicon glyphicon-remove remove-icon" data-toggle="tooltip" title="Delete" onclick="return confirm('Are you sure delete image ?') && deleteImage('${image.id}');"></i>
 								  </div>								  								  										  					  	
 				  			</c:forEach>
 				  		</div>					
 						<div class="row" id="imageLast">
 						  <div class="col-sm-4 col-sm-offset-2">
 						    <div class="input-group">
-						      <input type="file" class="form-control" id="files[0]" name="files[0]" accept="image/*"/>
+						      <input type="file" class="form-control file" id="file-0" name="files[0]" accept="image/*"/>
 						      <span class="input-group-btn" id="addImageInput" onclick="addNewDiv('0')">
 						        <button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
 						      </span>
@@ -108,9 +109,10 @@
 				  	</c:when> 				  	
 				  	<c:otherwise>
 				  		<div class="row" id="imageLast">
-						  <div class="col-sm-4 col-sm-offset-2">
+						  <label class="col-sm-2 control-label" for="files[0]">Image</label>
+						  <div class="col-sm-4">
 						    <div class="input-group">
-						      <input type="file" class="form-control" id="files[0]" name="files[0]" accept="image/*"/>
+						      <input type="file" class="form-control file" id="file-0" name="files[0]" accept="image/*"/>
 						      <span class="input-group-btn" id="addImageInput" onclick="addNewDiv('0')">
 						        <button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
 						      </span>
@@ -138,15 +140,94 @@
 	</fieldset>			
 </div>
 
+<style>
+
+.saved-image {
+    position:relative;
+    display:inline-block;
+    text-align:center;    
+}
+.remove-icon {
+    position:absolute;
+    top:6px;
+    right:21px;
+    color:white;
+    opacity: 0;   
+    cursor:pointer; 
+}
+.show-remove-icon:hover ~ .remove-icon {
+	opacity: 1;
+} 
+.remove-icon:hover {
+	opacity: 1;
+} 
+.glyphicon-remove {
+	background-color: #E23C6A;
+    border: 3px solid #E23C6A;
+}
+
+</style>
+
+
 <script type="text/javascript">
 
+	$(document).on("change", "input[type='file']", function(){
+			var currentValue = this.value.split("\\") ;
+			currentValue = currentValue[currentValue.length -1];					
+			var currentFile = this ;
+			
+			$(".file").each(function(){
+					if(currentFile != this){
+						var value = this.value.split("\\") ;
+						value = value[value.length -1];
+						if(currentValue === value){
+							alert("This image already added");
+							currentFile.value = "";
+							return false;
+						}							
+					}							
+			});
+	 });
+
+
 	$(function() {
-		$( "#date" ).datepicker({
+		$("#date").datepicker({
 			dateFormat: "yy-mm-dd",
 			changeMonth: true,
 			numberOfMonths: 1
 		});
+		
 	});
+	
+	
+	function deleteImage(id){			
+		$.ajax({
+		  method: "POST",
+		  url: "delImage",
+		  data: {id : id},
+		  async: true,		
+		  success : function(msg) {
+		  
+		  	var alertDiv = '<div class="alert alert-success alert-image-remove">';
+				alertDiv +=	'<a class="close" data-dismiss="alert" href="#">x</a><b>Image removed with '+msg+'!</b>';
+			alertDiv += '</div>';
+		  	
+			$("#image-row").before(alertDiv);			  					
+		
+		  	$(".alert-image-remove").fadeTo(1000, 500).slideUp(500, function(){
+			    $(".alert-image-remove").alert('close');
+			});
+			
+		  	$("#image-"+id).hide();
+		  },
+  		  error : function(xhr, ajaxOptions, thrownError) {
+  		  	alert(xhr.status);
+            alert(thrownError);            		  			  	
+		  }
+		});
+	}
+	
+	
 	
 	function addNewDiv(index){ 
 		index = parseInt(index) + 1;
@@ -155,7 +236,7 @@
 		    div += '<div class="row" id="lastDiv">';
 				div+= '<div class="col-sm-4 col-sm-offset-2">';
 					div+= '<div class="input-group">';
-					  div+= '<input type="file" class="form-control" id="files['+index+']" name="files['+index+']" accept="image/*"/>'
+					  div+= '<input type="file" class="form-control file" id="file-'+index+'" name="files['+index+']" accept="image/*"/>'
 					  div+= '<span class="input-group-btn" id="addInput" onclick="addNewDiv(\''+index+'\')">'
 					      div+= '<button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>'
 					  div+= '</span>';

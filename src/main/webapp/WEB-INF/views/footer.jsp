@@ -1,12 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <footer>
 	<div class="footerabout">
 		<div class="about-wrapper">
+
 			<div class="imgabout">
-				<img src="<c:url value="/resources/img/logo.png" />"/>
-				<p>lorem impus lorem impus lorem impus lorem impus lorem impus v
-					lorem impus v lorem impus v vlorem impus lorem impus lorem impus
-					lorem impus.</p>
+				<a href="/"></a><img src="<c:url value="/resources/img/logo.png" />" /></a>
+
+				<p>Azerbaycan vetendaslarinin Turkiyenin istenilen seherinden
+					bina evi, villa, torpaq sahesi alma isteyini Turkiyede fealiyyetde
+					olan dasinmaz emlak firmalari vasitesi ile heyata keciren emlak
+					firmasidir.</p>
 			</div>
 			<div class="contact">
 				<div class="social">

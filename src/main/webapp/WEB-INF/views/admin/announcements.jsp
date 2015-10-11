@@ -41,8 +41,8 @@
 					<td class="col-md-1">${announcement.lift}</td>
 					<td class="col-md-1">${announcement.price} ${announcement.currency.code}</td>
 					<td class="col-md-1">
-						<a class='btn btn-info btn-sm' href="<c:url value="/admin/announcement?id=${announcement.id}"/>"><i class="glyphicon glyphicon-edit"></i></a>
-						<a class="btn btn-danger btn-sm" href="<c:url value="/admin/announcement/update?id=${announcement.id}&action=delete"/>"><i class="glyphicon glyphicon-remove"></i> </a>
+						<a class='btn btn-info btn-sm' data-toggle="tooltip" title="Edit" href="<c:url value="/admin/announcement?id=${announcement.id}"/>"><i class="glyphicon glyphicon-edit"></i></a>
+						<a class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete" onclick="return confirm('Are you sure delete announcement ?')" href="<c:url value="/admin/announcement/update?id=${announcement.id}&action=delete"/>"><i class="glyphicon glyphicon-remove"></i> </a>
 					</td>					
 					</tr>
 				</c:forEach>

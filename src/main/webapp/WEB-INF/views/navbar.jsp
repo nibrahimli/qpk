@@ -30,10 +30,10 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="index.html">Ana Sehife</a></li>
+					<li><a href="/">Ana Sehife</a></li>
 					<li><a href="#">Etrafli Axtaris</a></li>
 					<li><a href="#">Haqqimizda</a></li>
-					<li><a href="contact.html">Bizimle Elaqe</a></li>
+					<li><a href="<c:url value="/contact"/>">Bizimle Elaqe</a></li>
 				</ul>
 			</nav>
 		</div>

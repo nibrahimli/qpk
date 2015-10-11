@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LonginController {
 
-	@RequestMapping(value="/admin/")
+	@RequestMapping(value="/admin")
 	public String home(ModelAndView mav) {
 		return "/admin/home";
 	}

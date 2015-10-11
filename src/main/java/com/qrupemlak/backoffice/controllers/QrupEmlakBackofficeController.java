@@ -49,8 +49,8 @@ public class QrupEmlakBackofficeController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(QrupEmlakBackofficeController.class);
 
-//	private static final String IMAGE_PATH = "/home/nibrahim/qrupEmlakImages/";
-	private static final String IMAGE_PATH = "/home/ec2-user/qrupEmlakImages/";
+	private static final String IMAGE_PATH = "/home/nibrahim/qrupEmlakImages/";
+//	private static final String IMAGE_PATH = "/home/ec2-user/qrupEmlakImages/";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;
@@ -68,7 +68,7 @@ public class QrupEmlakBackofficeController {
 	private DistrictDao districtDao;
 	
 	@Autowired
-	private AddressDao addressDao;
+	private AddressDao addressDao;	
 	
 	private List<Country> allCountry ;
 	private List<City> allCity ;
@@ -251,6 +251,11 @@ public class QrupEmlakBackofficeController {
 			Announcement announcement = announcementDao.getById(id);
 			if(action.equals("delete")){
 				announcementDao.delete(announcement);
+				if(CollectionUtils.isNotEmpty(announcement.getImages())){
+					for (Image image : announcement.getImages()) {
+						deleteFile(image.getPath());
+					}
+				}
 				logger.info( "Announcement[id=" + announcement.getId() + "] deleted !");
 				redirectAttrs.addFlashAttribute("infoMessage", "Announcement[id=" + announcement.getId() + "] deleted !") ;				
 			}
@@ -263,5 +268,34 @@ public class QrupEmlakBackofficeController {
 			return "redirect:/admin/announcements";
 		}
 	}
+	
+	@RequestMapping(value="/admin/delImage", method=RequestMethod.POST)
+	public @ResponseBody String deleteImage(@RequestParam("id") Long imageId){
+		Image image ;
+		if(imageId != null){
+			announcementDao.deleteImage(imageId);
+			image = imageDao.getById(imageId);
+			imageDao.delete(image);		
+			deleteFile(image.getPath());			
+			return "success";
+		}				
+		return "error";		
+	}
+
+	private void deleteFile(String path) {
+		try {
+			File file = new File(IMAGE_PATH + "/" + path);
+
+			if (file.delete()) {
+				logger.info("delete file {}", path);
+			} else {
+				logger.info(
+						"An unexpected error occured when deleting file {}",
+						path);
+			}
+		} catch (Exception e) {
+			logger.info("An unexpected error occured when deleting file {}", e);
+		}
+	}	
 	
 }

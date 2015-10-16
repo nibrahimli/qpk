@@ -99,7 +99,7 @@
 							</div>
 							<div class="price">
 								<p>Price</p>
-								<p class="priceValue">${announcement.price}${announcement.currency.code}</p>
+								<p class="priceValue">${announcement.price} ${announcement.currency.code}</p>
 							</div>
 						</div>
 					</div>

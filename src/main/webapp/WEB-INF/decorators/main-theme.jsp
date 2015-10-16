@@ -1,9 +1,8 @@
-<%-- <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">		
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="qrup emlak turkiyeden ev elanlari">
@@ -40,7 +39,9 @@
 		
 		<div class="page">			
 			<c:import url="/WEB-INF/views/navbar.jsp"/>
-			<sitemesh:write property='body'/>
+			<div class="content">
+				<sitemesh:write property='body'/>
+			</div>	
 			<c:import url="/WEB-INF/views/footer.jsp"/>								
 		</div>
 		

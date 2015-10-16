@@ -52,6 +52,14 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
+	public ModelAndView advancedSearch(ModelAndView mav) throws IOException{
+		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
+		mav.addObject("announcementList", announcementList);		
+		return mav;
+	}
+	
+	
 	@RequestMapping(value="/contact", method=RequestMethod.GET)
 	public ModelAndView contact(ModelAndView mav){
 		

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <div class="sidebar">
 	<div class="logo">
@@ -6,10 +7,9 @@
 	</div>
 	<nav>
 		<ul>
-			<li><a href="index.html">Ana Sehife</a></li>
-			<li><a href="#">Etrafli Axtaris</a></li>
-			<li><a href="#">Haqqimizda</a></li>
-			<li><a href="contact.html">Bizimle Elaqe</a></li>
+			<li><a href="/">Ana Səhifə</a></li>
+			<li><a href="<c:url value="/advancedSearch"/>">Ətraflı Axtarış</a></li>
+			<li><a href="<c:url value="/contact"/>">Bizimlə Əlaqə</a></li>
 		</ul>
 	</nav>
 

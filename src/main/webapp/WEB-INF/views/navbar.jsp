@@ -5,7 +5,7 @@
 	<div class="navBar">
 
 		<div class="logo">
-			<a href="/"><img class="logo" src="<c:url value="/resources/img/logo.png" />"></a>
+			<a href="/"><img src="<c:url value="/resources/img/logo.png" />"></a>
 		</div>
 		<p class="toggle">
 			<i id="showLeftPushIcon" class="fa fa-navicon"></i>

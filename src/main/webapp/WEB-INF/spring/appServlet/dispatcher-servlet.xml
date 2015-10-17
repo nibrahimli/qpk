@@ -15,8 +15,8 @@
     <import resource="controllers.xml" />
     
     <mvc:resources mapping="/resources/**" location="/resources/" />    
-    <!-- <mvc:resources mapping="/qEmlakImages/**" location="file:/home/nibrahim/qrupEmlakImages/" /> -->
-    <mvc:resources mapping="/qrupEmlakImages/**" location="file:/home/ec2-user/qrupEmlakImages/" />
+    <!-- <mvc:resources mapping="/qrupEmlakImages/**" location="file:/home/nibrahim/qrupEmlakImages/" /> -->
+    <mvc:resources mapping="/qrupEmlakImages/**" location="file:/mnt/qrupEmlakImages/" />
     
    	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

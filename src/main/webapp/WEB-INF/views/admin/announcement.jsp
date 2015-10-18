@@ -65,15 +65,15 @@
 				  <div class="form-group" ng-controller='formController as formCtrl'>
 				    <label class="col-sm-2 control-label" for="country">Country</label>
 				    <div class="col-sm-2">
-				      <select class="form-control" name="addressInfo.country" ng-model="selectedCountry"  ng-options="country.originalName for country in countries track by country.id"></select>
+				      <select class="form-control" name="addressInfo.country" ng-model="selectedCountry"  ng-options="country.name for country in countries track by country.id"></select>
 				    </div>
 				    <label class="col-sm-2 control-label" for="city">City</label>
 				    <div class="col-sm-2">
-				      <select class="form-control" name="addressInfo.city" ng-model="selectedCity"  ng-options="city.originalName for city in cities track by city.id"></select>
+				      <select class="form-control" name="addressInfo.city" ng-model="selectedCity"  ng-options="city.name for city in cities track by city.id"></select>
 				    </div>
 				    <label class="col-sm-2 control-label" for="city">District</label>
 				    <div class="col-sm-2">
-				      <select class="form-control" name="addressInfo.district" ng-model="selectedDistrict"  ng-options="district.originalName for district in districts track by district.id"></select>
+				      <select class="form-control" name="addressInfo.district" ng-model="selectedDistrict"  ng-options="district.name for district in districts track by district.id"></select>
 				    </div>
 				  </div>
 				  <div class="form-group">

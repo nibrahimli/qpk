@@ -41,8 +41,16 @@
 				    <div class="col-sm-2">
 				      <form:select class="form-control" path="homeType" items="${homeTypeList}"/>
 				    </div>
+				    <form:label class="col-sm-2 control-label" path="surface">Surface</form:label>
+				    <div class="col-sm-2">
+				      <form:input class="form-control" path="surface" placeholder="Surface"/>
+				    </div>
 				  </div>
 				  <div class="form-group">
+				  	<form:label class="col-sm-2 control-label" path="buildingAge">Building Age</form:label>
+				    <div class="col-sm-2">
+				      <form:input class="form-control" path="buildingAge" placeholder="Building Age"/>
+				    </div>
 				    <form:label class="col-sm-2 control-label" path="price">Price</form:label>
 				    <div class="col-sm-2">
 				      <form:input class="form-control" path="price" placeholder="Price"/>

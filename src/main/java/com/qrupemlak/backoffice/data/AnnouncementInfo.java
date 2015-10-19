@@ -24,6 +24,8 @@ public class AnnouncementInfo {
 	private Integer floor;
 	private Boolean lift;
 	private HomeType homeType;
+	private Integer surface ;
+	private Integer buildingAge;
 	private Integer price;
 	private Currency currency ;
 	private Set<Image> images ;
@@ -126,6 +128,30 @@ public class AnnouncementInfo {
 		this.homeType = homeType;
 	}
 	/**
+	 * @return the surface
+	 */
+	public Integer getSurface() {
+		return surface;
+	}
+	/**
+	 * @param surface the surface to set
+	 */
+	public void setSurface(Integer surface) {
+		this.surface = surface;
+	}
+	/**
+	 * @return the buildingAge
+	 */
+	public Integer getBuildingAge() {
+		return buildingAge;
+	}
+	/**
+	 * @param buildingAge the buildingAge to set
+	 */
+	public void setBuildingAge(Integer buildingAge) {
+		this.buildingAge = buildingAge;
+	}
+	/**
 	 * @return the price
 	 */
 	public Integer getPrice() {
@@ -196,6 +222,8 @@ public class AnnouncementInfo {
 		this.setFloor(announcement.getFloor());
 		this.setLift(announcement.getLift());
 		this.setHomeType(announcement.getHomeType());
+		this.setSurface(announcement.getSurface());
+		this.setBuildingAge(announcement.getBuildingAge());
 		this.setPrice(announcement.getPrice());
 		this.setCurrency(announcement.getCurrency());
 		this.setImages(announcement.getImages());
@@ -223,6 +251,8 @@ public class AnnouncementInfo {
 		announcement.setFloor(this.getFloor());
 		announcement.setLift(this.getLift());
 		announcement.setHomeType(this.getHomeType());
+		announcement.setSurface(this.getSurface());
+		announcement.setBuildingAge(this.getBuildingAge());
 		announcement.setPrice(this.getPrice());
 		announcement.setCurrency(this.getCurrency());
 		announcement.setImages(images);

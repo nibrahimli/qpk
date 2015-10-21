@@ -1,90 +1,69 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
-<div class="container-fluid" id="announcementDiv">
+<div class="container-fluid">
 
 	<div class="row">
 	
-		<div class="col-md-6">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				<c:if test="${not empty announcementInfo.images}">
-					<c:set var="size" scope="session" value="${fn:length(announcementInfo.images)}"/>
-					
-					<!-- Indicators -->
-			  		<ol class="carousel-indicators">
-						<c:forEach var="i" begin="0" end="${size - 1}">
-							<c:choose>
-								<c:when test="${i eq  0}">
-									<li data-target="#carousel-example-generic" data-slide-to="${i}" class="active"></li>
-								</c:when>
-								<c:otherwise>
-									 <li data-target="#carousel-example-generic" data-slide-to="${i}"></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</ol>
-					
-					 <!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
-						<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
-							<c:choose>
-								<c:when test="${status.index eq 0}">
-									<div class="item active">
-								      <img src="<c:url value="/qrupEmlakImages/${image.path}"/>" alt="${image.alt}">					      					      
-								    </div>
-							    </c:when>				    
-							    <c:otherwise>
-								    <div class="item">
-								      <img src="<c:url value="/qrupEmlakImages/${image.path}"/>" alt="${image.alt}">					      
-								    </div>	
-							    </c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</div>
-				</c:if>    
-			
-			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			</div>
-		</div>	
-		
-		<div class="col-md-6">
+		<div class="col-md-8" id="slo">		
+			<ul class="bxslider">
+			  <li><img src="<c:url value="/resources/img/img1.jpg"/>"/></li>
+			  <li><img src="<c:url value="/resources/img/img2.jpg" />"/></li>
+			  <li><img src="<c:url value="/resources/img/img3.jpg" />" /></li>
+			</ul>													
+		</div>
+		<div class="col-md-4">
 			<h2>${announcementInfo.title}</h2>
-			<p>Tarix : ${announcementInfo.date}</p>
-			<p>Qiymet : ${announcementInfo.price} ${announcement.currency.code}</p>
-			<p>Evin novu : ${announcementInfo.homeType}</p>
-			<p>Otaq sayisi : ${announcementInfo.roomNumber}</p>
-			<p>Address : ${addressInfo.number}, ${addressInfo.street} ${addressInfo.district.originalName} ${addressInfo.city.originalName}</p>
-			<p>${announcementInfo.description}</p>
+			<dl class="dl-horizontal">
+			  <dt>Tarix</dt>
+			  <dd>${announcementInfo.date}</dd>
+			  <dt>Qiymət</dt>
+			  <dd>${announcementInfo.price} ${announcement.currency.code}</dd>
+			  <dt>Əmlak Tipi</dt>
+			  <dd>${announcementInfo.homeType.type}</dd>
+			  <dt>Otaq sayısı</dt>
+			  <dd>${announcementInfo.roomNumber}</dd>
+			  <dt>Adres</dt>
+			  <dd>${addressInfo.number}, ${addressInfo.street} ${addressInfo.district.originalName} ${addressInfo.city.originalName}</dd>
+			  <dt>Əlavə məlumat</dt>
+			  <dd>${announcementInfo.description}</dd>			  
+			</dl>									
 		</div>
 		
+	</div>
+	<div class="row" id="littleImgs">		
+		<div id="bx-pager">
+			<div class="col-md-2" >											
+		  		<a data-slide-index="0" href="" ><img class="img-responsive img-rounded" src="<c:url value="/resources/img/img1.jpg"/>"/></a>
+		  	</div>
+		  	<div class="col-md-2" >	
+		  		<a data-slide-index="1" href="" ><img class="img-responsive img-rounded" src="<c:url value="/resources/img/img2.jpg" />"/></a>
+		  	</div>
+		  	<div class="col-md-2" >	
+		 		<a data-slide-index="2" href="" ><img class="img-responsive img-rounded" src="<c:url value="/resources/img/img3.jpg" />"/></a>					
+			</div>								
+		</div>		
 	</div>	
+		
 </div>
 
 
 <style>
 
-	#announcementDiv{
-		background-color: white;
-	}
-
-	img {
 	
-		max-width : 500px;
-		max-height : 500px;
-	}
+	#slo {
+		border : 10px solid blue ;
+		margin : 10px;		
+		max-width: 600px;
+    	max-height: 300px;
+	}		
 	
-	#carousel-example-generic{
-		max-width : 700px;
-		max-height : 700px;
-	}
+	/* #littleImgs{
+		border : 1px solid blue ;			
+		max-width: 100px;
+    	max-height: 100px;
+	} */
 
 </style>
 
@@ -92,8 +71,9 @@
 
 <script>
 
-$('.carousel').carousel({
-  interval: 2000
+$('.bxslider').bxSlider({
+  pagerCustom: '#bx-pager',
+  oneToOneTouch : true
 });
 
 </script>

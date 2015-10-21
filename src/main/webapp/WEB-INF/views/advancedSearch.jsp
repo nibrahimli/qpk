@@ -85,21 +85,21 @@
 								src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 						</c:forEach>
 						<div class="top">
-							<div class="bath">
-								<p>Room</p>
+							<div class="bed">
+								<p>Otaq</p>
 								<p>${announcement.roomNumber}</p>
 							</div>
-							<div class="bed">
-								<p>Floor</p>
-								<p>${announcement.floor}</p>
+							<div class="location">
+								<p>Şəhər</p>
+								<p>${announcement.address.city.originalName}</p>
 							</div>
-							<div class="gar">
-								<p>Type</p>
-								<p>${announcement.homeType}</p>
+							<div class="type">
+								<p>Əmlak tipi</p>
+								<p>${announcement.homeType.type}</p>
 							</div>
 							<div class="price">
-								<p>Price</p>
-								<p class="priceValue">${announcement.price} ${announcement.currency.code}</p>
+								<p>Qiymət</p>
+								<p>${announcement.price} ${announcement.currency.code}</p>
 							</div>
 						</div>
 					</div>

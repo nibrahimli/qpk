@@ -27,7 +27,11 @@
 	
 		<!-- Social Networks icons -->
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-		
+				
+		<!-- bxSlider Javascript file -->
+		<script src="<c:url value="/resources/js/jquery.bxslider.min.js"/>"></script>
+		<!-- bxSlider CSS file -->
+		<link href="<c:url value="/resources/css/jquery.bxslider.min.css" />" rel="stylesheet" />
 		
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>
 	    
@@ -43,9 +47,7 @@
 				<sitemesh:write property='body'/>
 			</div>	
 			<c:import url="/WEB-INF/views/footer.jsp"/>								
-		</div>
-		
-		<c:import url="/WEB-INF/views/sidebar.jsp"/>
+		</div>		
 		
 	</body>
 </html>

@@ -35,16 +35,12 @@
 		<form class="form-inline">
 			<div class="f-group">
 				<div class="form-group">
-					<select id="city" name="city" class="form-control">
-						<option value="City" selected="selected">City</option>
-						<option value="Baki">Bakı</option>
-						<option value="Naxcivan">Naxçıvan</option>
-					</select>
+					 <input class="form-control" id="cityInput" name="city" placeholder="Şəhər"/>
 				</div>
 
 				<div class="form-group">
 					<select id="category" name="category" class="form-control">
-						<option value="category" selected="selected">Category</option>
+						<option value="category" selected="selected">Əmlak Tipi</option>
 						<option value="Baki">Həyıt Evi</option>
 						<option value="Naxcivan">Villa</option>
 					</select>
@@ -66,7 +62,7 @@
 			</div>
 
 			<div class="searchButton">
-				<button type="submit" class="btn btn-default">Search</button>
+				<button type="submit" class="btn btn-default">Axtar</button>
 			</div>
 
 		</form>
@@ -90,21 +86,21 @@
 							src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 					</c:forEach>					
 					<div class="top">
-						<div class="bath">
-							<p>Room</p>
+						<div class="bed">
+							<p>Otaq</p>
 							<p>${announcement.roomNumber}</p>
 						</div>
-						<div class="bed">
-							<p>Floor</p>
-							<p>${announcement.floor}</p>
+						<div class="location">
+							<p>Şəhər</p>
+							<p>${announcement.address.city.originalName}</p>
 						</div>
-						<div class="gar">
-							<p>Type</p>
-							<p>${announcement.homeType}</p>
+						<div class="type">
+							<p>Əmlak tipi</p>
+							<p>${announcement.homeType.type}</p>
 						</div>
 						<div class="price">
-							<p>Price</p>
-							<p class="priceValue">${announcement.price} ${announcement.currency.code}</p>
+							<p>Qiymət</p>
+							<p>${announcement.price} ${announcement.currency.code}</p>
 						</div>
 					</div>
 				</div>
@@ -113,3 +109,18 @@
 	</div>
 
 </div>
+
+<script>
+
+	var cities = ${locationsGson}.cities;
+	var citiesName = [];
+	
+	$.each(cities, function(i, city) {
+	  citiesName.push(city.originalName);
+	});
+	
+	$("#cityInput").autocomplete({
+      source: citiesName
+    });
+
+</script>

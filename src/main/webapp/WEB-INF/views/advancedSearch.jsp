@@ -75,36 +75,36 @@
 
 	<div class="announcements">
 
-		<div class="ads">
-			<c:forEach items="${announcementList}" var="announcement">
-				<div class="one">
-					<div class="image">
-						<c:forEach items="${announcement.images}" var="image" end="0">
-							<a
-								href="<c:url value="/announcement/ERT${announcement.id}ELMXzW"/>"><img
-								src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
-						</c:forEach>
-						<div class="top">
-							<div class="bed">
-								<p>Otaq</p>
-								<p>${announcement.roomNumber}</p>
-							</div>
-							<div class="location">
-								<p>Şəhər</p>
-								<p>${announcement.address.city.originalName}</p>
-							</div>
-							<div class="type">
-								<p>Əmlak tipi</p>
-								<p>${announcement.homeType.type}</p>
-							</div>
-							<div class="price">
-								<p>Qiymət</p>
-								<p>${announcement.price} ${announcement.currency.code}</p>
-							</div>
+	<div class="ads">
+		<c:forEach items="${announcementList}" var="announcement">
+			<div class="one">
+				<div class="image">
+					<c:forEach items="${announcement.images}" var="image" end="0">
+						<a
+							href="<c:url value="/announcement/ERT${announcement.id}ELMXzW"/>"><img
+							src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
+					</c:forEach>					
+					<div class="top">
+						<div class="bed">
+							<p>Otaq</p>
+							<p>${announcement.roomNumber}</p>
+						</div>
+						<div class="location">
+							<p>Şəhər</p>
+							<p>${announcement.address.city.originalName}</p>
+						</div>
+						<div class="type">
+							<p>Əmlak tipi</p>
+							<p>${announcement.homeType.type}</p>
+						</div>
+						<div class="price">
+							<p>Qiymət</p>
+							<p>${announcement.price} ${announcement.currency.code}</p>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</c:forEach>
+	</div>
 	</div>
 </div>

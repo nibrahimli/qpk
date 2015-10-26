@@ -2,34 +2,8 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <div class="first">
-	<div id="carousel-example-generic" class="carousel slide"
-		data-ride="carousel">
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
-
-			<div class="item active">
-				<img class="logo" src="<c:url value="/resources/img/img1.jpg" />">
-			</div>
-
-			<div class="item">
-				<img class="logo" src="<c:url value="/resources/img/img2.jpg" />">
-			</div>
-
-			<div class="item">
-				<img class="logo" src="<c:url value="/resources/img/img2.jpg" />">
-			</div>
-		</div>
-
-		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-example-generic"
-			role="button" data-slide="prev"> <span
-			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
-			class="sr-only">Previous</span>
-		</a> <a class="right carousel-control" href="#carousel-example-generic"
-			role="button" data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+	<div class="scene">
+		<img src="<c:url value="/resources/img/back-logo.jpg"/>">				
 	</div>
 	<div class="search">
 		<form class="form-inline">

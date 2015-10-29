@@ -309,7 +309,8 @@ body {
       position: static;
       padding: 10px 0px;
       height: 175px;
-      background-color: #29333d; }
+      background-color: #29333d;
+      width: auto !important; }
       .first .search .form-inline {
         margin: 0px;
         max-width: 750px; }
@@ -371,8 +372,8 @@ body {
     background-image: url(../img/footer.jpg);
     padding: 20px 0px; }
     .list .list-title .title-wrap {
-      width: 164px;
-      margin: 0 auto; }
+      margin: 0 auto;
+      text-align: center; }
       .list .list-title .title-wrap p {
         color: white;
         font-size: 28px;
@@ -430,17 +431,17 @@ body {
           bottom: 0px;
           z-index: 10; }
           .list .ads .one .image .top .bed {
-            width: 50px;
+            width: 40px;
             display: inline-block;
             text-align: center;
             border: none; }
             .list .ads .one .image .top .bed p {
               margin: 0px;
-              font-size: 14px;
+              font-size: 12px;
               color: black; }
               .list .ads .one .image .top .bed p:nth-child(2) {
                 color: #F54701;
-                font-size: 16px; }
+                font-size: 14px; }
           .list .ads .one .image .top .location {
             width: 97px;
             display: inline-block;
@@ -448,35 +449,35 @@ body {
             border: none; }
             .list .ads .one .image .top .location p {
               margin: 0px;
-              font-size: 14px;
+              font-size: 12px;
               color: black; }
               .list .ads .one .image .top .location p:nth-child(2) {
                 color: #F54701;
-                font-size: 16px; }
+                font-size: 14px; }
           .list .ads .one .image .top .type {
-            width: 96px;
+            width: 90px;
             display: inline-block;
             text-align: center;
             border: none; }
             .list .ads .one .image .top .type p {
               margin: 0px;
-              font-size: 14px;
+              font-size: 12px;
               color: black; }
               .list .ads .one .image .top .type p:nth-child(2) {
                 color: #F54701;
-                font-size: 16px; }
+                font-size: 14px; }
           .list .ads .one .image .top .price {
-            width: 95px;
+            width: 111px;
             display: inline-block;
             text-align: center;
             border: none; }
             .list .ads .one .image .top .price p {
               margin: 0px;
-              font-size: 14px;
+              font-size: 12px;
               color: black; }
               .list .ads .one .image .top .price p:nth-child(2) {
                 color: #F54701;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: bold; }
 
 @media (max-width: 440px) {
@@ -498,21 +499,21 @@ body {
         font-size: 16px;
         height: 23% !important; }
         .one .image .top .bed {
-          width: 35px !important; }
+          width: 30px !important; }
           .one .image .top .bed p {
-            font-size: 13px !important; }
+            font-size: 10px !important; }
         .one .image .top .location {
           width: 70px !important; }
           .one .image .top .location p {
-            font-size: 13px !important; }
+            font-size: 10px !important; }
         .one .image .top .type {
-          width: 67px !important; }
-          .one .image .top .type p {
-            font-size: 13px !important; }
-        .one .image .top .price {
           width: 65px !important; }
+          .one .image .top .type p {
+            font-size: 10px !important; }
+        .one .image .top .price {
+          width: 72px !important; }
           .one .image .top .price p {
-            font-size: 13px !important; }
+            font-size: 10px !important; }
       .one .image:after {
         height: 26% !important; } }
 footer {
@@ -820,12 +821,10 @@ footer {
     position: relative;
     top: -48px; } }
 .announcement {
-  max-width: 1400px; 
-  margin: 0 auto;	
+  max-width: 1400px;
   height: 1000px;
   position: relative;
-  background-color: white;
-  padding: 10px; }
+  background-color: white; }
   @media (max-width: 1080px) {
     .announcement {
       height: 1150px; } }
@@ -838,7 +837,8 @@ footer {
   .announcement .annTop {
     background-color: #F5F5F5;
     width: 100%;
-    height: 65%; }
+    height: 65%;
+    padding: 0px 5px 0px 5px; }
     @media (max-width: 1080px) {
       .announcement .annTop {
         height: 53%; } }
@@ -850,15 +850,13 @@ footer {
       float: left;
       display: inline-block;
       padding: 20px 0 0 0; }
-      .announcement .annTop .annImg #jssor_1 {
-        margin: 0px !important;
-        width: 612px; }
     .announcement .annTop .annDes {
       width: 39%;
       float: left;
       display: inline-block;
       padding: 10px;
-      height: 700px; }
+      height: 700px;
+      font-size: 13px; }
       .announcement .annTop .annDes .container {
         width: auto !important;
         padding: 0px; }
@@ -866,13 +864,16 @@ footer {
           text-align: center; }
         .announcement .annTop .annDes .container tr:hover {
           background-color: #F1F0F0; }
-        .announcement .annTop .annDes .container tr td:nth-child(1) {
-          text-align: right;
-          font-weight: bold;
-          width: 40%; }
-        .announcement .annTop .annDes .container tr td:nth-child(2) {
-          text-align: left;
-          width: 60%; }
+        .announcement .annTop .annDes .container tr td {
+          border: none; }
+          .announcement .annTop .annDes .container tr td:nth-child(1) {
+            text-align: right;
+            color:#7D7D7D;            
+            width: 40%; }
+          .announcement .annTop .annDes .container tr td:nth-child(2) {
+            text-align: left;
+            width: 60%;
+            font-weight: bold; }
   .announcement .annOther {
     display: block;
     width: 100%;
@@ -947,17 +948,13 @@ footer {
         .announcement .annTop .annDes .container tr td:nth-child(2) {
           width: 65%; }
     .announcement .annOther {
-      margin-top: 100px; } }
+      margin-top: 100px; }
       
-.ui-autocomplete {
-    max-height: 100px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
+@media (max-width: 440px) {
+ 		.annTop{position: relative;
+ 		top: -50px;}
+ 		}
   }
-  /* IE 6 doesn't support max-height
-   * we use height instead, but this forces the menu to always be this tall
-   */
-  * html .ui-autocomplete {
-    height: 100px;
-  }     
+      #price{color:#F54701; font-weight:bold}
+      
+ 

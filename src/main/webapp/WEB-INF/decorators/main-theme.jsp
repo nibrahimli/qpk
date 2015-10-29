@@ -28,10 +28,21 @@
 		<!-- Social Networks icons -->
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 				
-		<!-- bxSlider Javascript file -->
-		<script src="<c:url value="/resources/js/jquery.jssor.min.js"/>"></script>
-		<!-- bxSlider CSS file -->
-		<link href="<c:url value="/resources/css/jquery.jssor.min.css" />" rel="stylesheet" />
+		<!-- Ninja slider -->
+		<link href="<c:url value="/resources/css/thumbnail-slider.css"/>" rel="stylesheet" type="text/css" />
+	    <link href="<c:url value="/resources/css/ninja-slider.css"/>" rel="stylesheet" type="text/css" />
+	    <script src="<c:url value="/resources/js/thumbnail-slider.js"/>" type="text/javascript"></script>
+	    <script src="<c:url value="/resources/js/ninja-slider.js"/>" type="text/javascript"></script>
+	    <!-- Ninja slider -->
+	    
+	    		
+		<!-- Typeahead.js autocomplete -->
+		<link href="<c:url value="/resources/css/typeahead.css"/>" rel="stylesheet" type="text/css" />
+		<script src="<c:url value="/resources/js/bloodhound.min.js"/>" type="text/javascript"></script>
+		<script src="<c:url value="/resources/js/typeahead.bundle.min.js"/>" type="text/javascript"></script>
+		<script src="<c:url value="/resources/js/typeahead.jquery.min.js"/>" type="text/javascript"></script>	    
+	    <!-- Typeahead.js autocomplete -->
+		
 		
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>
 	    

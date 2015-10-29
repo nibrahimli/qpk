@@ -5,11 +5,13 @@
 	<div class="scene">
 		<img src="<c:url value="/resources/img/back-logo.jpg"/>">				
 	</div>
-	<div class="search">
+	<div class="search">	
 		<form class="form-inline">
 			<div class="f-group">
 				<div class="form-group">
-					 <input class="form-control" id="cityInput" name="city" placeholder="Şəhər"/>
+					<div id="the-basics">
+						<input class="typeahead form-control" type="text" placeholder="Şəhər">
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -85,16 +87,49 @@
 </div>
 
 <script>
-
+	
 	var cities = ${locationsGson}.cities;
 	var citiesName = [];
 	
 	$.each(cities, function(i, city) {
 	  citiesName.push(city.originalName);
 	});
+
+	var substringMatcher = function(strs) {
+	  return function findMatches(q, cb) {
+	    var matches, substringRegex;
 	
-	$("#cityInput").autocomplete({
-      source: citiesName
-    });
+	    // an array that will be populated with substring matches
+	    matches = [];
+	
+	    // regex used to determine if a string contains the substring `q`
+	    substrRegex = new RegExp(q, 'i');
+	
+	    // iterate through the pool of strings and for any string that
+	    // contains the substring `q`, add it to the `matches` array
+	    $.each(strs, function(i, str) {
+	      if (substrRegex.test(str)) {
+	        matches.push(str);
+	      }
+	    });
+	
+	    cb(matches);
+	  };
+	};
+	
+	var states = citiesName;
+	
+	$('#the-basics .typeahead').typeahead({
+	  hint: true,
+	  highlight: true,
+	  minLength: 1
+	},
+	{
+	  name: 'states',
+	  source: substringMatcher(states),
+	  limit: 4  
+	});
+
+			
 
 </script>

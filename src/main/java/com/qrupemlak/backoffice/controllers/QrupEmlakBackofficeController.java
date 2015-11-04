@@ -74,7 +74,7 @@ public class QrupEmlakBackofficeController {
 	private List<City> allCity ;
 	private List<District> allDistrict ;
 	
-	@ModelAttribute("currenyList")
+	@ModelAttribute("currencyList")
 	public List<Currency> populateCurrencyList(){
 		return Arrays.asList(Currency.values());
 	}

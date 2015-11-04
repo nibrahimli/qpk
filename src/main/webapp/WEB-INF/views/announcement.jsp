@@ -2,69 +2,55 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
-<div class="announcement">
-	<div class="annTop">
-		<div class="annImg">
-			<!--start-->
-			<div id="ninja-slider">
-				<div>
-					<div class="slider-inner">
-						<ul>
-							<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
-								<li><a class="ns-img" href="<c:url value="/qrupEmlakImages/${image.path}"/>"></a></li>
-							</c:forEach>						
-						</ul>
-						<div class="fs-icon" title="Expand/Close"></div>
-					</div>
-					<div id="thumbnail-slider">
-						<div class="inner">
-							<ul>
-								<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">									
-									<li><a class="thumb" href="<c:url value="/qrupEmlakImages/${image.path}"/>"></a></li>
-								</c:forEach>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--end-->
-		</div>
-		<div class="annDes">
-			<div class="container">
+	
+	<br/>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-5">
+				<ul class="bxslider">
+				  	<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
+						<li><img src="<c:url value="/qrupEmlakImages/${image.path}"/>"/></li>
+					</c:forEach>
+				</ul>
+			</div>	
+			
+			<div class="col-md-7">
 				<h2>${announcementInfo.title}</h2>
-				<table class="table table-hover">
-					<tbody>
-						<tr>
-							<td>Tarix</td>
-							<td>${announcementInfo.date}</td>
-						</tr>
-						<tr>
-							<td>Əmlak Tipi</td>
-							<td>${announcementInfo.homeType.type}</td>
-						</tr>
-						<tr>
-							<td>Otaq sayısı</td>
-							<td>${announcementInfo.roomNumber}</td>
-						</tr>
-						<tr>
-							<td>Qiymət</td>
-							<td id="price">${announcementInfo.price} ${announcementInfo.currency.code}</td>
-						</tr>
-						<tr>
-							<td>Adres</td>
-							<td>${addressInfo.number}, ${addressInfo.street} ${addressInfo.district.originalName}, ${addressInfo.city.originalName}</td>
-						</tr>
-						<tr>
-							<td>Əlavə məlumat</td>
-							<td>${announcementInfo.description}</td>
-						</tr>
-
-					</tbody>
-				</table>
-
-			</div>
+					<table class="table table-hover">
+						<tbody>
+							<tr>
+								<td>Tarix</td>
+								<td>${announcementInfo.date}</td>
+							</tr>
+							<tr>
+								<td>Əmlak Tipi</td>
+								<td>${announcementInfo.homeType.type}</td>
+							</tr>
+							<tr>
+								<td>Otaq sayısı</td>
+								<td>${announcementInfo.roomNumber}</td>
+							</tr>
+							<tr>
+								<td>Qiymət</td>
+								<td id="price">${announcementInfo.price} ${announcementInfo.currency.code}</td>
+							</tr>
+							<tr>
+								<td>Adres</td>
+								<td>${address.number}, ${address.street} ${address.district.originalName}, ${address.city.originalName}</td>
+							</tr>
+							<tr>
+								<td>Əlavə məlumat</td>
+								<td>${announcementInfo.description}</td>
+							</tr>
+	
+						</tbody>
+					</table>
+			</div>				
 		</div>
-	</div>
+	</div>	
+	
+	
+	
 	<div class="annOther">
 
 		<div class="list">
@@ -107,6 +93,12 @@
 				</c:forEach>
 			</div>	
 		</div>
-	</div>
-
 </div>
+
+<style type="text/css">
+
+.bx-next{
+	margin-right: 11px;
+}
+
+</style>

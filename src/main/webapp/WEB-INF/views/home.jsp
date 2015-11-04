@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <div class="first">
@@ -6,20 +7,21 @@
 		<img src="<c:url value="/resources/img/back-logo.jpg"/>">				
 	</div>
 	<div class="search">	
-		<form class="form-inline">
+		<form:form class="form-inline" commandName="announcementInfo" method="POST">
 			<div class="f-group">
 				<div class="form-group">
-					<div id="the-basics">
-						<input class="typeahead form-control" type="text" placeholder="Şəhər">
+					<div id="chosen">						
 					</div>
 				</div>
 
 				<div class="form-group">
-					<select id="category" name="category" class="form-control">
-						<option value="category" selected="selected">Əmlak Tipi</option>
-						<option value="Baki">Həyıt Evi</option>
-						<option value="Naxcivan">Villa</option>
-					</select>
+					<div class="col-sm-2">
+				      <form:select class="form-control" path="homeType">
+				      	<c:forEach var="homeType" items="${homeTypeList}">
+				      		<form:option value="${homeType}">${homeType.type}</form:option>
+				      	</c:forEach>				     					     	 
+				      </form:select>
+				    </div>
 				</div>
 			</div>
 
@@ -41,7 +43,7 @@
 				<button type="submit" class="btn btn-default">Axtar</button>
 			</div>
 
-		</form>
+		</form:form>
 	</div>
 </div>
 
@@ -87,49 +89,23 @@
 </div>
 
 <script>
+	$(document).ready(function(){	
 	
-	var cities = ${locationsGson}.cities;
-	var citiesName = [];
-	
-	$.each(cities, function(i, city) {
-	  citiesName.push(city.originalName);
-	});
-
-	var substringMatcher = function(strs) {
-	  return function findMatches(q, cb) {
-	    var matches, substringRegex;
-	
-	    // an array that will be populated with substring matches
-	    matches = [];
-	
-	    // regex used to determine if a string contains the substring `q`
-	    substrRegex = new RegExp(q, 'i');
-	
-	    // iterate through the pool of strings and for any string that
-	    // contains the substring `q`, add it to the `matches` array
-	    $.each(strs, function(i, str) {
-	      if (substrRegex.test(str)) {
-	        matches.push(str);
-	      }
-	    });
-	
-	    cb(matches);
-	  };
-	};
-	
-	var states = citiesName;
-	
-	$('#the-basics .typeahead').typeahead({
-	  hint: true,
-	  highlight: true,
-	  minLength: 1
-	},
-	{
-	  name: 'states',
-	  source: substringMatcher(states),
-	  limit: 4  
-	});
-
+		var cities = ${locationInfoGson}.cities;	
+		
+		var div='<select class="my_select_box" data-placeholder="Choose a country..." style="width:200px;" name="addressInfo.city">';		
+		
+		$.each(cities, function(i, city) {
+		  	div+='<option value='+city.id+'>'+city.originalName+'</option>'
+		});
+		
+		div+='</select>';		
+		
+		$("#chosen").after(div);
+		$(".my_select_box").chosen();
+							
+	}); 
 			
+						
 
 </script>

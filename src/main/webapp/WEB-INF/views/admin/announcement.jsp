@@ -18,6 +18,7 @@
 				<form:form action="${url}" class="form-horizontal" commandName="announcementInfo" method="POST" enctype="multipart/form-data">
 				   <form:hidden path="id"/>
 				   <form:hidden path="addressInfo.id"/>
+				   <form:hidden path="viewsNumber"/>
 				   <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="date">Date</form:label>
 				    <div class="col-sm-2">
@@ -85,6 +86,12 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
+				    <form:label class="col-sm-2 control-label" path="featuredAnnouncement">Featured Announcement</form:label>
+				    <div class="col-sm-10">				      
+				      <form:checkbox path="featuredAnnouncement"/>
+				    </div>
+				  </div>
+				  <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="title">Title</form:label>
 				    <div class="col-sm-10">
 				      <form:input class="form-control" path="title" placeholder="Title"/>
@@ -95,7 +102,7 @@
 				  		<div class="row" id="image-row">
 				  			<label class="col-sm-2 control-label">Image</label>
 				  			<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">	
-				  				  <div class="col-sm-5 col-md-3 saved-image" id="image-${image.id}">								    						    		  
+				  				  <div class="col-sm-5 col-md-2 saved-image" id="image-${image.id}">								    						    		  
 								    <a class="thumbnail show-remove-icon">								    	
 								    	<img src="<c:url value="/qrupEmlakImages/${image.path}"/>">
 								    </a>								  	
@@ -306,7 +313,7 @@
 		if($scope.address != '')
 			$scope.address = JSON.parse('${addressInfoGson}') ;				
 			
-		$scope.data = ${locationsGson} ;
+		$scope.data = ${locationInfoGson} ;
 		
 		$scope.countries = $scope.data.countries ;
 		$scope.selectedCountry = $scope.getLocation($scope.countries, $scope.address.country);

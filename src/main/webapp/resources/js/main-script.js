@@ -4,4 +4,7 @@ $( document ).ready(function() {
 		$(".sidebar").toggleClass("sidebarOpens");
 		$("#showLeftPushIcon").toggleClass("fa-close");
 	});
+	
+	$('.bxslider').bxSlider();
 });
+

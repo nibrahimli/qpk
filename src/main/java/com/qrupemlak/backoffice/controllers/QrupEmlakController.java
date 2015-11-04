@@ -20,11 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
 import com.nibrahimli.database.qrupEmlak.dao.CityDao;
-import com.nibrahimli.database.qrupEmlak.dao.CountryDao;
 import com.nibrahimli.database.qrupEmlak.dao.DistrictDao;
+import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.City;
-import com.nibrahimli.database.qrupEmlak.entity.Country;
 import com.nibrahimli.database.qrupEmlak.entity.District;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 import com.qrupemlak.backoffice.data.AnnouncementInfo;
@@ -38,8 +37,6 @@ public class QrupEmlakController {
 	@Autowired
 	private AnnouncementDao announcementDao;
 	
-	@Autowired
-	private CountryDao countryDao;
 	
 	@Autowired
 	private CityDao cityDao;
@@ -47,20 +44,12 @@ public class QrupEmlakController {
 	@Autowired
 	private DistrictDao districtDao;
 	
-	
-	private List<Country> allCountry ;
 	private List<City> allCity ;
 	private List<District> allDistrict ;
 	
 	@ModelAttribute("homeTypeList")
 	public List<HomeType> populateHomeTypeList(){
 		return Arrays.asList(HomeType.values());
-	}
-	
-	@PostConstruct
-	public List<Country> getAllCountry(){
-		allCountry = countryDao.getAll(); 
-		return allCountry;
 	}
 	
 	@PostConstruct
@@ -75,21 +64,21 @@ public class QrupEmlakController {
 		return allDistrict;
 	}
 	
-	@ModelAttribute("locationsGson")
+	@ModelAttribute("locationInfoGson")
 	public @ResponseBody String populateLocations(){
-		LocationInfo locationInfo = new LocationInfo();
-		locationInfo.setCountries(allCountry);
+		LocationInfo locationInfo = new LocationInfo();		
 		locationInfo.setCities(allCity);
 		locationInfo.setDistricts(allDistrict);
 		Gson gson = new Gson();
-		String locationsGson = gson.toJson(locationInfo);
-		return locationsGson;
+		String locationInfoGson = gson.toJson(locationInfo);
+		return locationInfoGson;
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView home(ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
 		mav.addObject("announcementList", announcementList);
+		mav.addObject("announcementInfo", new AnnouncementInfo());
 		mav.setViewName("home");
 		return mav;
 	}
@@ -99,17 +88,25 @@ public class QrupEmlakController {
 		Long id = Long.parseLong(fakeId.replaceAll("[^0-9]", "")); 
 		AnnouncementInfo announcementInfo = new AnnouncementInfo();
 		Announcement announcement = null ;
+		Address address = null;
 		if(id != null){
 			announcement = announcementDao.getById(id);
 			logger.info("announcement id {}", id);
-			if(announcement != null)
+			if(announcement != null){
 				announcementInfo = announcementInfo.create(announcement);
+				address = announcement.getAddress();
+				Integer viewsNumber = announcement.getViewsNumber();
+				if(viewsNumber == null)
+					viewsNumber = 0;
+				viewsNumber++;
+				announcement.setViewsNumber(viewsNumber);
+				announcementDao.saveOrUpdate(announcement);
+			}
 			
 		}
-		mav.setViewName("announcement");
+		mav.addObject("address", address);
 		mav.addObject(announcementInfo);
-		if(announcement != null)
-			mav.addObject("addressInfo", announcement.getAddress());
+		mav.setViewName("announcement");
 		return mav;
 	}
 	
@@ -122,10 +119,8 @@ public class QrupEmlakController {
 	
 	
 	@RequestMapping(value="/contact", method=RequestMethod.GET)
-	public ModelAndView contact(ModelAndView mav){
-		
-		logger.info("contact page");
-		
+	public ModelAndView contact(ModelAndView mav){	
+		logger.info("contact page");		
 		return mav;
 	}
 }

@@ -25,9 +25,11 @@ import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.City;
 import com.nibrahimli.database.qrupEmlak.entity.District;
+import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 import com.qrupemlak.backoffice.data.AnnouncementInfo;
 import com.qrupemlak.backoffice.data.LocationInfo;
+import com.qrupemlak.backoffice.data.SearchInfo;
 
 @Controller
 public class QrupEmlakController {
@@ -50,6 +52,11 @@ public class QrupEmlakController {
 	@ModelAttribute("homeTypeList")
 	public List<HomeType> populateHomeTypeList(){
 		return Arrays.asList(HomeType.values());
+	}
+	
+	@ModelAttribute("currencyList")
+	public List<Currency> populateCurrencyList(){
+		return Arrays.asList(Currency.values());
 	}
 	
 	@PostConstruct
@@ -78,8 +85,14 @@ public class QrupEmlakController {
 	public ModelAndView home(ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
 		mav.addObject("announcementList", announcementList);
-		mav.addObject("announcementInfo", new AnnouncementInfo());
+		mav.addObject("searchInfo", new SearchInfo());
 		mav.setViewName("home");
+		return mav;
+	}
+	
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{		
+		System.out.println(searchInfo.toString());
 		return mav;
 	}
 	

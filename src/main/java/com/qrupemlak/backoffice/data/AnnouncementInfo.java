@@ -28,6 +28,8 @@ public class AnnouncementInfo {
 	private Integer buildingAge;
 	private Double price;
 	private Currency currency ;
+	private Integer viewsNumber;
+	private Boolean featuredAnnouncement;
 	private Set<Image> images ;
 	private AddressInfo addressInfo ;
 	private List<MultipartFile> files ;
@@ -176,6 +178,30 @@ public class AnnouncementInfo {
 		this.currency = currency;
 	}
 	/**
+	 * @return the viewsNumber
+	 */
+	public Integer getViewsNumber() {
+		return viewsNumber;
+	}
+	/**
+	 * @param viewsNumber the viewsNumber to set
+	 */
+	public void setViewsNumber(Integer viewsNumber) {
+		this.viewsNumber = viewsNumber;
+	}
+	/**
+	 * @return the featuredAnnouncement
+	 */
+	public Boolean getFeaturedAnnouncement() {
+		return featuredAnnouncement;
+	}
+	/**
+	 * @param featuredAnnouncement the featuredAnnouncement to set
+	 */
+	public void setFeaturedAnnouncement(Boolean featuredAnnouncement) {
+		this.featuredAnnouncement = featuredAnnouncement;
+	}
+	/**
 	 * @return the images
 	 */
 	public Set<Image> getImages() {
@@ -226,6 +252,8 @@ public class AnnouncementInfo {
 		this.setBuildingAge(announcement.getBuildingAge());
 		this.setPrice(announcement.getPrice());
 		this.setCurrency(announcement.getCurrency());
+		this.setFeaturedAnnouncement(announcement.getFeaturedAnnouncement());
+		this.setViewsNumber(announcement.getViewsNumber());
 		this.setImages(announcement.getImages());
 		this.setAddressInfo(createAddressInfo(announcement.getAddress()));
 		
@@ -255,9 +283,10 @@ public class AnnouncementInfo {
 		announcement.setBuildingAge(this.getBuildingAge());
 		announcement.setPrice(this.getPrice());
 		announcement.setCurrency(this.getCurrency());
+		announcement.setFeaturedAnnouncement(this.getFeaturedAnnouncement());
+		announcement.setViewsNumber(this.getViewsNumber());
 		announcement.setImages(images);
 		announcement.setAddress(address);
-
 		return announcement;
 	}
 }

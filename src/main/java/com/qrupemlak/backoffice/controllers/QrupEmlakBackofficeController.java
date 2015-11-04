@@ -89,15 +89,15 @@ public class QrupEmlakBackofficeController {
 		return Arrays.asList(true, false);
 	}
 	
-	@ModelAttribute("locationsGson")
+	@ModelAttribute("locationInfoGson")
 	public @ResponseBody String populateLocations(){
 		LocationInfo locationInfo = new LocationInfo();
 		locationInfo.setCountries(allCountry);
 		locationInfo.setCities(allCity);
 		locationInfo.setDistricts(allDistrict);
 		Gson gson = new Gson();
-		String locationsGson = gson.toJson(locationInfo);
-		return locationsGson;
+		String locationInfoGson = gson.toJson(locationInfo);
+		return locationInfoGson;
 	}
 	
 	@PostConstruct

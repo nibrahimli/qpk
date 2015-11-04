@@ -6,45 +6,39 @@
 	<div class="scene">
 		<img src="<c:url value="/resources/img/back-logo.jpg"/>">				
 	</div>
-	<div class="search">	
-		<form:form class="form-inline" commandName="announcementInfo" method="POST">
-			<div class="f-group">
-				<div class="form-group">
-					<div id="chosen">						
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-2">
-				      <form:select class="form-control" path="homeType">
-				      	<c:forEach var="homeType" items="${homeTypeList}">
-				      		<form:option value="${homeType}">${homeType.type}</form:option>
-				      	</c:forEach>				     					     	 
-				      </form:select>
-				    </div>
-				</div>
+	<div class="search">
+	
+		<c:url var="url" value="/search" />
+		<form:form  action="${url}" class="form-inline" commandName="searchInfo"
+			method="POST">
+			<div class="form-group" id="city-chosen">				
 			</div>
-
-			<div class="i-group">
-				<div class="input-group">
-					<div class="input-group-addon">$</div>
-					<input type="text" class="form-control" id="minprice"
-						placeholder="Min price">
-				</div>
-
-				<div class="input-group">
-					<div class="input-group-addon">$</div>
-					<input type="text" class="form-control" id="maxprice"
-						placeholder="Max price">
-				</div>
+			<div class="form-group">
+				<form:select class="form-control homeType-chosen-box" path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." style="width:350px;" multiple="true">
+					<c:forEach var="homeType" items="${homeTypeList}" varStatus="status">
+						<form:option value="${homeType}">${homeType.type}</form:option>
+					</c:forEach>
+				</form:select>
+			</div>
+			<div class="form-group">
+				<form:input class="form-control" path="maxPrice" placeholder="Maksimum qiyməti"/>
+			</div>
+			<div class="form-group">
+				<form:input class="form-control" path="minPrice" placeholder="Minimum qiymət"/>
+			</div>
+			<div class="form-group">
+				<form:select path="currency">
+					<c:forEach var="currency" items="${currencyList}" varStatus="status">
+						<form:option value="${currency}">${currency.code}</form:option>
+					</c:forEach>
+				</form:select>
 			</div>
 
 			<div class="searchButton">
 				<button type="submit" class="btn btn-default">Axtar</button>
-			</div>
-
-		</form:form>
-	</div>
+			</div>			
+		 </form:form>
+		</div>
 </div>
 
 <div class="list">
@@ -90,20 +84,21 @@
 
 <script>
 	$(document).ready(function(){	
-	
+ 
 		var cities = ${locationInfoGson}.cities;	
 		
-		var div='<select class="my_select_box" data-placeholder="Choose a country..." style="width:200px;" name="addressInfo.city">';		
+		var div='<select class="city-chosen-box" data-placeholder="Şəhər Seçin..." style="width:350px;" multiple name="cities">';		
 		
 		$.each(cities, function(i, city) {
 		  	div+='<option value='+city.id+'>'+city.originalName+'</option>'
 		});
 		
 		div+='</select>';		
-		
-		$("#chosen").after(div);
-		$(".my_select_box").chosen();
-							
+
+		$("#city-chosen").append(div);
+ 		$(".city-chosen-box").chosen();
+ 		
+		$(".homeType-chosen-box").chosen();						
 	}); 
 			
 						

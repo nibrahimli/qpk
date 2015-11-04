@@ -101,4 +101,13 @@
 	margin-right: 11px;
 }
 
+.bx-wrapper img {
+    margin: 0 auto;
+}
+
 </style>
+
+<script>
+	$('.bxslider').bxSlider();
+
+</script>

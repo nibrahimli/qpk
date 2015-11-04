@@ -58,7 +58,7 @@
 				    </div>
 				    <form:label class="col-sm-2 control-label" path="currency">Currency</form:label>
 				    <div class="col-sm-2">
-				      <form:select class="form-control" path="currency" items="${currenyList}"/>
+				      <form:select class="form-control" path="currency" items="${currencyList}"/>
 				    </div>
 				  </div>
 				  <div class="form-group">

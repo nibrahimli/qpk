@@ -2,6 +2,10 @@ package com.qrupemlak.backoffice.data;
 
 import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
+
+import com.nibrahimli.database.filter.EntityFilter;
+import com.nibrahimli.database.filter.Filters;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 
@@ -42,5 +46,19 @@ public class SearchInfo {
 	}
 	public void setMaxPrice(Integer maxPrice) {
 		this.maxPrice = maxPrice;
+	}
+	
+	
+	public EntityFilter generateEntityFilter() {
+		EntityFilter entityFilter = EntityFilter.builder();
+		
+		if(CollectionUtils.isNotEmpty(this.cities))
+			entityFilter.add(Filters.in("city.id", this.cities.toArray()));
+		if(CollectionUtils.isNotEmpty(this.homeTypes))
+			entityFilter.add(Filters.in("homeType", this.homeTypes.toArray()));
+		if(this.maxPrice != null && this.minPrice != null)
+			entityFilter.add(Filters.between("price", this.maxPrice, this.minPrice));
+		
+		return entityFilter;
 	}
 }

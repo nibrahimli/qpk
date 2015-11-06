@@ -131,6 +131,7 @@ public class QrupEmlakController {
 	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
 	public ModelAndView advancedSearch(ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
+		mav.addObject("searchInfo", new SearchInfo());
 		mav.addObject("announcementList", announcementList);		
 		return mav;
 	}

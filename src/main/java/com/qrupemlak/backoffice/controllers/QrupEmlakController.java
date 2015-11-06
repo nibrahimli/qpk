@@ -94,7 +94,7 @@ public class QrupEmlakController {
 	@RequestMapping(value="/search", method=RequestMethod.POST)
 	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{		
 		System.out.println(searchInfo.toString());		
-		EntityFilter entityFilter = searchInfo.generateEntityFilter();
+		EntityFilter entityFilter = searchInfo.build();
 		List<Announcement> announcementList = announcementDao.getAll(entityFilter);
 		mav.addObject("announcementList", announcementList);
 		mav.setViewName("advancedSearch");

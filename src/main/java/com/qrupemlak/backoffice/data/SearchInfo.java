@@ -14,8 +14,8 @@ public class SearchInfo {
 	private List<Long> cities ;
 	private List<HomeType> homeTypes;
 	private Currency currency;
-	private Integer maxPrice ;
-	private Integer minPrice ;
+	private Double maxPrice ;
+	private Double minPrice ;
 	
 	public List<Long> getCities() {
 		return cities;
@@ -35,29 +35,31 @@ public class SearchInfo {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
-	public Integer getMinPrice() {
+	public Double getMinPrice() {
 		return minPrice;
 	}
-	public void setMinPrice(Integer minPrice) {
+	public void setMinPrice(Double minPrice) {
 		this.minPrice = minPrice;
 	}
-	public Integer getMaxPrice() {
+	public Double getMaxPrice() {
 		return maxPrice;
 	}
-	public void setMaxPrice(Integer maxPrice) {
+	public void setMaxPrice(Double maxPrice) {
 		this.maxPrice = maxPrice;
 	}
 	
 	
-	public EntityFilter generateEntityFilter() {
+	public EntityFilter build() {
 		EntityFilter entityFilter = EntityFilter.builder();
 		
 		if(CollectionUtils.isNotEmpty(this.cities))
-			entityFilter.add(Filters.in("city.id", this.cities.toArray()));
+			entityFilter.add(Filters.in("address.city.id", this.cities.toArray()));
 		if(CollectionUtils.isNotEmpty(this.homeTypes))
 			entityFilter.add(Filters.in("homeType", this.homeTypes.toArray()));
 		if(this.maxPrice != null && this.minPrice != null)
-			entityFilter.add(Filters.between("price", this.maxPrice, this.minPrice));
+			entityFilter.add(Filters.between("price", this.minPrice, this.maxPrice));
+		if(this.currency != null)
+			entityFilter.add(Filters.eq("currency", this.currency));
 		
 		return entityFilter;
 	}

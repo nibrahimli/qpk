@@ -86,9 +86,9 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <form:label class="col-sm-2 control-label" path="featuredAnnouncement">Featured Announcement</form:label>
+				    <form:label class="col-sm-2 control-label" path="featured">Featured</form:label>
 				    <div class="col-sm-10">				      
-				      <form:checkbox path="featuredAnnouncement"/>
+				      <form:checkbox path="featured"/>
 				    </div>
 				  </div>
 				  <div class="form-group">

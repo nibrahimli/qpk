@@ -177,8 +177,8 @@ public class QrupEmlakController {
 		EntityFilter entityFilter = EntityFilter.builder();
 		EntityOrder entityOrder = EntityOrder.builder();
 		List<Announcement> announcementList = announcementDao.getAll(entityFilter.add(Filters.eq("featured", true)), entityOrder.add(Order.desc("viewsNumber")));
-		if(CollectionUtils.isEmpty(announcementList))
-			announcementList = announcementDao.getAll(entityOrder.add(Order.desc("viewsNumber")));
+		if(CollectionUtils.isEmpty(announcementList) || announcementList.size() < 50)
+			announcementList.addAll(announcementDao.getAll(entityFilter.add(Filters.eq("featured", false)), entityOrder.add(Order.desc("viewsNumber"))));
 		return announcementList;
 	}
 }

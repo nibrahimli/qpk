@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <div class="searchAdvanced">
 	<div class="searchSection">
@@ -88,8 +89,10 @@
 			<div class="one">
 				<div class="image">
 					<c:forEach items="${announcement.images}" var="image" end="0">
+						<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
+						<c:set var="title" value="${fn:toLowerCase(title)}"/>
 						<a
-							href="<c:url value="/announcement/ERT${announcement.id}ELMXzW"/>"><img
+							href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
 							src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 					</c:forEach>					
 					<div class="top">

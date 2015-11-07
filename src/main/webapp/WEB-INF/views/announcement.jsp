@@ -1,7 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+	
+	<c:set var="title" value="${fn:replace(announcementInfo.title,' ', '-')}"/>
+	<c:set var="title" value="${fn:toLowerCase(title)}"/>
+	
+	<title><c:out value="${title}"/></title>
 	
 	<br/>
 	<div class="container-fluid">
@@ -62,35 +68,39 @@
 			</div>
 
 			<div class="ads">
-				<c:forEach items="${announcementList}" var="announcement">
-					<div class="one">
-						<div class="image">
-							<c:forEach items="${announcement.images}" var="image" end="0">
-								<a
-									href="<c:url value="/announcement/ERT${announcement.id}ELMXzW"/>"><img
-									src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
-							</c:forEach>					
-							<div class="top">
-								<div class="bed">
-									<p>Otaq</p>
-									<p>${announcement.roomNumber}</p>
-								</div>
-								<div class="location">
-									<p>Şəhər</p>
-									<p>${announcement.address.city.originalName}</p>
-								</div>
-								<div class="type">
-									<p>Əmlak tipi</p>
-									<p>${announcement.homeType.type}</p>
-								</div>
-								<div class="price">
-									<p>Qiymət</p>
-									<p>${announcement.price} ${announcement.currency.code}</p>
+				<c:if test="${relatedAnnList != null}">
+					<c:forEach items="${relatedAnnList}" var="announcement">
+						<div class="one">
+							<div class="image">
+								<c:forEach items="${announcement.images}" var="image" end="0">
+									<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
+									<c:set var="title" value="${fn:toLowerCase(title)}"/>
+									<a
+										href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
+										src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
+								</c:forEach>					
+								<div class="top">
+									<div class="bed">
+										<p>Otaq</p>
+										<p>${announcement.roomNumber}</p>
+									</div>
+									<div class="location">
+										<p>Şəhər</p>
+										<p>${announcement.address.city.originalName}</p>
+									</div>
+									<div class="type">
+										<p>Əmlak tipi</p>
+										<p>${announcement.homeType.type}</p>
+									</div>
+									<div class="price">
+										<p>Qiymət</p>
+										<p>${announcement.price} ${announcement.currency.code}</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</c:if>
 			</div>	
 		</div>
 </div>

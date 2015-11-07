@@ -6,17 +6,17 @@
 	<div class="searchSection">
 		<form:form action="${url}" class="form-horizontal" commandName="searchInfo"
 			method="POST">
-			<div class="form-group" style="border : 3px solid black">
-				<div class="col-sm-4  col-sm-offset-1" id="city-chosen">							
-				</div>
-			</div>
-			<div class="form-group" style="border : 3px solid black">
-				<div class="col-sm-4  col-sm-offset-1" id="district-chosen">							
+			<div class="form-group">
+				<div class="col-sm-10  col-sm-offset-1" id="city-chosen">							
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-4  col-sm-offset-1">
-					<form:select class="homeType-chosen-box" path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." style="width:350px;" multiple="true">
+				<div class="col-sm-10  col-sm-offset-1" id="district-chosen">							
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:select class="homeType-chosen-box" path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." style="width:332px;" multiple="true">
 					<c:forEach var="homeType" items="${homeTypeList}" varStatus="status">
 						<form:option value="${homeType}">${homeType.type}</form:option>
 					</c:forEach>
@@ -24,15 +24,15 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-4 col-sm-offset-1">
-					<form:input class="form-control" path="maxPrice" placeholder="Maksimum qiyməti"/>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-4 col-sm-offset-1">
+				<div class="col-sm-10 col-sm-offset-1">
 					<form:input class="form-control" path="minPrice" placeholder="Minimum qiymət"/>
 				</div>
-			</div>
+			</div>			
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="maxPrice" placeholder="Maksimum qiyməti"/>
+				</div>
+			</div>			
 			<div class="form-group">
 				<div class="col-sm-4 col-sm-offset-1">
 					<form:select path="currency">
@@ -42,76 +42,43 @@
 					</form:select>
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="minSurface" placeholder="Minimum sahə"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="maxSurface" placeholder="Maksimum sahə"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="minRoomNumber" placeholder="Minimum otaq sayısı"/>
+				</div>
+			</div>					
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="maxRoomNumber" placeholder="Maksimum otaq sayısı"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="minFloor" placeholder="Minimum mərtəbə"/>
+				</div>
+			</div>					
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<form:input class="form-control" path="maxFloor" placeholder="Maksimum mərtəbə"/>
+				</div>
+			</div>								
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-1">
+					<button type="submit" class="btn btn-success btn-block">Axtar</button>					
+				</div>
+			</div>								
 		</form:form>
 		
-		<%-- <form class="form-inline">
-
-			<div class="form-group">
-				<select id="city" name="city" class="form-control">
-					<option value="City" selected="selected">City</option>
-					<option value="Baki">Bakı</option>
-					<option value="Naxcivan">Naxçıvan</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<select id="category" name="category" class="form-control">
-					<option value="category" selected="selected">Category</option>
-					<option value="Baki">Həyət Əvi</option>
-					<option value="Naxcivan">Villa</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<select id="city" name="city" class="form-control">
-					<option value="City" selected="selected">City</option>
-					<option value="Baki">Bakı</option>
-					<option value="Naxcivan">Naxçıvan</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<select id="category" name="category" class="form-control">
-					<option value="category" selected="selected">Category</option>
-					<option value="Baki">Həyət Əvi</option>
-					<option value="Naxcivan">Villa</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<select id="city" name="city" class="form-control">
-					<option value="City" selected="selected">City</option>
-					<option value="Baki">Bakı</option>
-					<option value="Naxcivan">Naxçıvan</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<select id="category" name="category" class="form-control">
-					<option value="category" selected="selected">Category</option>
-					<option value="Baki">Həyət Əvi</option>
-					<option value="Naxcivan">Villa</option>
-				</select>
-			</div>
-
-
-			<div class="input-group">
-				<div class="input-group-addon">$</div>
-				<input type="text" class="form-control" id="minprice"
-					placeholder="Min price">
-			</div>
-
-			<div class="input-group">
-				<div class="input-group-addon">$</div>
-				<input type="text" class="form-control" id="maxprice"
-					placeholder="Max price">
-			</div>
-
-			<div class="searchButton">
-				<button type="submit" class="btn btn-default">Search</button>
-			</div>
-
-		</form> --%>
 	</div>
 
 	<div class="announcements">
@@ -155,11 +122,17 @@
 $(document).ready(function(){	
 	 
 	var cities = ${locationInfoGson}.cities;	
+		
+	var cityDiv='<select class="city-chosen-box" data-placeholder="Şəhər Seçin..." style="width:332px;" multiple name="cities">';
 	
-	var cityDiv='<select class="city-chosen-box" data-placeholder="Şəhər Seçin..." style="width:350px;" multiple name="cities">';		
+	var array = eval('${searchInfo.cities}');
 	
 	$.each(cities, function(i, city) {
-	  	cityDiv+='<option value='+city.id+'>'+city.originalName+'</option>'
+		if(array != null && $.inArray(city.id, array) > -1)
+			cityDiv+='<option value='+city.id+' selected="selected">'+city.originalName+'</option>'
+		
+		else	
+	  		cityDiv+='<option value='+city.id+'>'+city.originalName+'</option>'
 	});
 	
 	cityDiv+='</select>';		
@@ -169,7 +142,7 @@ $(document).ready(function(){
 
 	var districts = ${locationInfoGson}.districts;	
 	
-	var districtDiv='<select class="district-chosen-box" data-placeholder="Rayon Seçin..." style="width:350px;" multiple name="districts">';		
+	var districtDiv='<select class="district-chosen-box" data-placeholder="Rayon Seçin..." style="width:332px;" multiple name="districts">';		
 	
 	$.each(districts, function(i, districts) {
 	  	districtDiv+='<option value='+districts.id+'>'+districts.originalName+'</option>'

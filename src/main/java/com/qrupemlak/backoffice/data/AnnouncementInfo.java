@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.nibrahimli.database.filter.EntityFilter;
+import com.nibrahimli.database.filter.Filters;
 import com.nibrahimli.database.image.entity.Image;
 import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
@@ -288,5 +290,14 @@ public class AnnouncementInfo {
 		announcement.setImages(images);
 		announcement.setAddress(address);
 		return announcement;
+	}
+	public EntityFilter build() {
+		EntityFilter entityFilter = EntityFilter.builder();
+		
+		if(this.id != null)
+			entityFilter.add(Filters.notEq("id", this.id));	
+		if(this.addressInfo != null && this.addressInfo.getCity() != null)
+			entityFilter.add(Filters.eq("address.city.id", this.id));				
+		return entityFilter;
 	}
 }

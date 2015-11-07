@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.nibrahimli.database.filter.EntityFilter;
+import com.nibrahimli.database.filter.Filters;
+import com.nibrahimli.database.order.EntityOrder;
+import com.nibrahimli.database.order.Order;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
 import com.nibrahimli.database.qrupEmlak.dao.CityDao;
 import com.nibrahimli.database.qrupEmlak.dao.DistrictDao;
@@ -84,7 +88,7 @@ public class QrupEmlakController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView home(ModelAndView mav) throws IOException{
-		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
+		List<Announcement> announcementList = featuredAnnouncement();
 		mav.addObject("announcementList", announcementList);
 		mav.addObject("searchInfo", new SearchInfo());
 		mav.setViewName("home");
@@ -93,7 +97,7 @@ public class QrupEmlakController {
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
 	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{				
-		List<Announcement> announcementList = filterAnnouncement(searchInfo);
+		List<Announcement> announcementList = filterAnnouncements(searchInfo);
 		mav.addObject("announcementList", announcementList);
 		mav.addObject("searchInfo", searchInfo);
 		mav.setViewName("advancedSearch");
@@ -102,10 +106,12 @@ public class QrupEmlakController {
 
 	@RequestMapping(value="/announcement/{fakeId}", method=RequestMethod.GET)
 	public ModelAndView announcement(@PathVariable String fakeId, ModelAndView mav){
+		fakeId = fakeId.split("----")[1];
 		Long id = Long.parseLong(fakeId.replaceAll("[^0-9]", "")); 
 		AnnouncementInfo announcementInfo = new AnnouncementInfo();
 		Announcement announcement = null ;
 		Address address = null;
+		List<Announcement> relatedAnnList = null;
 		if(id != null){
 			announcement = announcementDao.getById(id);
 			logger.info("announcement id {}", id);
@@ -118,18 +124,20 @@ public class QrupEmlakController {
 				viewsNumber++;
 				announcement.setViewsNumber(viewsNumber);
 				announcementDao.saveOrUpdate(announcement);
+				relatedAnnList = relatedAnnouncement(announcementInfo);
 			}
 			
 		}
 		mav.addObject("address", address);
 		mav.addObject(announcementInfo);
+		mav.addObject("relatedAnnList", relatedAnnList);
 		mav.setViewName("announcement");
 		return mav;
 	}
 	
 	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
 	public ModelAndView advancedSearchGet(ModelAndView mav) throws IOException{
-		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
+		List<Announcement> announcementList = featuredAnnouncement();
 		mav.addObject("searchInfo", new SearchInfo());
 		mav.addObject("announcementList", announcementList);		
 		return mav;
@@ -137,7 +145,7 @@ public class QrupEmlakController {
 	
 	@RequestMapping(value="/advancedSearch", method=RequestMethod.POST)
 	public ModelAndView advancedSearchPost(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{
-		List<Announcement> announcementList = filterAnnouncement(searchInfo);
+		List<Announcement> announcementList = filterAnnouncements(searchInfo);
 		mav.addObject("searchInfo", searchInfo);
 		mav.addObject("announcementList", announcementList);		
 		return mav;
@@ -149,7 +157,7 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
-	private List<Announcement> filterAnnouncement(SearchInfo searchInfo) {
+	private List<Announcement> filterAnnouncements(SearchInfo searchInfo) {
 		EntityFilter entityFilter = searchInfo.build();
 		List<Announcement> announcementList = announcementDao.getAll(entityFilter);
 		return announcementList;
@@ -157,6 +165,20 @@ public class QrupEmlakController {
 	
 	private List<Announcement> relatedAnnouncement(AnnouncementInfo announcementInfo){
 		
-		return null ;
+		EntityFilter entityFilter = announcementInfo.build();
+		EntityOrder entityOrder = EntityOrder.builder();
+		List<Announcement> announcementList = announcementDao.getAll(entityFilter, entityOrder.add(Order.desc("viewsNumber")));
+		if(CollectionUtils.isEmpty(announcementList))
+			announcementList = featuredAnnouncement();
+		return announcementList ;
+	}
+
+	private List<Announcement> featuredAnnouncement() {
+		EntityFilter entityFilter = EntityFilter.builder();
+		EntityOrder entityOrder = EntityOrder.builder();
+		List<Announcement> announcementList = announcementDao.getAll(entityFilter.add(Filters.eq("featured", true)), entityOrder.add(Order.desc("viewsNumber")));
+		if(CollectionUtils.isEmpty(announcementList))
+			announcementList = announcementDao.getAll(entityOrder.add(Order.desc("viewsNumber")));
+		return announcementList;
 	}
 }

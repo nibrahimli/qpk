@@ -92,15 +92,14 @@ public class QrupEmlakController {
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{		
-		System.out.println(searchInfo.toString());		
-		EntityFilter entityFilter = searchInfo.build();
-		List<Announcement> announcementList = announcementDao.getAll(entityFilter);
+	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{				
+		List<Announcement> announcementList = filterAnnouncement(searchInfo);
 		mav.addObject("announcementList", announcementList);
+		mav.addObject("searchInfo", searchInfo);
 		mav.setViewName("advancedSearch");
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/announcement/{fakeId}", method=RequestMethod.GET)
 	public ModelAndView announcement(@PathVariable String fakeId, ModelAndView mav){
 		Long id = Long.parseLong(fakeId.replaceAll("[^0-9]", "")); 
@@ -129,17 +128,35 @@ public class QrupEmlakController {
 	}
 	
 	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
-	public ModelAndView advancedSearch(ModelAndView mav) throws IOException{
+	public ModelAndView advancedSearchGet(ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = announcementDao.getAllDistinctOrderByDate();
 		mav.addObject("searchInfo", new SearchInfo());
 		mav.addObject("announcementList", announcementList);		
 		return mav;
 	}
 	
+	@RequestMapping(value="/advancedSearch", method=RequestMethod.POST)
+	public ModelAndView advancedSearchPost(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{
+		List<Announcement> announcementList = filterAnnouncement(searchInfo);
+		mav.addObject("searchInfo", searchInfo);
+		mav.addObject("announcementList", announcementList);		
+		return mav;
+	}
 	
 	@RequestMapping(value="/contact", method=RequestMethod.GET)
 	public ModelAndView contact(ModelAndView mav){	
 		logger.info("contact page");		
 		return mav;
+	}
+	
+	private List<Announcement> filterAnnouncement(SearchInfo searchInfo) {
+		EntityFilter entityFilter = searchInfo.build();
+		List<Announcement> announcementList = announcementDao.getAll(entityFilter);
+		return announcementList;
+	}
+	
+	private List<Announcement> relatedAnnouncement(AnnouncementInfo announcementInfo){
+		
+		return null ;
 	}
 }

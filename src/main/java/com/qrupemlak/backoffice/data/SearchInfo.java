@@ -3,6 +3,7 @@ package com.qrupemlak.backoffice.data;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.nibrahimli.database.filter.EntityFilter;
 import com.nibrahimli.database.filter.Filters;
@@ -14,12 +15,11 @@ public class SearchInfo {
 	private List<Long> cities ;
 	private List<HomeType> homeTypes;
 	private Currency currency;
-	private Double maxPrice ;
-	private Double minPrice ;
+	private Integer maxPrice ;
+	private Integer minPrice ;
 	private Double maxSurface;
 	private Double minSurface;
-	private Integer maxRoomNumber;
-	private Integer minRoomNumber;
+	private String roomNumber;
 	private Integer maxBuildingAge;
 	private Integer minBuildingAge;
 	private Integer maxFloor;
@@ -45,16 +45,16 @@ public class SearchInfo {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
-	public Double getMinPrice() {
+	public Integer getMinPrice() {
 		return minPrice;
 	}
-	public void setMinPrice(Double minPrice) {
+	public void setMinPrice(Integer minPrice) {
 		this.minPrice = minPrice;
 	}
-	public Double getMaxPrice() {
+	public Integer getMaxPrice() {
 		return maxPrice;
 	}
-	public void setMaxPrice(Double maxPrice) {
+	public void setMaxPrice(Integer maxPrice) {
 		this.maxPrice = maxPrice;
 	}
 	/**
@@ -82,29 +82,17 @@ public class SearchInfo {
 		this.minSurface = minSurface;
 	}
 	/**
-	 * @return the maxRoomNumber
+	 * @return the roomNumber
 	 */
-	public Integer getMaxRoomNumber() {
-		return maxRoomNumber;
+	public String getRoomNumber() {
+		return roomNumber;
 	}
 	/**
-	 * @param maxRoomNumber the maxRoomNumber to set
+	 * @param roomNumber the roomNumber to set
 	 */
-	public void setMaxRoomNumber(Integer maxRoomNumber) {
-		this.maxRoomNumber = maxRoomNumber;
-	}
-	/**
-	 * @return the minRoomNumber
-	 */
-	public Integer getMinRoomNumber() {
-		return minRoomNumber;
-	}
-	/**
-	 * @param minRoomNumber the minRoomNumber to set
-	 */
-	public void setMinRoomNumber(Integer minRoomNumber) {
-		this.minRoomNumber = minRoomNumber;
-	}
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}	
 	/**
 	 * @return the maxBuildingAge
 	 */
@@ -166,8 +154,12 @@ public class SearchInfo {
 			entityFilter.add(Filters.between("price", this.minPrice, this.maxPrice));		
 		if(this.maxSurface != null && this.minSurface != null)
 			entityFilter.add(Filters.between("surface", this.minSurface, this.maxSurface));
-		if(this.maxRoomNumber != null && this.minRoomNumber != null)
-			entityFilter.add(Filters.between("roomNumber", this.minRoomNumber, this.maxRoomNumber));
+		if(StringUtils.isNotEmpty(this.roomNumber)){
+			if(this.roomNumber.equals("5+"))
+				entityFilter.add(Filters.between("roomNumber", 5, 100));
+			else
+				entityFilter.add(Filters.eq("roomNumber", Integer.parseInt(roomNumber)));
+		}
 		if(this.maxBuildingAge != null && this.minBuildingAge != null)
 			entityFilter.add(Filters.between("roomNumber", this.minBuildingAge, this.maxBuildingAge));
 		if(this.maxFloor != null && this.minFloor != null)

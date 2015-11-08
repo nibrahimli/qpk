@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="first">
 	<div class="scene">
@@ -19,6 +20,17 @@
 					<c:forEach var="homeType" items="${homeTypeList}" varStatus="status">
 						<form:option value="${homeType}">${homeType.type}</form:option>
 					</c:forEach>
+				</form:select>
+			</div>
+			<div class="form-group">
+				<form:select class="form-control roomNumber-chosen-box" path="roomNumber" data-placeholder="Otaq sayısı..." style="width:350px;">
+					<form:option value=""></form:option>
+					<form:option value="">hamısı</form:option>
+					<option value="1">1</option>
+					<form:option value="2">2</form:option>
+					<form:option value="3">3</form:option>
+					<form:option value="4">4</form:option>
+					<form:option value="5+">5 və üstü</form:option>
 				</form:select>
 			</div>
 			<div class="form-group">
@@ -75,7 +87,7 @@
 						</div>
 						<div class="price">
 							<p>Qiymət</p>
-							<p>${announcement.price} ${announcement.currency.code}</p>
+							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${announcement.price}" /> ${announcement.currency.code}</p>
 						</div>
 					</div>
 				</div>
@@ -101,7 +113,10 @@
 		$("#city-chosen").append(div);
  		$(".city-chosen-box").chosen();
  		
-		$(".homeType-chosen-box").chosen();						
+		$(".homeType-chosen-box").chosen();
+				
+		$(".roomNumber-chosen-box").chosen();
+		 				
 	}); 
 			
 						

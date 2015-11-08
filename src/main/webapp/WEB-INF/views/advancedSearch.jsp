@@ -2,6 +2,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="searchAdvanced">
 	<div class="searchSection">
@@ -55,12 +56,15 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-1">
-					<form:input class="form-control" path="minRoomNumber" placeholder="Minimum otaq sayısı"/>
-				</div>
-			</div>					
-			<div class="form-group">
-				<div class="col-sm-10 col-sm-offset-1">
-					<form:input class="form-control" path="maxRoomNumber" placeholder="Maksimum otaq sayısı"/>
+					<form:select class="form-control roomNumber-chosen-box" path="roomNumber" data-placeholder="Otaq sayısı..." style="width:332px;">
+						<form:option value=""></form:option>
+						<form:option value="">hamısı</form:option>
+						<form:option value="1">1</form:option>
+						<form:option value="2">2</form:option>
+						<form:option value="3">3</form:option>
+						<form:option value="4">4</form:option>
+						<form:option value="5+">5 və üstü</form:option>
+					</form:select>
 				</div>
 			</div>
 			<div class="form-group">
@@ -110,7 +114,7 @@
 						</div>
 						<div class="price">
 							<p>Qiymət</p>
-							<p>${announcement.price} ${announcement.currency.code}</p>
+							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${announcement.price}" /> ${announcement.currency.code}</p>
 						</div>
 					</div>
 				</div>
@@ -157,6 +161,7 @@ $(document).ready(function(){
 	$(".district-chosen-box").chosen();
 	
 		
+	$(".roomNumber-chosen-box").chosen();
 	$(".homeType-chosen-box").chosen();						
 }); 
 </script>

@@ -28,7 +28,7 @@ public class AnnouncementInfo {
 	private HomeType homeType;
 	private Double surface ;
 	private Integer buildingAge;
-	private Double price;
+	private Integer price;
 	private Currency currency ;
 	private Integer viewsNumber;
 	private Boolean featured;
@@ -158,13 +158,13 @@ public class AnnouncementInfo {
 	/**
 	 * @return the price
 	 */
-	public Double getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(Double price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	/**

@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 	
 	<c:set var="title" value="${fn:replace(announcementInfo.title,' ', '-')}"/>
@@ -38,11 +39,11 @@
 							</tr>
 							<tr>
 								<td>Qiymət</td>
-								<td id="price">${announcementInfo.price} ${announcementInfo.currency.code}</td>
+								<td id="price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${announcementInfo.price}" /> ${announcementInfo.currency.code}</td>
 							</tr>
 							<tr>
 								<td>Adres</td>
-								<td>${address.number}, ${address.street} ${address.district.originalName}, ${address.city.originalName}</td>
+								<td>${address.number} ${address.street} ${address.district.originalName} ${address.city.originalName}</td>
 							</tr>
 							<tr>
 								<td>Əlavə məlumat</td>
@@ -94,7 +95,7 @@
 									</div>
 									<div class="price">
 										<p>Qiymət</p>
-										<p>${announcement.price} ${announcement.currency.code}</p>
+										<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${announcement.price}" /> ${announcement.currency.code}</p>
 									</div>
 								</div>
 							</div>

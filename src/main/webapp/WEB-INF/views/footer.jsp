@@ -20,7 +20,7 @@
 				</div>
 				<ul>
 					<li><i class="fa fa-home"></i> Bakı, Azərbaycan</li>
-					<li><i class="fa fa-phone"></i> 128-1281-1182</li>
+					<li><i class="fa fa-phone"></i>(+994)70 285 27 85</li>
 				</ul>
 			</div>
 		</div>

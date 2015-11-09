@@ -4,26 +4,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="first">
-	<div class="scene">
-		<img src="<c:url value="/resources/img/back-logo.jpg"/>">				
-	</div>
+<div class="scene">
+	<img src="<c:url value="/resources/img/back-logo.jpg"/>">
+
 	<div class="search">
-	
 		<c:url var="url" value="/search" />
-		<form:form  action="${url}" class="form-inline" commandName="searchInfo"
-			method="POST">
-			<div class="form-group" id="city-chosen">				
-			</div>
+		<form:form action="${url}" class="form-inline"
+			commandName="searchInfo" method="POST">
+			<div class="form-group" id="city-chosen"></div>
 			<div class="form-group">
-				<form:select class="form-control homeType-chosen-box" path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." style="width:350px;" multiple="true">
-					<c:forEach var="homeType" items="${homeTypeList}" varStatus="status">
+				<form:select class="form-control homeType-chosen-box"
+					path="homeTypes" data-placeholder="Əmlak Tipi Seçin..."
+					style="width:350px;" multiple="true">
+					<c:forEach var="homeType" items="${homeTypeList}"
+						varStatus="status">
 						<form:option value="${homeType}">${homeType.type}</form:option>
 					</c:forEach>
 				</form:select>
 			</div>
 			<div class="form-group">
-				<form:select class="form-control roomNumber-chosen-box" path="roomNumber" data-placeholder="Otaq sayısı..." style="width:350px;">
+				<form:select class="form-control roomNumber-chosen-box"
+					path="roomNumber" data-placeholder="Otaq sayısı..."
+					style="width:350px;">
 					<form:option value=""></form:option>
 					<form:option value="">hamısı</form:option>
 					<option value="1">1</option>
@@ -34,14 +36,17 @@
 				</form:select>
 			</div>
 			<div class="form-group">
-				<form:input class="form-control" path="maxPrice" placeholder="Maksimum qiyməti"/>
+				<form:input class="form-control" path="maxPrice"
+					placeholder="Maksimum qiyməti" />
 			</div>
 			<div class="form-group">
-				<form:input class="form-control" path="minPrice" placeholder="Minimum qiymət"/>
+				<form:input class="form-control" path="minPrice"
+					placeholder="Minimum qiymət" />
 			</div>
 			<div class="form-group">
 				<form:select path="currency">
-					<c:forEach var="currency" items="${currencyList}" varStatus="status">
+					<c:forEach var="currency" items="${currencyList}"
+						varStatus="status">
 						<form:option value="${currency}">${currency.code}</form:option>
 					</c:forEach>
 				</form:select>
@@ -49,9 +54,9 @@
 
 			<div class="searchButton">
 				<button type="submit" class="btn btn-default">Axtar</button>
-			</div>			
-		 </form:form>
-		</div>
+			</div>
+		</form:form>
+	</div>
 </div>
 
 <div class="list">

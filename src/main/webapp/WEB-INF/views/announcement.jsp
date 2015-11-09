@@ -62,10 +62,8 @@
 
 		<div class="list">
 
-			<div class="list-title">
-				<div class="title-wrap">
-					<h2>Releted Links</h2>
-				</div>
+			<div class="list-title">				
+				<h2>Oxşar elanlar</h2>				
 			</div>
 
 			<div class="ads">

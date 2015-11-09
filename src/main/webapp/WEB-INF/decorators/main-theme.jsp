@@ -43,15 +43,11 @@
 		
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>    	
 	</head>
-	<body>
-		
-		<div class="page">			
-			<c:import url="/WEB-INF/views/navbar.jsp"/>
-			<div class="content">
-				<sitemesh:write property='body'/>
-			</div>	
-			<c:import url="/WEB-INF/views/footer.jsp"/>								
-		</div>		
-		
+	<body>						
+		<c:import url="/WEB-INF/views/header.jsp"/>
+		<div class="content">
+			<sitemesh:write property='body'/>
+		</div>	
+		<c:import url="/WEB-INF/views/footer.jsp"/>														
 	</body>
 </html>

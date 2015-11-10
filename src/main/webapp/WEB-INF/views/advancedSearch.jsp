@@ -28,13 +28,13 @@
 		<div class="form-group">
 			<div class="col-sm-10 col-sm-offset-1">
 				<form:input class="form-control" path="minPrice"
-					placeholder="Minimum qiymət" />
+					placeholder="Min qiymət" />
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-10 col-sm-offset-1">
 				<form:input class="form-control" path="maxPrice"
-					placeholder="Maksimum qiyməti" />
+					placeholder="Max qiymət" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -45,18 +45,6 @@
 						<form:option value="${currency}">${currency.code}</form:option>
 					</c:forEach>
 				</form:select>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
-				<form:input class="form-control" path="minSurface"
-					placeholder="Minimum sahə" />
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
-				<form:input class="form-control" path="maxSurface"
-					placeholder="Maksimum sahə" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -72,6 +60,18 @@
 					<form:option value="4">4</form:option>
 					<form:option value="5+">5 və üstü</form:option>
 				</form:select>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-1">
+				<form:input class="form-control" path="minSurface"
+					placeholder="Minimum sahə" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-1">
+				<form:input class="form-control" path="maxSurface"
+					placeholder="Maksimum sahə" />
 			</div>
 		</div>
 		<div class="form-group">

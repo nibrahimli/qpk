@@ -14,8 +14,7 @@
 			<div class="form-group" id="city-chosen"></div>
 			<div class="form-group">
 				<form:select class="form-control homeType-chosen-box"
-					path="homeTypes" data-placeholder="Əmlak Tipi Seçin..."
-					style="width:350px;" multiple="true">
+					path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." multiple="true">
 					<c:forEach var="homeType" items="${homeTypeList}"
 						varStatus="status">
 						<form:option value="${homeType}">${homeType.type}</form:option>
@@ -24,8 +23,7 @@
 			</div>
 			<div class="form-group">
 				<form:select class="form-control roomNumber-chosen-box"
-					path="roomNumber" data-placeholder="Otaq sayısı..."
-					style="width:350px;">
+					path="roomNumber" data-placeholder="Otaq sayısı...">
 					<form:option value=""></form:option>
 					<form:option value="">hamısı</form:option>
 					<option value="1">1</option>
@@ -36,12 +34,12 @@
 				</form:select>
 			</div>
 			<div class="form-group">
-				<form:input class="form-control" path="maxPrice"
-					placeholder="Maksimum qiyməti" />
-			</div>
-			<div class="form-group">
 				<form:input class="form-control" path="minPrice"
 					placeholder="Minimum qiymət" />
+			</div>
+			<div class="form-group">
+				<form:input class="form-control" path="maxPrice"
+					placeholder="Maksimum qiyməti" />
 			</div>
 			<div class="form-group">
 				<form:select path="currency">
@@ -122,8 +120,5 @@
 				
 		$(".roomNumber-chosen-box").chosen();
 		 				
-	}); 
-			
-						
-
+	}); 							
 </script>

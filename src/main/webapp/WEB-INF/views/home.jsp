@@ -60,7 +60,7 @@
 <div class="list">
 	<div class="list-title">
 		<div class="title-wrap">
-			<p>Featured List</p>
+			<p>Önə çıxan elanlar</p>
 		</div>
 	</div>
 

@@ -521,6 +521,7 @@ footer {
    
    .search #searchInfo > div.searchButton > button:hover{
    	background-color: #1A8C4A;
+   	transition: 0.3s;
    }
    
  .search #searchInfo > div{

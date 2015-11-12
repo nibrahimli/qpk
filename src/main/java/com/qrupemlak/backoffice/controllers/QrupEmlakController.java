@@ -94,19 +94,10 @@ public class QrupEmlakController {
 		mav.setViewName("home");
 		return mav;
 	}
-	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public ModelAndView homeSearch(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{				
-		List<Announcement> announcementList = filterAnnouncements(searchInfo);
-		mav.addObject("announcementList", announcementList);
-		mav.addObject("searchInfo", searchInfo);
-		mav.setViewName("advancedSearch");
-		return mav;
-	}
 
 	@RequestMapping(value="/announcement/{fakeId}", method=RequestMethod.GET)
 	public ModelAndView announcement(@PathVariable String fakeId, ModelAndView mav){
-		fakeId = fakeId.split("----")[1];
+		fakeId = fakeId.split("---")[1];
 		Long id = Long.parseLong(fakeId.replaceAll("[^0-9]", "")); 
 		AnnouncementInfo announcementInfo = new AnnouncementInfo();
 		Announcement announcement = null ;
@@ -147,7 +138,8 @@ public class QrupEmlakController {
 	public ModelAndView advancedSearchPost(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = filterAnnouncements(searchInfo);
 		mav.addObject("searchInfo", searchInfo);
-		mav.addObject("announcementList", announcementList);		
+		mav.addObject("announcementList", announcementList);
+		mav.addObject("searchIcon", true);
 		return mav;
 	}
 	

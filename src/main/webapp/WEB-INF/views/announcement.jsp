@@ -4,6 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
 	
 	<c:set var="title" value="${fn:replace(announcementInfo.title,' ', '-')}"/>
 	<c:set var="title" value="${fn:toLowerCase(title)}"/>
@@ -11,7 +20,7 @@
 	<title><c:out value="${title}"/></title>
 	
 	<br/>
-	<div class="container-fluid">
+	<div class="container-fluid slider">
 		<div class="row">
 			<div class="col-md-5">
 				<ul class="bxslider">
@@ -38,6 +47,10 @@
 								<td>${announcementInfo.roomNumber}</td>
 							</tr>
 							<tr>
+								<td>Sahə</td>
+								<td>${announcementInfo.surface}m<sup>2</sup></td>
+							</tr>
+							<tr>
 								<td>Qiymət</td>
 								<td id="price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${announcementInfo.price}" /> ${announcementInfo.currency.code}</td>
 							</tr>
@@ -53,6 +66,11 @@
 						</tbody>
 					</table>
 			</div>				
+		</div>
+		<div class="row">
+			<div class="col-md-5">
+				<div class="fb-share-button" data-href="<c:url value="/announcement/${title}---${announcementInfo.id}"/>" data-layout="button_count"></div>
+			</div>
 		</div>
 	</div>	
 	
@@ -75,7 +93,7 @@
 									<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
 									<c:set var="title" value="${fn:toLowerCase(title)}"/>
 									<a
-										href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
+										href="<c:url value="/announcement/${title}---${announcement.id}"/>"><img
 										src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 								</c:forEach>					
 								<div class="top">
@@ -106,6 +124,9 @@
 
 <style type="text/css">
 
+.slider {
+  display: none;
+}
 .bx-next{
 	margin-right: 11px;
 }
@@ -117,6 +138,9 @@
 </style>
 
 <script>
-	$('.bxslider').bxSlider();
-
+	$(document).ready(function(){
+		$('.slider').show();
+		$('.bxslider').bxSlider();
+	});
+	
 </script>

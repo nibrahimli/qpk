@@ -42,7 +42,14 @@
 				<form:select path="currency">
 					<c:forEach var="currency" items="${currencyList}"
 						varStatus="status">
-						<form:option value="${currency}">${currency.code}</form:option>
+						<c:choose>
+							<c:when test="${currency.code eq 'USD'}">
+								<form:option value="${currency}" selected="selected">${currency.code}</form:option>							
+							</c:when>
+							<c:otherwise>
+								<form:option value="${currency}">${currency.code}</form:option>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</form:select>
 			</div>
@@ -94,6 +101,8 @@
 	</form:form>
 
 </div>
+
+<div class="searchButtonCircle"><span class="glyphicon glyphicon-search"></span></div>
 
 <div class="searchResult">
 
@@ -177,6 +186,18 @@ $(document).ready(function(){
 	
 		
 	$(".roomNumber-chosen-box").chosen();
-	$(".homeType-chosen-box").chosen();						
+	$(".homeType-chosen-box").chosen();	
+	
+	
+	//search box hidden when user searches
+	var searchIcon = eval('${searchIcon}');
+	console.log("searchIcon ", searchIcon);
+	if(searchIcon == true) {
+		$(".searchSection").css({"display" : "none"});
+	}
+	else{
+		$(".searchSection").show();
+	}
+						
 }); 
 </script>

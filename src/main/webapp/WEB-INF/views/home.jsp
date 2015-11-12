@@ -8,7 +8,7 @@
 	<img src="<c:url value="/resources/img/back-logo.jpg"/>">
 
 	<div class="search">
-		<c:url var="url" value="/search" />
+		<c:url var="url" value="/advancedSearch" />
 		<form:form action="${url}" class="form-inline"
 			commandName="searchInfo" method="POST">
 			<div class="form-group" id="city-chosen"></div>
@@ -45,7 +45,14 @@
 				<form:select path="currency">
 					<c:forEach var="currency" items="${currencyList}"
 						varStatus="status">
-						<form:option value="${currency}">${currency.code}</form:option>
+						<c:choose>
+							<c:when test="${currency.code eq 'USD'}">
+								<form:option value="${currency}" selected="selected">${currency.code}</form:option>							
+							</c:when>
+							<c:otherwise>
+								<form:option value="${currency}">${currency.code}</form:option>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</form:select>
 			</div>
@@ -72,7 +79,7 @@
 					<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
 					<c:set var="title" value="${fn:toLowerCase(title)}"/>
 						<a							
-							href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
+							href="<c:url value="/announcement/${title}---${announcement.id}"/>"><img
 							src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 					</c:forEach>					
 					<div class="top">
@@ -101,7 +108,9 @@
 </div>
 
 <script>
-	$(document).ready(function(){	
+	$(document).ready(function(){
+	
+		$(".search").show();
  
 		var cities = ${locationInfoGson}.cities;	
 		

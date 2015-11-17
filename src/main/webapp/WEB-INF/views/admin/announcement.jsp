@@ -17,7 +17,7 @@
 				<c:url var="url" value="/admin/announcement" />
 				<form:form action="${url}" class="form-horizontal" commandName="announcementInfo" method="POST" enctype="multipart/form-data">
 				   <form:hidden path="id"/>
-				   <form:hidden path="addressInfo.id"/>
+				   <form:hidden path="addressInfo.id"/>				   
 				   <form:hidden path="viewsNumber"/>
 				   <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="date">Date</form:label>
@@ -33,11 +33,7 @@
 				      <form:input class="form-control" path="floor" placeholder="Floor"/>
 				    </div>
 				  </div>
-				  <div class="form-group">
-				    <form:label class="col-sm-2 control-label" path="lift">Lift</form:label>
-				    <div class="col-sm-2">
-				      <form:select class="form-control" path="lift" items="${liftValues}"/>
-				    </div>
+				  <div class="form-group">				    
 				    <form:label class="col-sm-2 control-label" path="homeType">Home type</form:label>
 				    <div class="col-sm-2">
 				      <form:select class="form-control" path="homeType" items="${homeTypeList}"/>
@@ -46,12 +42,12 @@
 				    <div class="col-sm-2">
 				      <form:input class="form-control" path="surface" placeholder="Surface"/>
 				    </div>
-				  </div>
-				  <div class="form-group">
-				  	<form:label class="col-sm-2 control-label" path="buildingAge">Building Age</form:label>
+				    <form:label class="col-sm-2 control-label" path="buildingAge">Building Age</form:label>
 				    <div class="col-sm-2">
 				      <form:input class="form-control" path="buildingAge" placeholder="Building Age"/>
 				    </div>
+				  </div>
+				  <div class="form-group">				  	
 				    <form:label class="col-sm-2 control-label" path="price">Price</form:label>
 				    <div class="col-sm-2">
 				      <form:input class="form-control" path="price" placeholder="Price"/>
@@ -86,9 +82,16 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <form:label class="col-sm-2 control-label" path="featured">Featured</form:label>
-				    <div class="col-sm-10">				      
-				      <form:checkbox path="featured"/>
+				    <form:label class="col-sm-2 control-label" path="popular">Popular</form:label>
+				    <div class="col-sm-2">				      
+				      <form:checkbox path="popular"/>
+				    </div>
+				    <form:label class="col-sm-2 control-label" path="features">Features</form:label>
+				    <div class="col-sm-6 col-md-6 col-ld-2">
+				      <form:select class="form-control chosen-select" data-placeholder="Choose a feature" multiple="multiple" path="features" tabindex="2">
+				      	<form:option value=""></form:option>
+				      	<form:options items="${featureList}"/>
+				      </form:select>				      
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -350,5 +353,10 @@
  		
 	}]);
   	
+  	
+  	 $(function() {
+        $('.chosen-select').chosen();
+        $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+      });
 
 </script>

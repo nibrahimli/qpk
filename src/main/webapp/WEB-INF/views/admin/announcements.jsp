@@ -22,8 +22,7 @@
 					<th>Address</th>
 					<th>Type</th>
 					<th>Room Number</th>
-					<th>Floor</th>
-					<th>Lift</th>
+					<th>Floor</th>					
 					<th>Price</th>					
 					<th>Action</th>
 				</tr>
@@ -37,8 +36,7 @@
 					<td class="col-md-1">${announcement.address.city.originalName}</td>
 					<td class="col-md-1">${announcement.homeType}</td>
 					<td class="col-md-1">${announcement.roomNumber}</td>
-					<td class="col-md-1">${announcement.floor}</td>
-					<td class="col-md-1">${announcement.lift}</td>
+					<td class="col-md-1">${announcement.floor}</td>					
 					<td class="col-md-1">${announcement.price} ${announcement.currency.code}</td>
 					<td class="col-md-1">
 						<a class='btn btn-info btn-sm' data-toggle="tooltip" title="Edit" href="<c:url value="/admin/announcement?id=${announcement.id}"/>"><i class="glyphicon glyphicon-edit"></i></a>

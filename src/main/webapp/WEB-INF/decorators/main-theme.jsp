@@ -6,7 +6,7 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="qrup emlak turkiyeden ev elanlari">
-    	<meta name="author" content="nihat ibrahimli && sinan beymemmedli">
+    	<!-- <meta name="author" content="nihat ibrahimli && sinan beymemmedli"> -->
     	<title><sitemesh:write property='title'/></title>
 	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">	    		   
 
@@ -35,11 +35,10 @@
 	    <!-- Ninja slider -->
 	    
 	    		
-		<!-- Chosen.js autocomplete -->
-		<link href="<c:url value="/resources/css/chosen.min.css"/>" rel="stylesheet" type="text/css"/>
+		<!-- Chosen.js (Bootstrap) autocomplete -->
+		<link href="<c:url value="/resources/css/bootstrap-choosen.css"/>" rel="stylesheet" type="text/css"/> 		
 		<script src="<c:url value="/resources/js/chosen.jquery.min.js"/>" type="text/javascript"></script>
-		<script src="<c:url value="/resources/js/chosen.proto.min.js"/>" type="text/javascript"></script>			   
-	    <!-- Chosen.js autocomplete -->
+	    <!-- Chosen.js (Bootstrap) autocomplete -->
 		
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>    	
 	</head>

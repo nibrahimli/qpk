@@ -36,6 +36,7 @@ import com.nibrahimli.database.qrupEmlak.dao.CountryDao;
 import com.nibrahimli.database.qrupEmlak.dao.DistrictDao;
 import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
+import com.nibrahimli.database.qrupEmlak.entity.Announcement.Feature;
 import com.nibrahimli.database.qrupEmlak.entity.City;
 import com.nibrahimli.database.qrupEmlak.entity.Country;
 import com.nibrahimli.database.qrupEmlak.entity.District;
@@ -84,9 +85,9 @@ public class QrupEmlakBackofficeController {
 		return Arrays.asList(HomeType.values());
 	}
 	
-	@ModelAttribute("liftValues")
-	public List<Boolean> populateLiftList(){
-		return Arrays.asList(true, false);
+	@ModelAttribute("featureList")
+	public List<Feature> populateFeatureList(){
+		return Arrays.asList(Feature.values());
 	}
 	
 	@ModelAttribute("locationInfoGson")

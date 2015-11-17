@@ -12,6 +12,7 @@ import com.nibrahimli.database.image.entity.Image;
 import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
+import com.nibrahimli.database.qrupEmlak.entity.Announcement.Feature;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 
 public class AnnouncementInfo {
@@ -23,15 +24,15 @@ public class AnnouncementInfo {
 	private String date;
 	private String description;
 	private Integer roomNumber;
-	private Integer floor;
-	private Boolean lift;
+	private Integer floor;	
 	private HomeType homeType;
 	private Double surface ;
 	private Integer buildingAge;
 	private Integer price;
 	private Currency currency ;
 	private Integer viewsNumber;
-	private Boolean featured;
+	private Boolean popular;
+	private Set<Feature> features;
 	private Set<Image> images ;
 	private AddressInfo addressInfo ;
 	private List<MultipartFile> files ;
@@ -106,19 +107,7 @@ public class AnnouncementInfo {
 	 */
 	public void setFloor(Integer floor) {
 		this.floor = floor;
-	}
-	/**
-	 * @return the lift
-	 */
-	public Boolean getLift() {
-		return lift;
-	}
-	/**
-	 * @param lift the lift to set
-	 */
-	public void setLift(Boolean lift) {
-		this.lift = lift;
-	}
+	}	
 	/**
 	 * @return the homeType
 	 */
@@ -192,16 +181,28 @@ public class AnnouncementInfo {
 		this.viewsNumber = viewsNumber;
 	}	
 	/**
-	 * @return the featured
+	 * @return the popular
 	 */
-	public Boolean getFeatured() {
-		return featured;
+	public Boolean getPopular() {
+		return popular;
 	}
 	/**
-	 * @param featured the featured to set
+	 * @param popular the popular to set
 	 */
-	public void setFeatured(Boolean featured) {
-		this.featured = featured;
+	public void setPopular(Boolean popular) {
+		this.popular = popular;
+	}
+	/**
+	 * @return the features
+	 */
+	public Set<Feature> getFeatures() {
+		return features;
+	}
+	/**
+	 * @param features the features to set
+	 */
+	public void setFeatures(Set<Feature> features) {
+		this.features = features;
 	}
 	/**
 	 * @return the images
@@ -247,15 +248,15 @@ public class AnnouncementInfo {
 		this.setDate(sdf.format(announcement.getDate()));
 		this.setDescription(announcement.getDescription());
 		this.setRoomNumber(announcement.getRoomNumber());
-		this.setFloor(announcement.getFloor());
-		this.setLift(announcement.getLift());
+		this.setFloor(announcement.getFloor());		
 		this.setHomeType(announcement.getHomeType());
 		this.setSurface(announcement.getSurface());
 		this.setBuildingAge(announcement.getBuildingAge());
 		this.setPrice(announcement.getPrice());
 		this.setCurrency(announcement.getCurrency());
-		this.setFeatured(announcement.getFeatured());
+		this.setPopular(announcement.getPopular());
 		this.setViewsNumber(announcement.getViewsNumber());
+		this.setFeatures(announcement.getFeatures());
 		this.setImages(announcement.getImages());
 		this.setAddressInfo(createAddressInfo(announcement.getAddress()));
 		
@@ -279,14 +280,14 @@ public class AnnouncementInfo {
 		announcement.setDescription(this.getDescription());
 		announcement.setRoomNumber(this.getRoomNumber());
 		announcement.setFloor(this.getFloor());
-		announcement.setLift(this.getLift());
 		announcement.setHomeType(this.getHomeType());
 		announcement.setSurface(this.getSurface());
 		announcement.setBuildingAge(this.getBuildingAge());
 		announcement.setPrice(this.getPrice());
 		announcement.setCurrency(this.getCurrency());
-		announcement.setFeatured(this.getFeatured());
+		announcement.setPopular(this.getPopular());
 		announcement.setViewsNumber(this.getViewsNumber());
+		announcement.setFeatures(this.getFeatures());
 		announcement.setImages(images);
 		announcement.setAddress(address);
 		return announcement;

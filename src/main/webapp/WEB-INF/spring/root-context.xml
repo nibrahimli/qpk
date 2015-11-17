@@ -6,5 +6,6 @@
     		    		
     		
 	<import resource="classpath:spring/context.xml" />
+	<import resource="classpath:spring/aws-ses-context.xml" />
 	
 </beans>

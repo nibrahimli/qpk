@@ -5,11 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +36,7 @@ import com.nibrahimli.database.qrupEmlak.entity.District;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 import com.qrupemlak.backoffice.data.AnnouncementInfo;
+import com.qrupemlak.backoffice.data.ContactInfo;
 import com.qrupemlak.backoffice.data.LocationInfo;
 import com.qrupemlak.backoffice.data.SearchInfo;
 
@@ -40,16 +44,20 @@ import com.qrupemlak.backoffice.data.SearchInfo;
 public class QrupEmlakController {
 	private final static Logger logger = LoggerFactory.getLogger(QrupEmlakController.class);
 	
+	static final String FROM = "admin@qrupemlak.com";
+	static final String TO = "azgroupemlak@gmail.com";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;
-	
 	
 	@Autowired
 	private CityDao cityDao;
 	
 	@Autowired
 	private DistrictDao districtDao;
+	
+	@Autowired
+	private JavaMailSender javaMailSender ;
 	
 	private List<City> allCity ;
 	private List<District> allDistrict ;
@@ -144,8 +152,31 @@ public class QrupEmlakController {
 	}
 	
 	@RequestMapping(value="/contact", method=RequestMethod.GET)
-	public ModelAndView contact(ModelAndView mav){	
-		logger.info("contact page");		
+	public ModelAndView contact(ModelAndView mav){
+		logger.info("contact page");
+		mav.addObject("contactInfo", new ContactInfo());
+		return mav;
+	}
+	
+	@RequestMapping(value="/contact", method=RequestMethod.POST)
+	public ModelAndView contactPost(ContactInfo contactInfo, ModelAndView mav){
+
+		MimeMessage message = javaMailSender.createMimeMessage();
+		
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+		try {
+			helper.setFrom(FROM);
+			helper.setTo(TO);
+			helper.setSubject(contactInfo.getSubject());
+			helper.setText("From : "+ contactInfo.getEmail()+" Telephone : "+contactInfo.getTelephon()+"\nMessage : "+contactInfo.getMessage());
+			
+			javaMailSender.send(message);
+			 
+		} catch (Exception e) {
+			logger.error("error {}", e);
+		}	
+		
+						
 		return mav;
 	}
 	
@@ -160,17 +191,15 @@ public class QrupEmlakController {
 		EntityFilter entityFilter = announcementInfo.build();
 		EntityOrder entityOrder = EntityOrder.builder();
 		List<Announcement> announcementList = announcementDao.getAll(entityFilter, entityOrder.add(Order.desc("viewsNumber")));
-		if(CollectionUtils.isEmpty(announcementList))
-			announcementList = featuredAnnouncement();
 		return announcementList ;
 	}
 
 	private List<Announcement> featuredAnnouncement() {
 		EntityFilter entityFilter = EntityFilter.builder();
 		EntityOrder entityOrder = EntityOrder.builder();
-		List<Announcement> announcementList = announcementDao.getAll(entityFilter.add(Filters.eq("featured", true)), entityOrder.add(Order.desc("viewsNumber")));
+		List<Announcement> announcementList = announcementDao.getAll(entityFilter.add(Filters.eq("popular", true)), entityOrder.add(Order.desc("viewsNumber")));
 		if(CollectionUtils.isEmpty(announcementList) || announcementList.size() < 50){
-			announcementList.addAll(announcementDao.getAll(EntityFilter.builder().add(Filters.eq("featured", false)), entityOrder));
+			announcementList.addAll(announcementDao.getAll(EntityFilter.builder().add(Filters.eq("popular", false)), entityOrder));
 		}
 		return announcementList;
 	}

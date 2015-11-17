@@ -6,6 +6,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title><sitemesh:write property='title'/></title>
 	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <link rel="stylesheet" href="<c:url value="/resources/css/admin-style.css" />"/>
@@ -34,8 +35,11 @@
 	    
 	    <!-- AngularJs -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-	 
-	   	<sitemesh:write property='head'/>
+	    
+	    <!-- Chosen.js (Bootstrap) autocomplete -->	    
+		<link href="<c:url value="/resources/css/bootstrap-choosen.css"/>" rel="stylesheet" type="text/css"/> 
+		<script src="<c:url value="/resources/js/chosen.jquery.min.js"/>" type="text/javascript"></script>		
+	    <!-- Chosen.js (Bootstrap) autocomplete -->	 	   
 	    	
 	</head>
 	<body>

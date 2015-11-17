@@ -9,39 +9,51 @@
 
 	<div class="search">
 		<c:url var="url" value="/advancedSearch" />
-		<form:form action="${url}" class="form-inline"
-			commandName="searchInfo" method="POST">
-			<div class="form-group" id="city-chosen"></div>
-			<div class="form-group">
-				<form:select class="form-control homeType-chosen-box"
-					path="homeTypes" data-placeholder="Əmlak Tipi Seçin..." multiple="true">
+		<form:form action="${url}" class="form-horizontal"
+		commandName="searchInfo" method="POST">
+		<div class="form-group">
+			<label>Şəhər</label>
+			<div id="city-chosen"></div>
+		</div>
+		<div class="form-group">
+			<label>Əmlak tipi</label>
+			<div id="type-chosen">
+				<form:select class="homeType-chosen-box" data-placeholder="Əmlak Tipi Seçin..."  path="homeTypes" multiple="true">
 					<c:forEach var="homeType" items="${homeTypeList}"
 						varStatus="status">
 						<form:option value="${homeType}">${homeType.type}</form:option>
 					</c:forEach>
 				</form:select>
 			</div>
-			<div class="form-group">
+		</div>
+		<div class="form-group">
+			<label>Otaq sayı</label>
+			<div id="roomnumber-chosen">
 				<form:select class="form-control roomNumber-chosen-box"
-					path="roomNumber" data-placeholder="Otaq sayısı...">
-					<form:option value=""></form:option>
-					<form:option value="">hamısı</form:option>
-					<option value="1">1</option>
+					path="roomNumber">
+					<form:option value="">Hamısı</form:option>
+					<form:option value="1">1</form:option>
 					<form:option value="2">2</form:option>
 					<form:option value="3">3</form:option>
 					<form:option value="4">4</form:option>
 					<form:option value="5+">5 və üstü</form:option>
 				</form:select>
 			</div>
-			<div class="form-group">
-				<form:input class="form-control" path="minPrice"
-					placeholder="Minimum qiymət" />
+		</div>
+		<div class="form-group">
+			<label>Minumum qiymət</label>
+			<div id="min-price">
+				<form:input class="form-control" placeholder="Min qiymət" path="minPrice"/>
 			</div>
-			<div class="form-group">
-				<form:input class="form-control" path="maxPrice"
-					placeholder="Maksimum qiyməti" />
+		</div>
+		<div class="form-group">
+			<label>Maximum qiymət</label>
+			<div id="max-price">
+				<form:input class="form-control" placeholder="Max qiymət" path="maxPrice"/>
 			</div>
-			<div class="form-group">
+		</div>
+		<div class="form-group">			
+			<div id="currency-chosen">
 				<form:select path="currency">
 					<c:forEach var="currency" items="${currencyList}"
 						varStatus="status">
@@ -56,11 +68,13 @@
 					</c:forEach>
 				</form:select>
 			</div>
-
-			<div class="searchButton">
-				<button type="submit" class="btn btn-default">Axtar</button>
+		</div>
+		<div class="form-group">
+			<div id="search-button">
+				<button type="submit" class="btn btn-success btn-block">Axtar</button>
 			</div>
-		</form:form>
+		</div>
+	</form:form>
 	</div>
 </div>
 
@@ -108,13 +122,12 @@
 </div>
 
 <script>
-	$(document).ready(function(){
-	
-		$(".search").show();
+	$(document).ready(function(){	
  
+ 		$(".search").show();
 		var cities = ${locationInfoGson}.cities;	
 		
-		var div='<select class="city-chosen-box" data-placeholder="Şəhər Seçin..." style="width:350px;" multiple name="cities">';		
+		var div='<select class="city-chosen-box" data-placeholder="Şəhər Seçin... " multiple name="cities">';		
 		
 		$.each(cities, function(i, city) {
 		  	div+='<option value='+city.id+'>'+city.originalName+'</option>'
@@ -126,8 +139,10 @@
  		$(".city-chosen-box").chosen();
  		
 		$(".homeType-chosen-box").chosen();
+		$("input.default").css("value", " ");
 				
 		$(".roomNumber-chosen-box").chosen();
-		 				
-	}); 							
+		
+		$(".chosen-container").css("width", "630px")			
+	}); 									
 </script>

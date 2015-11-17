@@ -8,15 +8,18 @@
 	<form:form action="${url}" class="form-horizontal"
 		commandName="searchInfo" method="POST">
 		<div class="form-group">
-			<div class="col-sm-10  col-sm-offset-1" id="city-chosen"></div>
+			<label>Şəhər</label>
+			<div id="city-chosen"></div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10  col-sm-offset-1" id="district-chosen"></div>
+			<label>Rayon</label>
+			<div id="district-chosen"></div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Əmlak tipi</label>
+			<div id="type-chosen">
 				<form:select class="homeType-chosen-box" path="homeTypes"
-					data-placeholder="Əmlak Tipi Seçin..." style="width:332px;"
+					data-placeholder="Əmlak Tipi Seçin..."
 					multiple="true">
 					<c:forEach var="homeType" items="${homeTypeList}"
 						varStatus="status">
@@ -26,19 +29,21 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Minumum qiymət</label>
+			<div id="min-price">
 				<form:input class="form-control" path="minPrice"
 					placeholder="Min qiymət" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Maksimum qiymət</label>
+			<div id="max-price">
 				<form:input class="form-control" path="maxPrice"
 					placeholder="Max qiymət" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4 col-sm-offset-1">
+			<div id="currency-chosen">
 				<form:select path="currency">
 					<c:forEach var="currency" items="${currencyList}"
 						varStatus="status">
@@ -55,12 +60,11 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Otaq sayı</label>
+			<div id="roomnumber-chosen">
 				<form:select class="form-control roomNumber-chosen-box"
-					path="roomNumber" data-placeholder="Otaq sayısı..."
-					style="width:332px;">
-					<form:option value=""></form:option>
-					<form:option value="">hamısı</form:option>
+					path="roomNumber" data-placeholder="Otaq sayısı...">					
+					<form:option value="">Hamısı</form:option>
 					<form:option value="1">1</form:option>
 					<form:option value="2">2</form:option>
 					<form:option value="3">3</form:option>
@@ -70,31 +74,35 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Minimum sahə m<sup>2</sup></label>
+			<div id="min-area">
 				<form:input class="form-control" path="minSurface"
-					placeholder="Minimum sahə" />
+					placeholder="Min sahə" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Maksimum sahə m<sup>2</sup></label>
+			<div id="max-area">
 				<form:input class="form-control" path="maxSurface"
-					placeholder="Maksimum sahə" />
+					placeholder="Max sahə" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Minimum mərtəbə</label>
+			<div id="min-floor">
 				<form:input class="form-control" path="minFloor"
-					placeholder="Minimum mərtəbə" />
+					placeholder="Min mərtəbə" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<label>Maksimum mərtəbə</label>
+			<div id="max-floor">
 				<form:input class="form-control" path="maxFloor"
-					placeholder="Maksimum mərtəbə" />
+					placeholder="Max mərtəbə" />
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-10 col-sm-offset-1">
+			<div id="search-button">
 				<button type="submit" class="btn btn-success btn-block">Axtar</button>
 			</div>
 		</div>
@@ -152,6 +160,7 @@
 
 $(document).ready(function(){	
 	 
+	$(".searchSection").show(); 
 	var cities = ${locationInfoGson}.cities;	
 		
 	var cityDiv='<select class="city-chosen-box" data-placeholder="Şəhər Seçin..." style="width:332px;" multiple name="cities">';
@@ -191,13 +200,12 @@ $(document).ready(function(){
 	
 	//search box hidden when user searches
 	var searchIcon = eval('${searchIcon}');
-	console.log("searchIcon ", searchIcon);
-	if(searchIcon == true) {
+	
+	if(searchIcon == true && window.innerWidth <= 750) {
 		$(".searchSection").css({"display" : "none"});
 	}
 	else{
 		$(".searchSection").show();
-	}
-						
+	}								
 }); 
 </script>

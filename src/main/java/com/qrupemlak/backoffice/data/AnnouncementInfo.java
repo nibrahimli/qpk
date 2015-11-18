@@ -298,7 +298,7 @@ public class AnnouncementInfo {
 		if(this.id != null)
 			entityFilter.add(Filters.notEq("id", this.id));	
 		if(this.addressInfo != null && this.addressInfo.getCity() != null)
-			entityFilter.add(Filters.eq("address.city.id", this.id));				
+			entityFilter.add(Filters.eq("address.city.id", this.addressInfo.getCity()));				
 		return entityFilter;
 	}
 }

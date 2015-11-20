@@ -34,6 +34,8 @@
 	    <script src="<c:url value="/resources/js/jquery.bxslider.min.js"/>" type="text/javascript"></script>	    
 	    <!-- Ninja slider -->
 	    
+	    <!-- google fonts -->
+	    <link href='https://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 	    		
 		<!-- Chosen.js (Bootstrap) autocomplete -->
 		<link href="<c:url value="/resources/css/bootstrap-choosen.css"/>" rel="stylesheet" type="text/css"/> 		

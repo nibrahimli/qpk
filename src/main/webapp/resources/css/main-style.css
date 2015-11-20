@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*base styles */
 html {
   min-height: 100%;
   width: 100%;
@@ -11,12 +12,14 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: #fff;
-  position: relative; }
+  position: relative;
+  font-family: "Arimo", sans-serif; }
   body .content {
     width: 100%;
     min-height: 100px;
     background-color: #fff; }
 
+/*header */
 header {
   width: 100%;
   height: 122px;
@@ -252,6 +255,7 @@ header {
     position: fixed;
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out; } }
+/*footer */
 footer {
   width: 100%;
   position: absolute; }
@@ -372,6 +376,7 @@ footer {
     width: 160px;
     margin: 0 auto !important;
     float: none !important; } }
+/*first page scene and search section */
 .scene {
   width: 100%;
   position: relative; }
@@ -423,7 +428,7 @@ footer {
           .scene .search #searchInfo .form-group #roomnumber-chosen .chosen-container a {
             height: 34px;
             border: 1px solid #ccc; }
-            /* .scene .search #searchInfo .form-group #roomnumber-chosen .chosen-container a span {
+            /*.scene .search #searchInfo .form-group #roomnumber-chosen .chosen-container a span {
               padding-top: 3px; } */
         .scene .search #searchInfo .form-group #min-price {
           width: 122px; }
@@ -437,8 +442,7 @@ footer {
             height: 100%;
             border-color: #ccc;
             border-radius: 5px;
-            background-color: #fff; 
-            }
+            background-color: #fff;}
         .scene .search #searchInfo .form-group #search-button {
           width: 313px; }
 
@@ -482,6 +486,7 @@ footer {
 
   .searchButtonCircle {
     display: block; } }
+/*list of advertisements */
 .list {
   text-align: center; }
   .list .list-title {
@@ -489,7 +494,7 @@ footer {
     background-color: #545e6b;
     background-image: url(../img/footer.jpg);
     padding: 30px 0px; }
-    .list .list-title p {
+    .list .list-title h2 {
       color: white;
       font-size: 28px;
       margin: 0px; }
@@ -583,6 +588,7 @@ footer {
       .list .ads .one {
         margin: 0px; } }
 
+/*Advanced search Search section */
 .searchSection {
   width: 100%;
   background-color: #EFEFEF; 
@@ -633,15 +639,15 @@ footer {
           width: 100%;
           height: 100%;
           border-color: #ccc;
-          border-radius: 5px;
-          background-color: white; }
+          border-radius: 5px; 
+          background-color: white;}
       .searchSection #searchInfo .form-group #roomnumber-chosen .chosen-container {
         width: 300px !important;
         height: 34px; }
       .searchSection #searchInfo .form-group #roomnumber-chosen a {
         height: 32px;
         border: 1px solid #ccc; }
-        /* .searchSection #searchInfo .form-group #roomnumber-chosen a span {
+        /*.searchSection #searchInfo .form-group #roomnumber-chosen a span {
           padding-top: 3px; } */
       .searchSection #searchInfo .form-group #min-area {
         width: 148px; }
@@ -708,49 +714,18 @@ footer {
 
   .searchButtonCircle {
     display: block; } }
-.content .annDes {
-  width: 50%;
-  display: inline-block;
-  min-height: 521px; }
-  .content .annDes .container {
-    width: auto !important;
-    padding: 0px; }
-    .content .annDes .container h2 {
-      text-align: center; }
-    .content .annDes .container tr:hover {
-      background-color: #F1F0F0; }
-    .content .annDes .container tr:nth-child(1) td:nth-child(2) {
-      color: #F54701; }
-    .content .annDes .container tr td {
-      border: none; }
-      .content .annDes .container tr td:nth-child(1) {
-        text-align: right;
-        width: 40%; }
-      .content .annDes .container tr td:nth-child(2) {
-        text-align: left;
-        width: 60%;
-        font-weight: bold; }
-.content > div.annOther > div > div.list-title > h2 {
-  margin: 0px;
-  color: white; }
-
-div.content > div.container-fluid {
-  padding: 20px 10px; }
-
-.content > div.container-fluid > div {
-  margin: 0px; }
-  .content > div.container-fluid > div > div.col-md-8 > h2 {
-    text-align: center;
-    margin-top: 0px; }
-
-.container-fluid > div > div.col-md-8 > table > tbody > tr > td {
+/*Announcement page description section */
+.container-fluid .row #description h2 {
+  text-align: center; }
+.container-fluid .row #description table tbody tr td {
   border: none; }
-  .container-fluid > div > div.col-md-8 > table > tbody > tr > td:nth-child(1) {
-    text-align: right;
-    color: #807F7F; }
-  .container-fluid > div > div.col-md-8 > table > tbody > tr > td:nth-child(2) {
-    text-align: left;
-    font-weight: bold; }
+.container-fluid .row #description table tbody tr td:nth-child(1) {
+  text-align: right;
+  color: #807F7F; }
+.container-fluid .row #description table tbody tr td:nth-child(2) {
+  font-weight: bold; }
+.container-fluid .row #description table tbody tr #price {
+  color: #F54701; }
 
 .feature {
 	text-align: center; 
@@ -760,18 +735,10 @@ div.content > div.container-fluid {
 	margin : -20px auto 30px auto;	
 	width : 180px;	
 }
-#price {
-  color: #F54701; }
+  
 
-@media (max-width: 750px) {
-  .content .annDes {
-    width: 100%;
-    display: block; }
-  .content .annSlider {
-    width: 100%;
-    display: block;
-    float: none;
-    margin: 0px 0px 20px 0px; } }
+/*Announcement page description section */
+/*contact page */
 .sectionContact {
   background: white;
   min-width: 300px;

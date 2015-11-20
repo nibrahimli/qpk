@@ -34,7 +34,7 @@
 				
 			</div>	
 			
-			<div class="col-md-8">
+			<div class="col-md-8" id="description">
 				<h2>${announcementInfo.title}</h2>
 					<table class="table table-hover">
 						<tbody>

@@ -81,7 +81,7 @@
 <div class="list">
 	<div class="list-title">
 		<div class="title-wrap">
-			<p>Önə çıxan elanlar</p>
+			<h2>Önə çıxan elanlar</h2>
 		</div>
 	</div>
 

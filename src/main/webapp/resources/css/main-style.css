@@ -380,9 +380,23 @@ footer {
 .scene {
   width: 100%;
   position: relative; }
-  .scene img {
+  .scene .homeSlider{
+    width: 100%;}
+  .scene .homeSlider .bx-wrapper{
     width: 100%;
-    height: auto; }
+    padding: 0;
+    margin: 0;}
+  .scene .homeSlider .bx-wrapper .bx-viewport{
+    left: 0;
+    border: none;
+    background-color: #29333D;
+    box-shadow: none;}
+  .scene .homeSlider .bx-wrapper .bx-viewport ul{
+    padding: 0;
+    margin: 0;}
+  .scene .homeSlider .bx-wrapper .bx-controls{
+    display: none;}
+  
   .scene .search {
     width: 730px;
     height: 290px;
@@ -714,9 +728,28 @@ footer {
 
   .searchButtonCircle {
     display: block; } }
+    
 /*Announcement page description section */
+.container-fluid{
+	margin: 0;
+	padding: 0 !important; }
+.container-fluid .row{
+	padding: 0;
+	margin: 0; }
+.container-fluid .row #annSlider{
+	margin: 0;
+	padding-top: 65px; }
+.container-fluid .row #annSlider .bx-wrapper{
+	margin: 0;}
+.container-fluid .row #annSlider .social-network{
+	margin : 20px 0 0 20px;	
+	width : 100%; }	
+.container-fluid .row #description{
+	margin: 0 0 20px 0; }
 .container-fluid .row #description h2 {
   text-align: center; }
+.container-fluid .row #description table{
+	background-color: #EFEFEF}
 .container-fluid .row #description table tbody tr td {
   border: none; }
 .container-fluid .row #description table tbody tr td:nth-child(1) {
@@ -726,19 +759,31 @@ footer {
   font-weight: bold; }
 .container-fluid .row #description table tbody tr #price {
   color: #F54701; }
-
-.feature {
-	text-align: center; 
-}
-
-.social-network{
-	margin : -20px auto 30px auto;	
-	width : 180px;	
-}
   
+.container-fluid .row #description .features{
+	background-color: #EFEFEF;
+}
+.container-fluid .row #description .features .row h3{
+	text-align: center;
+}
+.container-fluid .row #description .features .row i{
+	color: #27ae60;
+}
 
-/*Announcement page description section */
-/*contact page */
+@media (max-width: 750px) {
+	.container-fluid .row #annSlider{
+	  padding: 0;} 
+	.container-fluid .row #annSlider .bx-wrapper .bx-viewport{
+	  padding: 0;
+	  left: 0;
+	  border: 2px solid #fff;}
+	.container-fluid .row #description{
+	  padding: 0;}	
+	.container-fluid .row #description .features{
+	  text-align: center;}
+}
+
+/*CONTACT page */
 .sectionContact {
   background: white;
   min-width: 300px;
@@ -754,5 +799,3 @@ footer {
     margin: 0px 0px 20px 0px; }
     .sectionContact form .form-group .nomre {
       padding-top: 0px; }
-
-/*# sourceMappingURL=main-style.css.map */

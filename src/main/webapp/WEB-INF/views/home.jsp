@@ -5,7 +5,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="scene">
-	<img src="<c:url value="/resources/img/back-logo.jpg"/>">
+	
+	<div class="homeSlider">
+		<ul class="bxslider">
+			<li><img src="<c:url value="/resources/img/home-bg2.jpg"/>"></li>
+			<li><img src="<c:url value="/resources/img/home-bg3.jpg"/>"></li>
+			<li><img src="<c:url value="/resources/img/home-bg4.jpg"/>"></li>
+		</ul>
+	</div>
 
 	<div class="search">
 		<c:url var="url" value="/advancedSearch" />
@@ -143,6 +150,15 @@
 				
 		$(".roomNumber-chosen-box").chosen();
 		
-		$(".chosen-container").css("width", "630px")			
+		$(".chosen-container").css("width", "630px")
+		
+		//slider options
+		$('.bxslider').bxSlider({
+			pagerCustom: '#bx-pager',
+			auto: true,
+			pause: 5000,
+			speed: 2000,
+			mode: 'fade'
+		});			
 	}); 									
 </script>

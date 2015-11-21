@@ -13,7 +13,6 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	
 	<c:set var="title" value="${fn:replace(announcementInfo.title,' ', '-')}"/>
 	<c:set var="title" value="${fn:toLowerCase(title)}"/>
 	
@@ -22,21 +21,22 @@
 	<br/>
 	<div class="container-fluid slider">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-5" id="annSlider">
 				<ul class="bxslider">
 				  	<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
 						<li><img src="<c:url value="/qrupEmlakImages/${image.path}"/>"/></li>
 					</c:forEach>
 				</ul>
 				<div class="social-network">					
-					<div class="fb-like" data-href="<c:url value="/announcement/${title}---${announcementInfo.id}"/>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+					<div class="fb-like" data-href="<c:url value="/announcement/${title}---${announcementInfo.id}"/>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+					<div class="whatsapp-sh"><a href="whatsapp://send" data-text="Bu elana göz at:" data-href="" class="wa_btn wa_btn_s" style="display:none">Paylaş</a></div>					
 				</div>
 				
 			</div>	
 			
-			<div class="col-md-8" id="description">
+			<div class="col-md-7" id="description">
 				<h2>${announcementInfo.title}</h2>
-					<table class="table table-hover">
+					<table class="table panel panel-default">
 						<tbody>
 							<tr>
 								<td>Tarix</td>
@@ -69,58 +69,62 @@
 	
 						</tbody>
 					</table>
-			</div>				
-		</div>		
-		<c:set var="featureListSize" scope="session" value="${fn:length(announcementInfo.features)}"/>
-		<c:if test="${featureListSize gt 0}">
-			<div class="row">			
-				<div class="col-md-6 col-sm-6 col-md-offset-5 col-sm-offset-5">
-					<h3 class="feature">Xüsusiyyətlər</h3>					
-				</div>
-			</div>
-			<c:set var="endDiv" scope="session" value="1"/>						
-			<c:choose>
-				<c:when test="${(featureListSize - 1)%3 eq 0 }">
-					<c:set var="endDiv" scope="session" value="1"/>
-				</c:when>				
-				<c:when test="${(featureListSize - 2)%3 eq 0 }">
-					<c:set var="endDiv" scope="session" value="2"/>
-				</c:when>
-				<c:otherwise>
-					<c:set var="endDiv" scope="session" value="3"/>					
-				</c:otherwise>			
-			</c:choose>			
-			<c:forEach var="feature" items="${announcementInfo.features}" varStatus="fStatus">
-				<c:choose>
-					<c:when test="${(fStatus.index + 1)%3 eq 1}">
-						<div class="row">
-							<div class="col-sm-2 col-md-2 col-sm-offset-5 col-md-offset-5">
-								<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
+					
+					<div class="features panel panel-default">		
+						<c:set var="featureListSize" scope="session" value="${fn:length(announcementInfo.features)}"/>
+						<c:if test="${featureListSize gt 0}">
+							<div class="row">			
+								<div class="col-md-12 col-sm-12 panel-heading">
+									<h3>Xüsusiyyətlər</h3>					
+								</div>
 							</div>
-						<c:if test="${(fStatus.index+1)eq featureListSize and endDiv eq 1}">
-							</div>
-						</c:if>								
-					</c:when>
-					<c:when test="${(fStatus.index + 1)%3 eq 2}">
-						<div class="col-sm-2 col-md-2">
-							<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
-						</div>
-						<c:if test="${(fStatus.index+1)eq featureListSize and endDiv eq 2}">
-							</div>
+							<c:set var="endDiv" scope="session" value="1"/>						
+							<c:choose>
+								<c:when test="${(featureListSize - 1)%3 eq 0 }">
+									<c:set var="endDiv" scope="session" value="1"/>
+								</c:when>				
+								<c:when test="${(featureListSize - 2)%3 eq 0 }">
+									<c:set var="endDiv" scope="session" value="2"/>
+								</c:when>
+								<c:otherwise>
+									<c:set var="endDiv" scope="session" value="3"/>					
+								</c:otherwise>			
+							</c:choose>			
+							<c:forEach var="feature" items="${announcementInfo.features}" varStatus="fStatus">
+								<c:choose>
+									<c:when test="${(fStatus.index + 1)%3 eq 1}">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
+											</div>
+										<c:if test="${(fStatus.index+1)eq featureListSize and endDiv eq 1}">
+											</div>
+										</c:if>								
+									</c:when>
+									<c:when test="${(fStatus.index + 1)%3 eq 2}">
+										<div class="col-sm-4 col-md-4">
+											<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
+										</div>
+										<c:if test="${(fStatus.index+1)eq featureListSize and endDiv eq 2}">
+											</div>
+										</c:if>						
+									</c:when>					
+									<c:otherwise>
+										<div class="col-sm-4 col-md-4">
+											<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
+										</div>
+										<c:if test="${featureListSize gt 3 or endDiv eq 3}">
+											</div>
+										</c:if>											
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>									
 						</c:if>						
-					</c:when>					
-					<c:otherwise>
-						<div class="col-sm-2 col-md-2">
-							<p class="feature"><i class="glyphicon glyphicon-ok"></i> ${feature.type}</p>
-						</div>
-						<c:if test="${featureListSize gt 3 or endDiv eq 3}">
-							</div>
-						</c:if>											
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>									
-		</c:if>						
-	</div>	
+					</div>
+				</div>
+			</div>				
+		</div>
+			
 	
 	
 	
@@ -183,14 +187,40 @@
     margin: 0 auto;
 }
 
+.whatsapp-sh{
+	margin-top: 1px;
+}
+
 </style>
 
 <script>
 	$(document).ready(function(){
+		
 		$('.slider').show();
 		$('.bxslider').bxSlider({
 			pagerCustom: '#bx-pager'
 		});
+		
+		//$('.social-network').append('<a href="whatsapp://send" data-text="Take a look at this awesome website:" data-href="" class="wa_btn wa_btn_s" style="display:none">Paylaş</a>');
+		
 	});
+	
+	function expand(id){
+	var imgSrc = $("#"+id).attr('src');
+	var div = '<div id="expanded" style="position : absolute; box-shadow : 5px #ccc; width : 100%; height :100%; background-color : black; opacity : 0.6">';
+		div += '</div>'; 
+		
+	$("body").css("position", "relative");
+	
+	console.log($('body').contents());
+
+	$('.test').wrap(div);
+	
+	$("#expanded").prepend('<img src='+imgSrc+' style="position : absolute; top : 0; left : 0;"/>');
+
+	//$('.content').css("opacity", "0.6");
+	
+	//$('#expanded').css({"position" : "absolute", "opacity" : "0.6", "box-shadow" : "5px #ccc"});
+}
 	
 </script>

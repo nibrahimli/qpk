@@ -51,6 +51,7 @@ public class QrupEmlakBackofficeController {
 	private final static Logger logger = LoggerFactory.getLogger(QrupEmlakBackofficeController.class);
 
 //	private static final String IMAGE_PATH = "/home/nibrahim/qrupEmlakImages/";
+//	private static final String IMAGE_PATH = "C:\\Users\\Sinan\\qrupEmlakImages";
 	private static final String IMAGE_PATH = "/mnt/qrupEmlakImages/";
 	
 	@Autowired

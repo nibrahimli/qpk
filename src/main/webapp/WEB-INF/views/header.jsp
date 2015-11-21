@@ -27,8 +27,9 @@
 					</div>
 				</div>
 				<div class="social">
-					<a href="https://www.facebook.com/qrupemlak"><i class="fa fa-facebook"></i></a> 
-					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="https://plus.google.com/u/0/104769784200604538106/"><i class="fa fa-google-plus"></i></a>
+					<a href="https://www.instagram.com/qrupemlak/"><i class="fa fa-instagram"></i></a>					
+					<a href="https://www.facebook.com/qrupemlak"><i class="fa fa-facebook"></i></a> 					
 				</div>
 			</div>
 			<nav>

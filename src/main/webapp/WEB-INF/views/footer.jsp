@@ -14,9 +14,9 @@
 			</div>
 			<div class="contact">
 				<div class="social">
-					<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-						class="fa fa-twitter"></i></a> <a href="#"><i
-						class="fa fa-instagram"></i></a>
+					<a href="https://www.facebook.com/qrupemlak"><i class="fa fa-facebook"></i></a> 
+					<a href="https://www.instagram.com/qrupemlak/"><i class="fa fa-instagram"></i></a>
+					<a href="https://plus.google.com/u/0/104769784200604538106/"><i class="fa fa-google-plus"></i></a>
 				</div>
 				<ul>
 					<li><i class="fa fa-home"></i> Bakı, Azərbaycan</li>

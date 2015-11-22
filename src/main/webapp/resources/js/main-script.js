@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 	$(".toggle").click( function() {
-		$("body").toggleClass("sidebarOpen", 50);
-		$(".sidebar").toggleClass("sidebarOpens");
+		$("body").toggleClass("sidebarOpen", 100);
+		$(".sidebar").animate({width: 'toggle'}, 1000);
 		$("#showLeftPushIcon").toggleClass("fa-close");
 	});
 	
 	$(".searchButtonCircle").click( function() {
-		$(".searchSection").slideToggle(600);
+		$(".searchSection").slideDown(600);
 	});
 				
 	//Click event to scroll to top

@@ -92,7 +92,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><button class="hvr-radial-out">Müraciət Et</button></td>
+								<td><a href="#"><button class="hvr-radial-out">Müraciət Et</button></a></td>
 							</tr>
 	
 						</tbody>

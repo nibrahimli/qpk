@@ -4,7 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<div class="searchSection">
+
+<c:if test="${empty announcementList}">
+	<div class="col-sm-12" style="text-align:center; padding : 0">				
+		<div class="alert alert-warning">
+			<a class="close" data-dismiss="alert" href="#">x</a><b>Diqqət!</b> Sizin axtarışınıza uyğun heç bir nəticə tapılmadı.
+		</div>
+	</div>	
+</c:if>
+
+<div class="searchSection panel panel-default">
 	<form:form action="${url}" class="form-horizontal"
 		commandName="searchInfo" method="POST">
 		<div class="form-group">
@@ -113,47 +122,48 @@
 <div class="searchButtonCircle"><span class="glyphicon glyphicon-search"></span></div>
 
 <div class="searchResult">
-
-	<div class="list">
-		<div class="ads">
-			<c:forEach items="${announcementList}" var="announcement">
-				<div class="one">
-					<div class="image">
-						<c:forEach items="${announcement.images}" var="image" end="0">
-							<c:set var="title"
-								value="${fn:replace(announcement.title,' ', '-')}" />
-							<c:set var="title" value="${fn:toLowerCase(title)}" />
-							<a
-								href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
-								src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
-						</c:forEach>
-						<div class="top">
-							<div class="bed">
-								<p>Otaq</p>
-								<p>${announcement.roomNumber}</p>
-							</div>
-							<div class="location">
-								<p>Şəhər</p>
-								<p>${announcement.address.city.originalName}</p>
-							</div>
-							<div class="type">
-								<p>Əmlak tipi</p>
-								<p>${announcement.homeType.type}</p>
-							</div>
-							<div class="price">
-								<p>Qiymət</p>
-								<p>
-									<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${announcement.price}" />
-									${announcement.currency.code}
-								</p>
+		<c:if test="${not empty announcementList}">
+			<div class="list">
+				<div class="ads">
+					<c:forEach items="${announcementList}" var="announcement">
+						<div class="one">
+							<div class="image">
+								<c:forEach items="${announcement.images}" var="image" end="0">
+									<c:set var="title"
+										value="${fn:replace(announcement.title,' ', '-')}" />
+									<c:set var="title" value="${fn:toLowerCase(title)}" />
+									<a
+										href="<c:url value="/announcement/${title}----${announcement.id}"/>"><img
+										src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
+								</c:forEach>
+								<div class="top">
+									<div class="bed">
+										<p>Otaq</p>
+										<p>${announcement.roomNumber}</p>
+									</div>
+									<div class="location">
+										<p>Şəhər</p>
+										<p>${announcement.address.city.originalName}</p>
+									</div>
+									<div class="type">
+										<p>Əmlak tipi</p>
+										<p>${announcement.homeType.type}</p>
+									</div>
+									<div class="price">
+										<p>Qiymət</p>
+										<p>
+											<fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${announcement.price}" />
+											${announcement.currency.code}
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
-		</div>
-	</div>
+			</div>			
+		</c:if>				
 </div>
 
 <script>

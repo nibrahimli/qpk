@@ -19,24 +19,40 @@
 	<title><c:out value="${title}"/></title>
 	
 	<br/>
-	<div class="container-fluid slider">
+	<div class="container-fluid slider-wrap">
 		<div class="row">
 			<div class="col-md-5" id="annSlider">
+				<div class="slider">
 				<ul class="bxslider">
 				  	<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
 						<li><img src="<c:url value="/qrupEmlakImages/${image.path}"/>"/></li>
 					</c:forEach>
 				</ul>
+				<span class="expand glyphicon glyphicon-resize-full"></span>
 				<div class="social-network">					
 					<div class="fb-like" data-href="<c:url value="/announcement/${title}---${announcementInfo.id}"/>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
 					<div class="whatsapp-sh"><a href="whatsapp://send" data-text="Bu elana göz at:" data-href="" class="wa_btn wa_btn_s" style="display:none">Paylaş</a></div>					
 				</div>
-				
+				</div>
+			</div>
+			<div class="full-slider">
+					
+						<ul class="bxslider">
+						  	<c:forEach items="${announcementInfo.images}" var="image" varStatus="status">
+								<li><img src="<c:url value="/qrupEmlakImages/${image.path}"/>"/></li>
+							</c:forEach>
+						</ul>
+						<span class="collapse glyphicon glyphicon-resize-small"></span>
+					
 			</div>	
 			
 			<div class="col-md-7" id="description">
-				<h2>${announcementInfo.title}</h2>
-					<table class="table panel panel-default">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h2 class="panel-title">${announcementInfo.title}</h2>
+				  </div>
+				  <div class="panel-body">
+				    <table class="table">
 						<tbody>
 							<tr>
 								<td>Tarix</td>
@@ -63,21 +79,35 @@
 								<td>${address.number} ${address.street} ${address.district.originalName} ${address.city.originalName}</td>
 							</tr>
 							<tr>
+								<td>Telefon</td>
+								<td>(+994)70 285 27 85</td>
+							</tr>
+							<tr>
+								<td>E-mail</td>
+								<td>azgroupemlak@gmail.com</td>
+							</tr>
+							<tr>
 								<td>Əlavə məlumat</td>
 								<td>${announcementInfo.description}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><button class="hvr-radial-out">Müraciət Et</button></td>
 							</tr>
 	
 						</tbody>
 					</table>
+				  </div>
+				</div>			
 					
-					<div class="features panel panel-default">		
-						<c:set var="featureListSize" scope="session" value="${fn:length(announcementInfo.features)}"/>
-						<c:if test="${featureListSize gt 0}">
-							<div class="row">			
-								<div class="col-md-12 col-sm-12 panel-heading">
-									<h3>Xüsusiyyətlər</h3>					
+					<c:set var="featureListSize" scope="session" value="${fn:length(announcementInfo.features)}"/>
+					<c:if test="${featureListSize gt 0}">
+					<div class="features panel panel-default">								
+										
+								<div class="panel-heading">
+								    <h3 class="panel-title">Xüsusiyyətlər</h3>
 								</div>
-							</div>
+							<div class="panel-body">
 							<c:set var="endDiv" scope="session" value="1"/>						
 							<c:choose>
 								<c:when test="${(featureListSize - 1)%3 eq 0 }">
@@ -118,9 +148,10 @@
 										</c:if>											
 									</c:otherwise>
 								</c:choose>
-							</c:forEach>									
-						</c:if>						
-					</div>
+							</c:forEach>
+							</div>																					
+						</div>
+					</c:if>	
 				</div>
 			</div>				
 		</div>
@@ -179,48 +210,23 @@
 .slider {
   display: none;
 }
-.bx-next{
-	margin-right: 11px;
-}
-
 .bx-wrapper img {
     margin: 0 auto;
 }
-
-.whatsapp-sh{
-	margin-top: 1px;
+.bx-next{
+	margin-right: 11px;
 }
-
 </style>
 
 <script>
-	$(document).ready(function(){
+	
 		
 		$('.slider').show();
 		$('.bxslider').bxSlider({
 			pagerCustom: '#bx-pager'
 		});
-		
+	$(document).ready(function(){	
 		//$('.social-network').append('<a href="whatsapp://send" data-text="Take a look at this awesome website:" data-href="" class="wa_btn wa_btn_s" style="display:none">Paylaş</a>');
 		
-	});
-	
-	function expand(id){
-	var imgSrc = $("#"+id).attr('src');
-	var div = '<div id="expanded" style="position : absolute; box-shadow : 5px #ccc; width : 100%; height :100%; background-color : black; opacity : 0.6">';
-		div += '</div>'; 
-		
-	$("body").css("position", "relative");
-	
-	console.log($('body').contents());
-
-	$('.test').wrap(div);
-	
-	$("#expanded").prepend('<img src='+imgSrc+' style="position : absolute; top : 0; left : 0;"/>');
-
-	//$('.content').css("opacity", "0.6");
-	
-	//$('#expanded').css({"position" : "absolute", "opacity" : "0.6", "box-shadow" : "5px #ccc"});
-}
-	
+	});	
 </script>

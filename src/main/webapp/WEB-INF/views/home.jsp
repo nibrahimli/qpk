@@ -132,6 +132,7 @@
 	$(document).ready(function(){	
  
  		$(".search").show();
+ 		$(".homeSlider").show();
 		var cities = ${locationInfoGson}.cities;	
 		
 		var div='<select class="city-chosen-box" data-placeholder="Şəhər Seçin... " multiple name="cities">';		

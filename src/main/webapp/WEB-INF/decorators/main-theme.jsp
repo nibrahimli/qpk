@@ -41,7 +41,7 @@
 		<link href="<c:url value="/resources/css/bootstrap-choosen.css"/>" rel="stylesheet" type="text/css"/> 		
 		<script src="<c:url value="/resources/js/chosen.jquery.min.js"/>" type="text/javascript"></script>
 	    <!-- Chosen.js (Bootstrap) autocomplete -->
-	   
+	    	    
 	   	<script src="https://cdn.jsdelivr.net/whatsapp-sharing/1.3.4/whatsapp-button.js "></script>
 	
 		<script type="text/javascript" src="<c:url value="/resources/js/main-script.js" />"></script>    	

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.nibrahimli.database.filter.EntityFilter;
@@ -159,7 +160,7 @@ public class QrupEmlakController {
 	}
 	
 	@RequestMapping(value="/contact", method=RequestMethod.POST)
-	public ModelAndView contactPost(ContactInfo contactInfo, ModelAndView mav){
+	public String contactPost(ContactInfo contactInfo, RedirectAttributes redirectAttrs, ModelAndView mav){
 
 		MimeMessage message = javaMailSender.createMimeMessage();
 		
@@ -171,13 +172,15 @@ public class QrupEmlakController {
 			helper.setText("From : "+ contactInfo.getEmail()+" Telephone : "+contactInfo.getTelephon()+"\nMessage : "+contactInfo.getMessage());
 			
 			javaMailSender.send(message);
-			 
+			redirectAttrs.addFlashAttribute("infoMessage", "<b>Mesajınız uğurla göndərildi!</b> Tezliklə sizinlə əlaqə saxlanılacaq.") ;
+			
 		} catch (Exception e) {
 			logger.error("error {}", e);
+			redirectAttrs.addFlashAttribute("errorMessage", "Gözlənilməz bir səhv meydana gəldi.") ;
+			return "redirect:/contact";
 		}	
 		
-						
-		return mav;
+		return "redirect:/contact";
 	}
 	
 	private List<Announcement> filterAnnouncements(SearchInfo searchInfo) {

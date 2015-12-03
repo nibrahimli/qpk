@@ -92,7 +92,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><a href="#"><button class="hvr-radial-out">Müraciət Et</button></a></td>
+								<td><a href="<c:url value="/contact/${announcementInfo.title}---${announcementInfo.id}"/>"><button class="hvr-radial-out">Müraciət Et</button></a></td>
 							</tr>
 	
 						</tbody>

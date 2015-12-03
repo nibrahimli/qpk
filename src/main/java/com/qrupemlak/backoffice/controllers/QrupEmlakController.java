@@ -152,6 +152,16 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/contact/{titleId}", method=RequestMethod.GET)
+	public ModelAndView contactForAnnouncement(@PathVariable String titleId, ModelAndView mav){
+		logger.info("contact page");
+		ContactInfo contactInfo = new ContactInfo() ;
+		contactInfo.setSubject(titleId);
+		mav.addObject("contactInfo", contactInfo);
+		mav.setViewName("contact");
+		return mav;
+	}
+	
 	@RequestMapping(value="/contact", method=RequestMethod.GET)
 	public ModelAndView contact(ModelAndView mav){
 		logger.info("contact page");

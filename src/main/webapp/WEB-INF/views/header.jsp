@@ -35,7 +35,7 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="/">Ana Səhifə</a></li>
+					<li><a href="/">Əsas Səhifə</a></li>
 					<li><a href="<c:url value="/advancedSearch"/>">Ətraflı Axtarış</a></li>
 					<li><a href="<c:url value="/contact"/>">Bizimlə Əlaqə</a></li>
 				</ul>
@@ -51,7 +51,7 @@
 			<div class="nav-social">
 				<nav>
 					<ul>
-						<li><a href="/">Ana Səhifə</a></li>
+						<li><a href="/">Əsas Səhifə</a></li>
 						<li><a href="<c:url value="/advancedSearch"/>">Ətraflı Axtarış</a></li>
 						<li><a href="<c:url value="/contact"/>">Bizimlə Əlaqə</a></li>
 					</ul>

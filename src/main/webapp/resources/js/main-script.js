@@ -28,7 +28,8 @@ $( document ).ready(function() {
 	//Full slider
 	var expand = content.find(".expand");
 	var fullSlider = content.find(".full-slider");
-	var image = fullSlider.find("img");
+	var li = fullSlider.find("li");
+	var image = li.find("img");
 	$(fullSlider).width(window.outerWidth);
 	$(expand).click(function(){
 		$(fullSlider).css("visibility", "visible");
@@ -41,5 +42,5 @@ $( document ).ready(function() {
 		$(image).css("visibility", "hidden");
 		$(fullSlider).css("visibility", "hidden");
 		$("body").css("overflow-y", "auto")
-	});	
+	});
 });

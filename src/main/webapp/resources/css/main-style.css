@@ -871,7 +871,7 @@ footer {
 	max-height: 100%;
 }
 .container-fluid .row #annSlider .bx-wrapper .bx-viewport ul li img{
-	max-height: 100%;
+	max-height: 100vh;
 	
 }
 .container-fluid .row #annSlider .social-network{

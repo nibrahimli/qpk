@@ -45,8 +45,8 @@ import com.qrupemlak.backoffice.data.SearchInfo;
 public class QrupEmlakController {
 	private final static Logger logger = LoggerFactory.getLogger(QrupEmlakController.class);
 	
-	static final String FROM = "admin@qrupemlak.com";
-	static final String TO = "azgroupemlak@gmail.com";
+	static final String FROM = "info@qrupemlak.com";
+	static final String TO = "info@qrupemlak.com";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;

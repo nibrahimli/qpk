@@ -3,6 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
     
+    <session-config>
+	  <!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
+	  <tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+	
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring/root-context.xml /WEB-INF/spring/spring-security.xml</param-value>

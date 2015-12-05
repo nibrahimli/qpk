@@ -152,11 +152,12 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/contact/{titleId}", method=RequestMethod.GET)
-	public ModelAndView contactForAnnouncement(@PathVariable String titleId, ModelAndView mav){
-		logger.info("contact page");
+	@RequestMapping(value="/contact/{title}", method=RequestMethod.GET)
+	public ModelAndView contactForAnnouncement(@PathVariable String title, ModelAndView mav){
+		logger.info("announcement title {}", title);
 		ContactInfo contactInfo = new ContactInfo() ;
-		contactInfo.setSubject(titleId);
+		contactInfo.setSubject("http://qrupemlak.com/announcement/"+title);		
+		mav.addObject("readonly", "true");
 		mav.addObject("contactInfo", contactInfo);
 		mav.setViewName("contact");
 		return mav;

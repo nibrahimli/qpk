@@ -194,14 +194,37 @@ $(document).ready(function(){
 	
 	var districtDiv='<select class="district-chosen-box" data-placeholder="Rayon Seçin..." style="width:332px;" multiple name="districts">';		
 	
-	$.each(districts, function(i, districts) {
-	  	districtDiv+='<option value='+districts.id+'>'+districts.originalName+'</option>'
+	$.each(districts, function(i, district) {
+	  	districtDiv+='<option value='+district.id+'>'+district.originalName+'</option>'
 	});
 	
-	districtDiv+='</select>';		
-
+	districtDiv+='</select>';
+	
 	$("#district-chosen").append(districtDiv);
 	$(".district-chosen-box").chosen();
+	
+	$(".city-chosen-box").chosen().change(function(){
+	
+		var cityArray = $(this).val();
+		$('#district-chosen').empty();
+		var districtDiv='<select class="district-chosen-box" data-placeholder="Rayon Seçin..." style="width:332px;" multiple name="districts">';		
+	
+		$.each(districts, function(i, district) {
+			if(cityArray != null && cityArray.indexOf(""+district.city.id) > -1){
+		  		districtDiv+='<option value='+district.id+'>'+district.originalName+'</option>'
+		  	}
+		  	else if(cityArray == null){
+		  		districtDiv+='<option value='+district.id+'>'+district.originalName+'</option>'
+		  	}		  	
+		});
+		
+		districtDiv+='</select>';
+		
+		
+		$("#district-chosen").append(districtDiv);
+		$(".district-chosen-box").chosen();
+	
+	});
 	
 		
 	$(".roomNumber-chosen-box").chosen();

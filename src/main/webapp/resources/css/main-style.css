@@ -1045,7 +1045,6 @@ footer {
   .sectionContactForm{
   	min-width: 300px;
   	width: 600px;
-  	order: -1;
   }
   .sectionContact .panel-heading{
   text-align: center;}

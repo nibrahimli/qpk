@@ -7,19 +7,6 @@
 </div>
 
 <div class="sectionContact">
-	<div class="number-email panel panel-default">
-		<div class="panel-heading">
-		    <h2 class="panel-title">Əlaqə vasitələri</h2>
-		</div>
-		<div class="panel-body">
-			<div class="number">
-				<i class="glyphicon glyphicon-earphone"></i><span> (+994)70 285 27 85</span>
-			</div>
-			<div class="email">
-				<i class="glyphicon glyphicon-envelope"></i><span> info@qrupemlak.com</span>
-			</div>
-		</div>
-	</div>
 	<div class="sectionContactForm panel panel-default">
 		<div class="panel-heading">
 		    <h2 class="panel-title">Bizimlə əlaqə saxlayın!</h2>
@@ -66,6 +53,19 @@
 					</div>
 				</div>
 			</form:form>
+		</div>
+	</div>
+	<div class="number-email panel panel-default">
+		<div class="panel-heading">
+		    <h2 class="panel-title">Əlaqə vasitələri</h2>
+		</div>
+		<div class="panel-body">
+			<div class="number">
+				<i class="glyphicon glyphicon-earphone"></i><span> (+994)70 285 27 85</span>
+			</div>
+			<div class="email">
+				<i class="glyphicon glyphicon-envelope"></i><span> info@qrupemlak.com</span>
+			</div>
 		</div>
 	</div>
 </div>

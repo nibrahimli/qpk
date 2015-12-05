@@ -11,16 +11,16 @@ body {
   width: 100%;
   padding: 0px;
   margin: 0px;
+  background-color: #eee !important;
   position: relative;
   overflow-x: hidden;
   font-family: "Arimo", sans-serif;  }
   body .content {
     width: 100%;
-    min-height: 500px;
-    background-color: #eee; }
+    min-height: 100vh; }
 @media (max-width: 750px) {
 	body .content{
-	min-height: 300px;}	}
+	min-height: 100vh;}	}
 
 /*header */
 header {
@@ -1012,10 +1012,40 @@ footer {
 /*CONTACT page */
 .sectionContact {
   min-width: 300px;
-  max-width: 600px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   margin: 0px auto;
   padding: 50px 10px 50px 10px; }
-
+  
+  .number-email{
+  	width: 300px;
+  	max-height: 187px;
+  	min-width: 281px;
+  	margin: 0 10px 0 0;
+  	align-items: center;
+  }
+  .number{
+  margin: 10px 0 30px 0}
+  .number i{
+  	font-size: 20px;
+  	margin: 0 40px 0 0;
+  }
+  .number span{
+  	font-size: 18px;
+  }
+  .email i{
+  	font-size: 20px;
+  	margin: 0 40px 0 0;
+  }
+  .email span{
+  	font-size: 18px;
+  }
+  
+  .sectionContactForm{
+  	min-width: 300px;
+  	width: 600px;
+  }
   .sectionContact .panel-heading{
   text-align: center;}
   .sectionContact h3 {
@@ -1029,3 +1059,15 @@ footer {
       padding-top: 0px; }
     .sectionContact textarea{
     max-width: 100%;}
+    
+@media (max-width: 750px){
+	.sectionContact {
+	flex-direction: column;}
+	.number-email{
+	text-align: center;
+	margin: 0px;
+	width: auto;}
+	.sectionContactForm{
+  	width: auto;
+  	order: -1;}
+}

@@ -7,6 +7,19 @@
 </div>
 
 <div class="sectionContact">
+	<div class="number-email panel panel-default">
+		<div class="panel-heading">
+		    <h2 class="panel-title">Əlaqə vasitələri</h2>
+		</div>
+		<div class="panel-body">
+			<div class="number">
+				<i class="glyphicon glyphicon-earphone"></i><span> (+994)70 285 27 85</span>
+			</div>
+			<div class="email">
+				<i class="glyphicon glyphicon-envelope"></i><span> info@qrupemlak.com</span>
+			</div>
+		</div>
+	</div>
 	<div class="sectionContactForm panel panel-default">
 		<div class="panel-heading">
 		    <h2 class="panel-title">Bizimlə əlaqə saxlayın!</h2>
@@ -31,7 +44,7 @@
 				<div class="form-group">
 					<form:label path="subject" class="col-sm-2 control-label">Mövzu</form:label>
 					<div class="col-sm-10">
-						<form:input path="subject" class="form-control" placeholder="Mövzu"/>
+						<form:input path="subject" class="form-control" placeholder="Mövzu" readonly='${readonly}'/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -49,7 +62,7 @@
 		
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
-					<button type="submit" class="btn btn-primary">Göndər</button>
+					<button type="submit" class="btn btn-success">Göndər</button>
 					</div>
 				</div>
 			</form:form>

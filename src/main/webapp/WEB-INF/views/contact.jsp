@@ -2,6 +2,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+
 <div class="col-sm-12" style="padding : 0; text-align: center">
 	<c:import url="/WEB-INF/views/status.jsp" />
 </div>
@@ -46,6 +47,11 @@
 						<form:textarea class="form-control" rows="4" path="message"></form:textarea>
 					</div>
 				</div>
+				
+				<div class="form-group" id="fatherToto">
+					<div class="col-sm-10 col-sm-offset-2" id="gg-recaptcha">
+					</div>
+				</div>
 		
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
@@ -69,3 +75,32 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	var verifyCallback = function(response) {
+		$.ajax({
+			  method: "POST",
+			  url: "recaptcha",
+			  data: {response : response},
+			  async: false,		
+			  success : function(grecaptcha) {
+				console.log(grecaptcha);
+			  },
+	  		  error : function(xhr, ajaxOptions, thrownError) {
+	  		  	alert(xhr.status);
+	            alert(thrownError);            		  			  	
+			  }
+			});
+  	};
+
+
+	var onloadCallback = function() {
+    		grecaptcha.render('gg-recaptcha', {
+      		'data-type' : 'audio',      		
+      		'sitekey' : '6Ld9UBMTAAAAABCNqqDOjk_l2XfnFilcUU2vKRw3',
+      		'callback' : verifyCallback      		
+    	});
+  	};
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?hl=az&onload=onloadCallback&render=explicit" async defer></script>

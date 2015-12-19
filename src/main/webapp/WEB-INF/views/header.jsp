@@ -3,13 +3,9 @@
 
 <header>
 	<div class="navBar">
-
 		<div class="logo">
 			<a href="/"><img src="<c:url value="/resources/img/logo.png" />"></a>
 		</div>
-		<p class="toggle">
-			<i id="showLeftPushIcon" class="fa fa-navicon"></i>
-		</p>
 		<div class="navLine">
 			<div class="langBar">
 
@@ -41,28 +37,8 @@
 				</ul>
 			</nav>
 		</div>
-	</div>
-
-	<div class="sidebar">
-		<p class="toggle">
-			<i id="showLeftPushIcon" class="fa fa-close"></i>
-		</p>
-		<div class="sidebar-wrapper">
-			<div class="nav-social">
-				<nav>
-					<ul>
-						<li><a href="/">Əsas Səhifə</a></li>
-						<li><a href="<c:url value="/advancedSearch"/>">Ətraflı Axtarış</a></li>
-						<li><a href="<c:url value="/contact"/>">Bizimlə Əlaqə</a></li>
-					</ul>
-				</nav>
-		
-				<div class="social">		
-					<a href="https://plus.google.com/u/0/104769784200604538106/" target="_blank"><i class="fa fa-google-plus"></i></a>
-					<a href="https://www.instagram.com/qrupemlak/" target="_blank"><i class="fa fa-instagram"></i></a>					
-					<a href="https://www.facebook.com/qrupemlak" target="_blank"><i class="fa fa-facebook"></i></a> 					
-				</div>
-			</div>
+		<div class="sidebar-toggle">
+			<span></span>
 		</div>
 	</div>
 </header>

@@ -1,17 +1,22 @@
 $( document ).ready(function() {
 	//Sidebar opening handler
-	var content = $(".content");
-	var header = $("header");
-	var toggle = header.find(".toggle");
-	var sidebar = header.find(".sidebar");
-	$(toggle).click( function() {
-		$(sidebar).animate({width: 'toggle'}, 200);
-	});
-	$(content).click(function() {
-		$(sidebar).hide("slide",{ direction: "right" }, 200);
-	});
+	$('.sidebar-toggle').click(function() {
+        slideout.toggle();
+    	$('.sidebar-toggle').toggleClass("is-open");
+    });
+	
+	var slideout = new Slideout({
+	    'panel': document.getElementById('panel'),
+	    'menu': document.getElementById('menu'),
+	    'padding': 200,
+	    'tolerance': 50
+	  });
+	slideout.disableTouch();
+	//Sidebar opening handler
+	
 	
 	//Search Button Circle fixed button
+	var content = $(".content");
 	var searchSection = content.find(".searchSection")
 	var searchButtonCircle = content.find(".searchButtonCircle");
 	$(searchButtonCircle).click( function() {
@@ -20,7 +25,6 @@ $( document ).ready(function() {
 				
 	//Click event of search Button Circle to scroll to top 
 	$('.searchButtonCircle').click(function(){
-		var searchSectionHeight = $(".searchSection").height();
 		$('html, body').animate({scrollTop : 0},800);
 		return false;	
 	});

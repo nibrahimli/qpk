@@ -12,7 +12,7 @@
  	<context:annotation-config/>
     		
  	<bean id="captcha" class="com.qrupemlak.backoffice.data.RecaptchaImpl">
- 		<property name="secretKey" value="xx"/>
+ 		<property name="secretKey" value="xxx"/>
  		<property name="siteKey" value="xxx"/> 	
  	</bean>
  

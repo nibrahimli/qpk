@@ -8,5 +8,5 @@
 	<import resource="classpath:spring/context.xml" />
 	<import resource="classpath:spring/aws-ses-context.xml" />
 	<import resource="classpath:spring/cache-contect.xml" />
-	<import resource="classpath:spring/recaptcha-context.xml" />
+	<import resource="classpath:spring/captcha-context.xml" />
 </beans>

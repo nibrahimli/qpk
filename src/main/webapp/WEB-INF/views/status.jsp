@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <c:if test="${not empty infoMessage}">				
 	<div class="alert alert-success">

@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	
-	<c:if test="${not empty announcementInfo.title}">
+<c:choose>
+	<c:when test="${not empty announcementInfo.title}">
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
@@ -153,7 +154,15 @@
 					</div>
 				</div>				
 			</div>
-		</c:if>	
+		</c:when>
+		<c:otherwise>
+			<div class="col-sm-12" style="text-align:center; padding : 0">				
+				<div class="alert alert-warning">
+					<a class="close" data-dismiss="alert" href="#">x</a><b>Təəssüf ki, daxil etdiyiniz kodlu elan tapılmadı</b>
+				</div>
+			</div>			
+		</c:otherwise>
+</c:choose>	
 	
 	
 	

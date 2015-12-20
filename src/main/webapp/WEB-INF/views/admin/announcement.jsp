@@ -25,8 +25,8 @@
 				      <form:input class="form-control" path="date" placeholder="Date"/>
 				    </div>
 				    <label class="col-sm-2 control-label" for="roomNumber">Room Number</label>
-				    <div class="col-sm-2">
-				      <input type="number" class="form-control" id="roomNumber" name="roomNumber" value="${announcementInfo.roomNumber}" min="1" max="10" placeholder="Room Number"/>				      
+				    <div class="col-sm-2">				      
+				      <form:input class="form-control" path="roomNumber" placeholder="Room Number"/>				      
 				    </div>
 				    <form:label class="col-sm-2 control-label" path="floor">Floor</form:label>
 				    <div class="col-sm-2">

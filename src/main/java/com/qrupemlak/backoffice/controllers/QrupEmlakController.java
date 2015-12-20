@@ -1,6 +1,7 @@
 package com.qrupemlak.backoffice.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,9 +9,20 @@ import javax.annotation.PostConstruct;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -18,13 +30,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.nibrahimli.database.filter.EntityFilter;
-import com.nibrahimli.database.filter.Filters;
 import com.nibrahimli.database.order.EntityOrder;
 import com.nibrahimli.database.order.Order;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
@@ -47,6 +59,7 @@ public class QrupEmlakController {
 	
 	static final String FROM = "info@qrupemlak.com";
 	static final String TO = "info@qrupemlak.com";
+	static final String recaptchaSecretKey = "xxx";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;
@@ -59,6 +72,9 @@ public class QrupEmlakController {
 	
 	@Autowired
 	private JavaMailSender javaMailSender ;
+	
+	@Autowired
+	private CacheManager cacheManager;
 	
 	private List<City> allCity ;
 	private List<District> allDistrict ;
@@ -93,11 +109,11 @@ public class QrupEmlakController {
 		Gson gson = new Gson();
 		String locationInfoGson = gson.toJson(locationInfo);
 		return locationInfoGson;
-	}
+	}	
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView home(ModelAndView mav) throws IOException{
-		List<Announcement> announcementList = featuredAnnouncement();
+		List<Announcement> announcementList = featuredAnnouncements();
 		mav.addObject("announcementList", announcementList);
 		mav.addObject("searchInfo", new SearchInfo());
 		mav.setViewName("home");
@@ -137,7 +153,7 @@ public class QrupEmlakController {
 	
 	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
 	public ModelAndView advancedSearchGet(ModelAndView mav) throws IOException{
-		List<Announcement> announcementList = featuredAnnouncement();
+		List<Announcement> announcementList = featuredAnnouncements();
 		mav.addObject("searchInfo", new SearchInfo());
 		mav.addObject("announcementList", announcementList);		
 		return mav;
@@ -194,6 +210,29 @@ public class QrupEmlakController {
 		return "redirect:/contact";
 	}
 	
+
+	@RequestMapping(value="/recaptcha", method=RequestMethod.POST)
+	public @ResponseBody String recaptchaPost(@RequestParam("response") String response) throws Exception{
+		if(StringUtils.isNoneEmpty(response)){
+			CloseableHttpClient httpclient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost("https://www.google.com/recaptcha/api/siteverify");
+			List <NameValuePair> nvps = new ArrayList <NameValuePair>();
+			nvps.add(new BasicNameValuePair("secret", recaptchaSecretKey));
+			nvps.add(new BasicNameValuePair("response", response));
+			httpPost.setEntity(new UrlEncodedFormEntity(nvps));
+			CloseableHttpResponse recaptchaResponse = httpclient.execute(httpPost);
+			try {
+			    System.out.println(recaptchaResponse.getStatusLine());
+			    HttpEntity entity = recaptchaResponse.getEntity();
+			    return EntityUtils.toString(entity, "UTF-8");			    			   
+			} finally {
+				recaptchaResponse.close();
+			}
+		}
+		
+		throw new Exception();
+	}
+	
 	private List<Announcement> filterAnnouncements(SearchInfo searchInfo) {
 		EntityFilter entityFilter = searchInfo.build();
 		List<Announcement> announcementList = announcementDao.getAll(entityFilter);
@@ -208,13 +247,11 @@ public class QrupEmlakController {
 		return announcementList ;
 	}
 
-	private List<Announcement> featuredAnnouncement() {
-		EntityFilter entityFilter = EntityFilter.builder();
-		EntityOrder entityOrder = EntityOrder.builder();
-		List<Announcement> announcementList = announcementDao.getAll(entityFilter.add(Filters.eq("popular", true)), entityOrder.add(Order.desc("viewsNumber")));
+	private List<Announcement> featuredAnnouncements() {
+		List<Announcement> announcementList = announcementDao.getFeaturedAnnouncements();
 		if(CollectionUtils.isEmpty(announcementList) || announcementList.size() < 50){
-			announcementList.addAll(announcementDao.getAll(EntityFilter.builder().add(Filters.eq("popular", false)), entityOrder));
+			announcementList.addAll(announcementDao.getNonFeaturedAnnouncements()); 			
 		}
 		return announcementList;
-	}
+	}	
 }

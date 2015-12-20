@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+	<defaultCache
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="300"
+		maxElementsInMemory="100"
+		overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU"/>
+		
+	<cache name="featuredAnnouncements"
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="300"
+		maxElementsInMemory="100"
+		overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU"/>
+		
+	<cache name="nonFeaturedAnnouncements"
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="300"
+		maxElementsInMemory="100"
+		overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU"/>
+		
+</ehcache>

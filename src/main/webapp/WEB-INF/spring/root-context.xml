@@ -7,5 +7,5 @@
     		
 	<import resource="classpath:spring/context.xml" />
 	<import resource="classpath:spring/aws-ses-context.xml" />
-	
+	<import resource="classpath:spring/cache-contect.xml" />
 </beans>

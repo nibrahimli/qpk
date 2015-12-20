@@ -49,6 +49,7 @@ import com.nibrahimli.database.qrupEmlak.entity.District;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 import com.qrupemlak.backoffice.data.AnnouncementInfo;
+import com.qrupemlak.backoffice.data.Captcha;
 import com.qrupemlak.backoffice.data.ContactInfo;
 import com.qrupemlak.backoffice.data.LocationInfo;
 import com.qrupemlak.backoffice.data.SearchInfo;
@@ -59,7 +60,6 @@ public class QrupEmlakController {
 	
 	static final String FROM = "info@qrupemlak.com";
 	static final String TO = "info@qrupemlak.com";
-	static final String recaptchaSecretKey = "xxx";
 	
 	@Autowired
 	private AnnouncementDao announcementDao;
@@ -75,6 +75,9 @@ public class QrupEmlakController {
 	
 	@Autowired
 	private CacheManager cacheManager;
+	
+	@Autowired
+	private Captcha captcha;
 	
 	private List<City> allCity ;
 	private List<District> allDistrict ;
@@ -175,6 +178,7 @@ public class QrupEmlakController {
 		contactInfo.setSubject("http://qrupemlak.com/announcement/"+title);		
 		mav.addObject("readonly", "true");
 		mav.addObject("contactInfo", contactInfo);
+		mav.addObject("captchaSiteKey", captcha.getSiteKey());
 		mav.setViewName("contact");
 		return mav;
 	}
@@ -183,6 +187,7 @@ public class QrupEmlakController {
 	public ModelAndView contact(ModelAndView mav){
 		logger.info("contact page");
 		mav.addObject("contactInfo", new ContactInfo());
+		mav.addObject("captchaSiteKey", captcha.getSiteKey());
 		return mav;
 	}
 	
@@ -211,18 +216,18 @@ public class QrupEmlakController {
 	}
 	
 
-	@RequestMapping(value="/recaptcha", method=RequestMethod.POST)
-	public @ResponseBody String recaptchaPost(@RequestParam("response") String response) throws Exception{
+	@RequestMapping(value="/captcha", method=RequestMethod.POST)
+	public @ResponseBody String captchaPost(@RequestParam("response") String response) throws Exception{
 		if(StringUtils.isNoneEmpty(response)){
 			CloseableHttpClient httpclient = HttpClients.createDefault();
 			HttpPost httpPost = new HttpPost("https://www.google.com/recaptcha/api/siteverify");
 			List <NameValuePair> nvps = new ArrayList <NameValuePair>();
-			nvps.add(new BasicNameValuePair("secret", recaptchaSecretKey));
+			nvps.add(new BasicNameValuePair("secret", captcha.getSecretKey()));
 			nvps.add(new BasicNameValuePair("response", response));
 			httpPost.setEntity(new UrlEncodedFormEntity(nvps));
 			CloseableHttpResponse recaptchaResponse = httpclient.execute(httpPost);
 			try {
-			    System.out.println(recaptchaResponse.getStatusLine());
+			    logger.info("Google recaptcha siteverify response {}", recaptchaResponse.getStatusLine());
 			    HttpEntity entity = recaptchaResponse.getEntity();
 			    return EntityUtils.toString(entity, "UTF-8");			    			   
 			} finally {

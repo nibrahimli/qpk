@@ -80,11 +80,11 @@
 	var verifyCallback = function(response) {
 		$.ajax({
 			  method: "POST",
-			  url: "recaptcha",
+			  url: "captcha",
 			  data: {response : response},
 			  async: false,		
-			  success : function(grecaptcha) {
-				console.log(grecaptcha);
+			  success : function(rCaptcha) {
+				console.log(rCaptcha);
 			  },
 	  		  error : function(xhr, ajaxOptions, thrownError) {
 	  		  	alert(xhr.status);
@@ -96,8 +96,7 @@
 
 	var onloadCallback = function() {
     		grecaptcha.render('gg-recaptcha', {
-      		'data-type' : 'audio',      		
-      		'sitekey' : '6Ld9UBMTAAAAABCNqqDOjk_l2XfnFilcUU2vKRw3',
+      		'sitekey' : '${captchaSiteKey}',
       		'callback' : verifyCallback      		
     	});
   	};

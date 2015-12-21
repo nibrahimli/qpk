@@ -5,7 +5,6 @@ html {
   width: 100%;
   padding: 0px;
   margin: 0px; }
-
 body {
   height: 100%;
   width: 100%;
@@ -288,39 +287,9 @@ header {
     padding: 0 0 0 5px; 
     border-radius: 1px;
 }
-.sidebar-toggle span, .sidebar-toggle span:before, .sidebar-toggle span:after{
-	content: "";
-	display: block;
-	width: 35px;
-	height: 3px;
-	background: #fff;
-	position: relative;
-}
-
-.sidebar-toggle span:before{
-	top: -10px;
-	transition: all .2s ease-in-out;
-}
-
-.sidebar-toggle span:after{
-	top: 8px;
-	transition: all .2s ease-in-out;
-}
-
-.sidebar-toggle.is-open span{
-	background: transparent;
-}
-
-.sidebar-toggle.is-open span:before{
-	top: 0;
-	transform-origin: center;
-	transform: rotate(45deg);
-}
-
-.sidebar-toggle.is-open span:after{
-	top: -2px;
-	transform-origin: center;
-	transform: rotate(-45deg);
+.sidebar-toggler{
+	color: white;
+	font-size: 34px;
 }
 }
 
@@ -583,7 +552,7 @@ footer {
   .list .ads {
     padding: 50px 10px; }
     .list .ads .one {
-      width: 300px;
+      width: 310px;
       height: 200px;
       display: inline-block;
       position: relative;
@@ -629,7 +598,7 @@ footer {
           z-index: 10;
           font-size: 12px; }
           .list .ads .one .image .top .bed {
-            width: 20px;
+            width: 22px;
             display: inline-block;
             text-align: center;
             border: none; }
@@ -639,7 +608,7 @@ footer {
               .list .ads .one .image .top .bed p:nth-child(2) {
                 color: #F54701; }
           .list .ads .one .image .top .location {
-            width: 95px;
+            width: 90px;
             display: inline-block;
             text-align: center;
             border: none; }
@@ -649,7 +618,7 @@ footer {
               .list .ads .one .image .top .location p:nth-child(2) {
                 color: #F54701; }
           .list .ads .one .image .top .type {
-            width: 83px;
+            width: 82px;
             display: inline-block;
             text-align: center;
             border: none; }
@@ -659,7 +628,7 @@ footer {
               .list .ads .one .image .top .type p:nth-child(2) {
                 color: #F54701; }
           .list .ads .one .image .top .price {
-            width: 81px;
+            width: 92px;
             display: inline-block;
             text-align: center;
             border: none; }
@@ -671,7 +640,9 @@ footer {
                 font-weight: bold; }
     @media (max-width: 750px) {
       .list .ads .one {
-        margin: 10px 0; } }
+        margin: 10px 0; }
+       .list .ads{
+        padding: 50px 5px} }
 
 /*Advanced search Search section */
 .searchSection {

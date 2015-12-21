@@ -38,7 +38,7 @@
 			</nav>
 		</div>
 		<div class="sidebar-toggle">
-			<span></span>
+			<i class="glyphicon glyphicon-menu-hamburger sidebar-toggler"></i>
 		</div>
 	</div>
 </header>

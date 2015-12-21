@@ -2,7 +2,6 @@ $( document ).ready(function() {
 	//Sidebar opening handler
 	$('.sidebar-toggle').click(function() {
         slideout.toggle();
-    	$('.sidebar-toggle').toggleClass("is-open");
     });
 	
 	var slideout = new Slideout({
@@ -11,9 +10,6 @@ $( document ).ready(function() {
 	    'padding': 200,
 	    'tolerance': 50
 	  });
-	slideout.disableTouch();
-	//Sidebar opening handler
-	
 	
 	//Search Button Circle fixed button
 	var content = $(".content");

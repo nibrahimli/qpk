@@ -253,9 +253,12 @@ public class QrupEmlakController {
 	}
 
 	private List<Announcement> featuredAnnouncements() {
-		List<Announcement> announcementList = announcementDao.getFeaturedAnnouncements();
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		List<Announcement> featuredAnnList = announcementDao.getFeaturedAnnouncements();
+		announcementList.addAll(featuredAnnList);
 		if(CollectionUtils.isEmpty(announcementList) || announcementList.size() < 50){
-			announcementList.addAll(announcementDao.getNonFeaturedAnnouncements()); 			
+			List<Announcement> nonFeaturedAnnList = announcementDao.getNonFeaturedAnnouncements();
+			announcementList.addAll(nonFeaturedAnnList);
 		}
 		return announcementList;
 	}	

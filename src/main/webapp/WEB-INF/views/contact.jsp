@@ -19,7 +19,7 @@
 				<div class="form-group">
 					<form:label path="name" class="col-sm-2 control-label">Ad</form:label>
 					<div class="col-sm-10">
-						<form:input class="form-control" path="name" placeholder="Ad & Soyad"/>
+						<form:input class="form-control" path="name" minlength="5" placeholder="Ad & Soyad"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -51,6 +51,9 @@
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2" id="gg-recaptcha">
 					</div>
+					<div class="col-sm-10 col-sm-offset-2">
+						<input type="hidden" class="hiddenRecaptcha" name="hiddenRecaptcha" id="hiddenRecaptcha">
+					</div>	
 				</div>
 		
 				<div class="form-group">
@@ -76,19 +79,32 @@
 	</div>
 </div>
 
+
+<script type="text/javascript"src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js" ></script>
+<script type="text/javascript"src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js" ></script>
+<script type="text/javascript" src="<c:url value="/resources/js/contact-form-validation.js"/>"></script>
+
 <script type="text/javascript">
-	var verifyCallback = function(response) {
+
+
+var toto = false ;
+
+var verifyCallback = function(response) {
 		$.ajax({
 			  method: "POST",
 			  url: "captcha",
 			  data: {response : response},
 			  async: false,		
 			  success : function(rCaptcha) {
-				console.log(rCaptcha);
+			  	console.log(rCaptcha);
+				if($.parseJSON(rCaptcha).success == true)
+					$('input[name="hiddenRecaptcha"]').val(true);									
+				$('#hiddenRecaptcha').valid();
 			  },
 	  		  error : function(xhr, ajaxOptions, thrownError) {
 	  		  	alert(xhr.status);
-	            alert(thrownError);            		  			  	
+	            alert(thrownError);	                        	
+	            $('#hiddenRecaptcha').valid();	  			  	
 			  }
 			});
   	};
@@ -100,6 +116,7 @@
       		'callback' : verifyCallback      		
     	});
   	};
+	
 </script>
 
 <script src="https://www.google.com/recaptcha/api.js?hl=az&onload=onloadCallback&render=explicit" async defer></script>

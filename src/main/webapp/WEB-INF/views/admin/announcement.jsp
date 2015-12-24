@@ -158,6 +158,10 @@
 	</fieldset>			
 </div>
 
+<script type="text/javascript"src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js" ></script>
+<script type="text/javascript"src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/additional-methods.min.js" ></script>
+<script type="text/javascript" src="<c:url value="/resources/js/announcement-form-validation.js"/>"></script>
+
 <style>
 
 .saved-image {

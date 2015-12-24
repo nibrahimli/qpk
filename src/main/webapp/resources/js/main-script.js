@@ -1,4 +1,14 @@
 $( document ).ready(function() {
+	//Loading screen
+	$(".load").remove();
+	$("body").css({
+		"overflow-x": "hidden",
+		"overflow-y": "auto"
+	});
+	$("#panel").css({
+		"display" : "block"
+	});
+	
 	//Sidebar opening handler
 	$('.sidebar-toggle').click(function() {
         slideout.toggle();
@@ -30,7 +40,7 @@ $( document ).ready(function() {
 	var fullSlider = content.find(".full-slider");
 	var li = fullSlider.find("li");
 	var image = li.find("img");
-	$(fullSlider).width(window.outerWidth);
+	
 	$(expand).click(function(){
 		$(fullSlider).css("visibility", "visible");
 		$(image).css("visibility", "visible");

@@ -4,7 +4,7 @@ html {
   min-height: 100%;
   width: 100%;
   padding: 0px;
-  margin: 0px; }
+  margin: 0px;}
 body {
   height: 100%;
   width: 100%;
@@ -12,13 +12,30 @@ body {
   margin: 0px;
   background-color: #eee !important;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: "Arimo", sans-serif;  }
   body .content {
     width: 100%;
     min-height: 100vh;
     background-color: #eee !important; }
-
+    
+  #panel{
+  display: none;}
+    
+.load{
+	background: #fff;
+    width: 100vw;
+    height: 102vh;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.load img{
+	width: 50px;
+	height: 50px;
+}
 
 /*header */
 header {
@@ -785,6 +802,18 @@ footer {
 	margin: 0 0 30px 0;
 	padding-top: 0; }
 	
+#annSlider img{
+	/*max-height: 100%;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);*/
+}
+	
 .container-fluid .row #annSlider .expand {
 	position: absolute;
 	top: 0;
@@ -834,7 +863,7 @@ footer {
 	padding: 40px 0;
 }
 .container-fluid .row .full-slider .bx-wrapper{
-	width: 80%;
+	width: 90%;
 	margin: 0 auto !important;
 	height: 100%;
 	padding: 0;
@@ -851,6 +880,14 @@ footer {
 }
 .container-fluid .row .full-slider .bx-viewport ul li img{
 	max-height: 100%;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
 }
 .container-fluid .row .full-slider .collapse{
 	position: absolute;
@@ -869,11 +906,7 @@ footer {
 }	
 .container-fluid .row .bx-wrapper{
 	margin: 0;}
-/* .container-fluid .row .bx-wrapper p{
-	position: absolute;
-	top: 20px;
-	right: 20px;
-} */
+
 .container-fluid .row #annSlider .slider-wrap{
 	position: relative;
 }
@@ -1012,11 +1045,14 @@ footer {
 	color: #27ae60;
 }
 
+@media (max-width: 991px) {
+	.container-fluid .row #annSlider .expand {
+	/*display: none;*/}
+}
+
 @media (max-width: 750px) {
 	.container-fluid .row #annSlider{
 	  padding: 0;}
-	.container-fluid .row #annSlider .expand {
-	display: none;}
 	.container-fluid .row .full-slider{
 	display: none;}
 	.container-fluid .row #annSlider .bx-wrapper .bx-viewport{

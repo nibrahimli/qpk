@@ -52,6 +52,7 @@
 	</head>
 	<body>
 		<c:import url="/WEB-INF/views/sidemenu.jsp"/>
+		<div class="load"><img src="<c:url value="/resources/img/load.gif"/>" /></div>
 		<div id="panel">
 			<c:import url="/WEB-INF/views/header.jsp"/>
 			<div class="content">

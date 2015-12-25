@@ -1,4 +1,4 @@
-	@charset "UTF-8";
+@charset "UTF-8";
 /*base styles */
 html {
   min-height: 100%;
@@ -28,9 +28,18 @@ body {
     height: 102vh;
     position: relative;
     color: white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .load img{
 	width: 50px;
@@ -296,8 +305,14 @@ header {
 	height: 40px;
 	background: #27AD5F;
 	cursor: pointer;
+	display: -webkit-box;
 	display: flex;
-	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -o-flex;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	-o-align-items: center;
 	position: relative;
     top: 18px;
     left: 20px;
@@ -592,7 +607,6 @@ footer {
           transition: all 1s ease; }
           .list .ads .one .image a img:hover {
             -webkit-transform: scale(1.3);
-            -ms-transform: scale(1.3);
             transform: scale(1.3);
             opacity: 0.8; }
         .list .ads .one .image:after {
@@ -847,7 +861,6 @@ footer {
 }
 .container-fluid .row #annSlider .expand:hover::before {
   	-webkit-transform: scale(1.3);
-  	-ms-transform: scale(1.3);
   	    transform: scale(1.3);
 }
 
@@ -1010,7 +1023,6 @@ footer {
   background: #FB5614;
   border-radius: 100%;
   -webkit-transform: scale(0);
-  -ms-transform: scale(0);
       transform: scale(0);
   -webkit-transition-property: transform;
   -webkit-transition-property: -webkit-transform;
@@ -1027,7 +1039,6 @@ footer {
 }
 .hvr-radial-out:hover:before, .hvr-radial-out:focus:before, .hvr-radial-out:active:before {
   -webkit-transform: scale(2);
-  -ms-transform: scale(2);
       transform: scale(2);
 }
 .container-fluid .row #description .features{

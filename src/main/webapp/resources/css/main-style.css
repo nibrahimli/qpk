@@ -12,8 +12,7 @@ body {
   margin: 0px;
   background-color: #eee !important;
   position: relative;
-  overflow: hidden;
-  font-family: "Arimo", sans-serif;  }
+  overflow: hidden; }
   body .content {
     width: 100%;
     min-height: 100vh;
@@ -582,7 +581,9 @@ footer {
       font-size: 28px;
       margin: 0px; }
   .list .ads {
-    padding: 50px 10px; }
+    padding: 50px 10px;
+    max-width: 1100px;
+    margin: 0 auto; }
     .list .ads .one {
       width: 310px;
       height: 200px;

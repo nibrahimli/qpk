@@ -32,8 +32,8 @@
 			<nav>
 				<ul>
 					<li><a href="/">Əsas Səhifə</a></li>
-					<li><a href="<c:url value="/advancedSearch"/>">Ətraflı Axtarış</a></li>
-					<li><a href="<c:url value="/contact"/>">Bizimlə Əlaqə</a></li>
+					<li><a href="<c:url value="/axtaris"/>">Ətraflı Axtarış</a></li>
+					<li><a href="<c:url value="/kontakt"/>">Bizimlə Əlaqə</a></li>
 				</ul>
 			</nav>
 		</div>

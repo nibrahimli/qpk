@@ -123,7 +123,7 @@ public class QrupEmlakController {
 		return mav;
 	}
 
-	@RequestMapping(value="/announcement/{fakeId}", method=RequestMethod.GET)
+	@RequestMapping(value="/elan/{fakeId}", method=RequestMethod.GET)
 	public ModelAndView announcement(@PathVariable String fakeId, ModelAndView mav){
 		fakeId = fakeId.split("---")[1];
 		Long id = Long.parseLong(fakeId.replaceAll("[^0-9]", "")); 
@@ -150,11 +150,11 @@ public class QrupEmlakController {
 		mav.addObject("address", address);
 		mav.addObject(announcementInfo);
 		mav.addObject("relatedAnnList", relatedAnnList);
-		mav.setViewName("announcement");
+		mav.setViewName("elan");
 		return mav;
 	}
 	
-	@RequestMapping(value="/advancedSearch", method=RequestMethod.GET)
+	@RequestMapping(value="/axtaris", method=RequestMethod.GET)
 	public ModelAndView advancedSearchGet(ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = featuredAnnouncements();
 		mav.addObject("searchInfo", new SearchInfo());
@@ -162,7 +162,7 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/advancedSearch", method=RequestMethod.POST)
+	@RequestMapping(value="/axtaris", method=RequestMethod.POST)
 	public ModelAndView advancedSearchPost(@ModelAttribute(value = "searchInfo") SearchInfo searchInfo, ModelAndView mav) throws IOException{
 		List<Announcement> announcementList = filterAnnouncements(searchInfo);
 		mav.addObject("searchInfo", searchInfo);
@@ -171,19 +171,19 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/contact/{title}", method=RequestMethod.GET)
+	@RequestMapping(value="/kontakt/{title}", method=RequestMethod.GET)
 	public ModelAndView contactForAnnouncement(@PathVariable String title, ModelAndView mav){
 		logger.info("announcement title {}", title);
 		ContactInfo contactInfo = new ContactInfo() ;
-		contactInfo.setSubject("http://qrupemlak.com/announcement/"+title);		
+		contactInfo.setSubject("http://qrupemlak.com/elan/"+title);		
 		mav.addObject("readonly", "true");
 		mav.addObject("contactInfo", contactInfo);
 		mav.addObject("captchaSiteKey", captcha.getSiteKey());
-		mav.setViewName("contact");
+		mav.setViewName("kontakt");
 		return mav;
 	}
 	
-	@RequestMapping(value="/contact", method=RequestMethod.GET)
+	@RequestMapping(value="/kontakt", method=RequestMethod.GET)
 	public ModelAndView contact(ModelAndView mav){
 		logger.info("contact page");
 		mav.addObject("contactInfo", new ContactInfo());
@@ -191,7 +191,7 @@ public class QrupEmlakController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/contact", method=RequestMethod.POST)
+	@RequestMapping(value="/kontakt", method=RequestMethod.POST)
 	public String contactPost(ContactInfo contactInfo, RedirectAttributes redirectAttrs, ModelAndView mav){
 
 		MimeMessage message = javaMailSender.createMimeMessage();
@@ -209,10 +209,10 @@ public class QrupEmlakController {
 		} catch (Exception e) {
 			logger.error("error {}", e);
 			redirectAttrs.addFlashAttribute("errorMessage", "Gözlənilməz bir səhv meydana gəldi.") ;
-			return "redirect:/contact";
+			return "redirect:/kontakt";
 		}	
 		
-		return "redirect:/contact";
+		return "redirect:/kontakt";
 	}
 	
 

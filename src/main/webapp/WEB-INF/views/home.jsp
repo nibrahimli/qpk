@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="search">
-		<c:url var="url" value="/advancedSearch" />
+		<c:url var="url" value="/axtaris" />
 		<form:form action="${url}" class="form-horizontal"
 		commandName="searchInfo" method="POST">
 		<div class="form-group">
@@ -101,7 +101,7 @@
 					<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
 					<c:set var="title" value="${fn:toLowerCase(title)}"/>
 						<a							
-							href="<c:url value="/announcement/${title}---${announcement.id}"/>"><img
+							href="<c:url value="/elan/${title}---${announcement.id}"/>"><img
 							src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 					</c:forEach>					
 					<div class="top">

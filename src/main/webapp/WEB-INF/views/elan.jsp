@@ -30,7 +30,7 @@
 					</ul>
 					<span class="expand glyphicon glyphicon-resize-full"></span>
 					<div class="social-network">					
-						<div class="fb-like" data-href="<c:url value="/announcement/${title}---${announcementInfo.id}"/>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+						<div class="fb-like" data-href="<c:url value="/elan/${title}---${announcementInfo.id}"/>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
 						<div class="whatsapp-sh"><a href="whatsapp://send" data-text="Bu elana göz at:" data-href="" class="wa_btn wa_btn_s" style="display:none">Paylaş</a></div>					
 					</div>
 					</div>
@@ -91,7 +91,7 @@
 								</tr>
 								<tr>
 									<td></td>
-									<td><a href="<c:url value="/contact/${title}---${announcementInfo.id}"/>"><button class="hvr-radial-out">Müraciət et</button></a></td>
+									<td><a href="<c:url value="/kontakt/${title}---${announcementInfo.id}"/>"><button class="hvr-radial-out">Müraciət et</button></a></td>
 								</tr>
 		
 							</tbody>
@@ -184,7 +184,7 @@
 									<c:set var="title" value="${fn:replace(announcement.title,' ', '-')}"/>
 									<c:set var="title" value="${fn:toLowerCase(title)}"/>
 									<a
-										href="<c:url value="/announcement/${title}---${announcement.id}"/>"><img
+										href="<c:url value="/elan/${title}---${announcement.id}"/>"><img
 										src="<c:url value="/qrupEmlakImages/${image.path}"/>"></a>
 								</c:forEach>					
 								<div class="top">

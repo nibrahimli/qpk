@@ -9,6 +9,7 @@
     	<title><sitemesh:write property='title'/></title>
 	    <meta name="description" content="qrup emlak turkiyeden ev elanlari">
     	<!-- <meta name="author" content="nihat ibrahimli && sinan beymemmedli"> -->
+	    <meta name="google-site-verification" content="xiqq1GkYtaV0dh41ZsFrz4oEYvmFigi3PfHLrjr5dXo" />
 	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">	    		   	    
 	   
 	    <!-- Modernizr CSS -->	       

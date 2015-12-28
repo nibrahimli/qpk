@@ -216,7 +216,7 @@ public class QrupEmlakController {
 	}
 	
 
-	@RequestMapping(value="/captcha", method=RequestMethod.POST)
+	@RequestMapping(value="/kontakt/captcha", method=RequestMethod.POST)
 	public @ResponseBody String captchaPost(@RequestParam("response") String response) throws Exception{
 		if(StringUtils.isNoneEmpty(response)){
 			CloseableHttpClient httpclient = HttpClients.createDefault();

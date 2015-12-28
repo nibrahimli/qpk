@@ -13,7 +13,7 @@
 		    <h2 class="panel-title">Bizimlə əlaqə saxlayın!</h2>
 		</div>
 		<div class="panel-body">
-			<c:url var="url" value="/contact" />
+			<c:url var="url" value="/kontakt/" />
 			<form:form action="${url}" class="form-horizontal" commandName="contactInfo" method="post">
 		
 				<div class="form-group">
@@ -85,9 +85,6 @@
 <script type="text/javascript" src="<c:url value="/resources/js/contact-form-validation.js"/>"></script>
 
 <script type="text/javascript">
-
-
-var toto = false ;
 
 var verifyCallback = function(response) {
 		$.ajax({

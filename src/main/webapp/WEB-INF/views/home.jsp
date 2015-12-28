@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="search">
-		<c:url var="url" value="/axtaris" />
+		<c:url var="url" value="/axtaris/" />
 		<form:form action="${url}" class="form-horizontal"
 		commandName="searchInfo" method="POST">
 		<div class="form-group">

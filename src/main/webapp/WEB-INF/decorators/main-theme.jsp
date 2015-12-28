@@ -6,10 +6,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">		
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="google-site-verification" content="IWKOpmt03fSvMTphx31vija8-sWJ6pXEBcAgBKlro1w" />
     	<title><sitemesh:write property='title'/></title>
 	    <meta name="description" content="qrup emlak turkiyeden ev elanlari">
     	<!-- <meta name="author" content="nihat ibrahimli && sinan beymemmedli"> -->
-	    <meta name="google-site-verification" content="xiqq1GkYtaV0dh41ZsFrz4oEYvmFigi3PfHLrjr5dXo" />
 	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">	    		   	    
 	   
 	    <!-- Modernizr CSS -->	       

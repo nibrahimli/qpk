@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
+<title>Əlaqə - Kontakt - Qrup Emlak</title>
 <div class="col-sm-12" style="padding : 0; text-align: center">
 	<c:import url="/WEB-INF/views/status.jsp" />
 </div>

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<title>Elanların ətraflı axtarışı - Qrup Emlak</title>
 
 <c:if test="${empty announcementList}">
 	<div class="col-sm-12" style="text-align:center; padding : 0">				

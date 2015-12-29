@@ -19,6 +19,9 @@
 		<c:set var="title" value="${fn:toLowerCase(title)}"/>
 		
 		<title>${announcementInfo.title} - Qrup Emlak</title>
+		 <head>
+			<meta name="description" content="${address.description}">
+		</head>
 		<div class="container-fluid slider-wrap">
 			<div class="row">
 				<div class="col-md-5" id="annSlider">
@@ -157,6 +160,9 @@
 		</c:when>
 		<c:otherwise>
 			<title>Elan tapılmadı - Qrup Emlak</title>
+			<head>
+				<meta name="description" content="Elanın kodunu düzgün daxil etməmisiniz">
+			</head>
 			<div class="col-sm-12" style="text-align:center; padding : 0">				
 				<div class="alert alert-warning">
 					<a class="close" data-dismiss="alert" href="#">x</a><b>Təəssüf ki, daxil etdiyiniz kodlu elan tapılmadı</b>

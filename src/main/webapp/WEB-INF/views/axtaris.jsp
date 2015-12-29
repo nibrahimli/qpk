@@ -4,7 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<title>Elanların ətraflı axtarışı - Qrup Emlak</title>
+<title>Bina evi, villa, torpaq sahəsi, ofis və obyekt elanlarının ətraflı axtarışı - Qrup Emlak</title>
+
+<head>
+	<meta name="description" content="Türkiyənin bütün şəhərlərindən daşınmaz əmlak (bina evi, villa, torpaq sahəsi, ofis, obyekt) elanlarının ətrafli axtarışı">
+</head>
 
 <c:if test="${empty announcementList}">
 	<div class="col-sm-12" style="text-align:center; padding : 0">				

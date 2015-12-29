@@ -6,7 +6,7 @@
 
 <title>Türkiyədən bina evi, ofis, villa, obyekt və torpaq sahəsi elanları - Qrup Emlak</title>
 <head>
-	<meta name="description" content="Türkiyənin istənilən şəhərindən bina evi, villa, torpaq sahəsi, ofis və obyekt elanları">
+	<meta name="description" content="Türkiyənin bütün şəhərlərindən bina evi, villa, torpaq sahəsi, ofis və obyekt elanları">
 </head>
 
 <div class="scene">

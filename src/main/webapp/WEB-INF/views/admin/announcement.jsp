@@ -141,6 +141,12 @@
 				  	</c:otherwise>				  					  					  
 				  </c:choose>
 				  <div class="form-group">
+				    <form:label class="col-sm-2 control-label" path="summary">Summary</form:label>
+				    <div class="col-sm-10">
+				      <form:textarea class="form-control" path="summary" rows="2"></form:textarea>
+				    </div>
+				  </div>
+				  <div class="form-group">
 				    <form:label class="col-sm-2 control-label" path="description">Description</form:label>
 				    <div class="col-sm-10">
 				      <form:textarea class="form-control" path="description" rows="10"></form:textarea>

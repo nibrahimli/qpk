@@ -32,6 +32,7 @@ public class AnnouncementInfo {
 	private Currency currency ;
 	private Integer viewsNumber;
 	private Boolean popular;
+	private String summary;
 	private Set<Feature> features;
 	private Set<Image> images ;
 	private AddressInfo addressInfo ;
@@ -193,6 +194,18 @@ public class AnnouncementInfo {
 		this.popular = popular;
 	}
 	/**
+	 * @return the summary
+	 */
+	public String getSummary() {
+		return summary;
+	}
+	/**
+	 * @param summary the summary to set
+	 */
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	/**
 	 * @return the features
 	 */
 	public Set<Feature> getFeatures() {
@@ -256,6 +269,7 @@ public class AnnouncementInfo {
 		this.setCurrency(announcement.getCurrency());
 		this.setPopular(announcement.getPopular());
 		this.setViewsNumber(announcement.getViewsNumber());
+		this.setSummary(announcement.getSummary());
 		this.setFeatures(announcement.getFeatures());
 		this.setImages(announcement.getImages());
 		this.setAddressInfo(createAddressInfo(announcement.getAddress()));
@@ -287,6 +301,7 @@ public class AnnouncementInfo {
 		announcement.setCurrency(this.getCurrency());
 		announcement.setPopular(this.getPopular());
 		announcement.setViewsNumber(this.getViewsNumber());
+		announcement.setSummary(this.getSummary());
 		announcement.setFeatures(this.getFeatures());
 		announcement.setImages(images);
 		announcement.setAddress(address);

@@ -20,7 +20,7 @@
 		
 		<title>${announcementInfo.title} - Qrup Emlak</title>
 		 <head>
-			<meta name="description" content="${address.description}">
+			<meta name="description" content="${announcementInfo.description}">
 		</head>
 		<div class="container-fluid slider-wrap">
 			<div class="row">

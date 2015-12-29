@@ -75,6 +75,9 @@
 			<div class="email">
 				<i class="glyphicon glyphicon-envelope"></i><span> info@qrupemlak.com</span>
 			</div>
+			<!-- <div class="address">
+				<i class="glyphicon glyphicon-home"></i><span> Bakı Azərbaycan</span>
+			</div> -->
 		</div>
 	</div>
 </div>

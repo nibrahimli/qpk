@@ -21,6 +21,7 @@
 		<title>${announcementInfo.title} - Qrup Emlak</title>
 		 <head>
 			<meta name="description" content="${announcementInfo.description}">
+			<meta name="keywords" content="qrup emlak, Türkiyə, ${address.city.originalName}, ${address.district.originalName}, elan, alqı-satqı, ${announcementInfo.homeType.type}">
 		</head>
 		<div class="container-fluid slider-wrap">
 			<div class="row">

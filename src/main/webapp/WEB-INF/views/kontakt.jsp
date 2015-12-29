@@ -5,6 +5,7 @@
 <title>Əlaqə - Kontakt - Qrup Emlak</title>
 <head>
 	<meta name="description" content="Türkiyənin bütün şəhərlərindən daşınmaz əmlaklarin satışını həyata keçirən Qrup Emlak firması ilə əlaqə (kontakt) qurun">
+	<meta name="keywords" content="qrup emlak, əlaqə, kontakt">
 </head>
 <div class="col-sm-12" style="padding : 0; text-align: center">
 	<c:import url="/WEB-INF/views/status.jsp" />

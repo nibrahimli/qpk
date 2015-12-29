@@ -3,6 +3,7 @@
 <title>404 səhifə tapılmadı - Qrup Emlak</title>
 <head>
 	<meta name="description" content="Səhifəni düzgün daxil etməmisiniz">
+	<meta name="keywords" content="qrup emlak, Türkiyə, daşınmaz əmlak, elan, alqı-satqı, html xətası 404">
 </head>
 <div class="col-sm-12" style="text-align: center; padding: 0">
 	<div class="alert alert-warning">

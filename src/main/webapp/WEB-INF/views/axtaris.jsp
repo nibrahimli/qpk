@@ -8,6 +8,7 @@
 
 <head>
 	<meta name="description" content="Türkiyənin bütün şəhərlərindən daşınmaz əmlak (bina evi, villa, torpaq sahəsi, ofis, obyekt) elanlarının ətrafli axtarışı">
+	<meta name="keywords" content="qrup emlak, Türkiyə, daşınmaz əmlak, elanlar, alqı-satqı, bina evi, ofis, villa, obyekt, torpaq sahəsi, ətraflı axtarış">
 </head>
 
 <c:if test="${empty announcementList}">

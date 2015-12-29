@@ -9,7 +9,7 @@
 	    <meta name="google-site-verification" content="IWKOpmt03fSvMTphx31vija8-sWJ6pXEBcAgBKlro1w" />
     	<sitemesh:write property='head'/>    	
     	<title><sitemesh:write property='title'/></title>
-    	<!-- <meta name="author" content="nihat ibrahimli && sinan beymemmedli"> -->
+    	<meta name="author" content="Qrup Emlak">    	    
 	    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/resources/img/favicon.ico" />">	    		   	    
 	   
 	    <!-- Modernizr CSS -->	       

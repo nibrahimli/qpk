@@ -20,7 +20,7 @@ $('#announcementInfo').validate({
             summary: {
             	required :true,
             	minlength: 5,
-                maxlength: 30                
+                maxlength: 300                
             },
             description: {
             	required :true,
@@ -40,7 +40,7 @@ $('#announcementInfo').validate({
         	summary:{
         		required : "Please enter a summary",
         		minlength : "Please enter at least 5 characters",
-        		maxlength : "Please enter max 30 characters"        		
+        		maxlength : "Please enter max 300 characters"        		
         	},
         	description:{
         		required : "Please enter a description",

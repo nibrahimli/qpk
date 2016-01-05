@@ -14,8 +14,8 @@
 	    <property name="host" value="email-smtp.eu-west-1.amazonaws.com"/>
 	    <property name="port" value="465" />
 	    <property name="protocol" value="smtps" />
-	    <property name="username" value="XXXX"/>
-	    <property name="password" value="XX" />
+	    <property name="username" value="username-aws"/>
+	    <property name="password" value="pwd-aws"/>
 	    <property name="javaMailProperties">
 	        <props>
 	            <prop key="mail.smtps.auth">true</prop>

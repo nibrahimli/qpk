@@ -1,4 +1,4 @@
-package com.qrupemlak.backoffice.controllers;
+package com.qrupemlak.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,4 +1,4 @@
-package com.qrupemlak.backoffice.data;
+package com.qrupemlak.data;
 
 public interface Captcha {
 	public String getSecretKey();

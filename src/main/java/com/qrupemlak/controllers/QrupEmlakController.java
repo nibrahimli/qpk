@@ -1,4 +1,4 @@
-package com.qrupemlak.backoffice.controllers;
+package com.qrupemlak.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,11 +48,11 @@ import com.nibrahimli.database.qrupEmlak.entity.City;
 import com.nibrahimli.database.qrupEmlak.entity.District;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
-import com.qrupemlak.backoffice.data.AnnouncementInfo;
-import com.qrupemlak.backoffice.data.Captcha;
-import com.qrupemlak.backoffice.data.ContactInfo;
-import com.qrupemlak.backoffice.data.LocationInfo;
-import com.qrupemlak.backoffice.data.SearchInfo;
+import com.qrupemlak.data.AnnouncementInfo;
+import com.qrupemlak.data.Captcha;
+import com.qrupemlak.data.ContactInfo;
+import com.qrupemlak.data.LocationInfo;
+import com.qrupemlak.data.SearchInfo;
 
 @Controller
 public class QrupEmlakController {

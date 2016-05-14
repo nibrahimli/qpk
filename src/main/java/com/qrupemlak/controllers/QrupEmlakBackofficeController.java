@@ -1,4 +1,4 @@
-package com.qrupemlak.backoffice.controllers;
+package com.qrupemlak.controllers;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -42,8 +42,8 @@ import com.nibrahimli.database.qrupEmlak.entity.Country;
 import com.nibrahimli.database.qrupEmlak.entity.District;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
-import com.qrupemlak.backoffice.data.AnnouncementInfo;
-import com.qrupemlak.backoffice.data.LocationInfo;
+import com.qrupemlak.data.AnnouncementInfo;
+import com.qrupemlak.data.LocationInfo;
 
 @Controller
 public class QrupEmlakBackofficeController {

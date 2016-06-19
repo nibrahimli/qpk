@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.mail.internet.MimeMessage;
+import javax.xml.bind.JAXBException;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -42,10 +43,12 @@ import com.nibrahimli.database.order.Order;
 import com.nibrahimli.database.qrupEmlak.dao.AnnouncementDao;
 import com.nibrahimli.database.qrupEmlak.dao.CityDao;
 import com.nibrahimli.database.qrupEmlak.dao.DistrictDao;
+import com.nibrahimli.database.qrupEmlak.dao.QrupEmlakSitemapDao;
 import com.nibrahimli.database.qrupEmlak.entity.Address;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement;
 import com.nibrahimli.database.qrupEmlak.entity.City;
 import com.nibrahimli.database.qrupEmlak.entity.District;
+import com.nibrahimli.database.qrupEmlak.entity.QrupEmlakSitemap;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.Currency;
 import com.nibrahimli.database.qrupEmlak.entity.Announcement.HomeType;
 import com.qrupemlak.data.AnnouncementInfo;
@@ -53,6 +56,7 @@ import com.qrupemlak.data.Captcha;
 import com.qrupemlak.data.ContactInfo;
 import com.qrupemlak.data.LocationInfo;
 import com.qrupemlak.data.SearchInfo;
+import com.qrupemlak.data.SitemapURLSet;
 
 @Controller
 public class QrupEmlakController {
@@ -69,6 +73,9 @@ public class QrupEmlakController {
 	
 	@Autowired
 	private DistrictDao districtDao;
+	
+	@Autowired
+	private QrupEmlakSitemapDao qrupEmlakSitemapDao;
 	
 	@Autowired
 	private JavaMailSender javaMailSender ;
@@ -236,6 +243,13 @@ public class QrupEmlakController {
 		}
 		
 		throw new Exception();
+	}
+	
+	@RequestMapping(value="/sitemap", method=RequestMethod.GET)
+	public @ResponseBody SitemapURLSet sitemap() throws JAXBException{
+		logger.info("Sitemap");
+		List<QrupEmlakSitemap> qeURLs = qrupEmlakSitemapDao.getAll();
+		return SitemapURLSet.build(qeURLs);
 	}
 	
 	private List<Announcement> filterAnnouncements(SearchInfo searchInfo) {
